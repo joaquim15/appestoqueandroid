@@ -7,4 +7,5 @@
 	<string name="btn_usuario">Usuário</string>   
 	<string name="description_home">Home</string> 	
 	<string name="description_search">Search</string>
+	<string name="titulo_produto">Produto</string>
 </resources>
