@@ -2,6 +2,7 @@ package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -19,7 +20,8 @@ public class HomeActivity extends Activity {
     }
     
     public void onProdutoClick(View v) {
-    	Toast.makeText(HomeActivity.this,"Produto",Toast.LENGTH_LONG).show();
+//    	Toast.makeText(HomeActivity.this,"Produto",Toast.LENGTH_LONG).show();
+    	startActivity(new Intent(this,ProdutoActiviry.class));
     }
     
     public void onEstoqueClick(View v) {
