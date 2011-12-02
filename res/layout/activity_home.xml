@@ -3,10 +3,10 @@
   android:orientation="vertical"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent" 
-  android:background="@color/background1">
+  android:background="@color/fundo_branco">
   
   	<LinearLayout style="@style/TitleBar">
-        <TextView style="@style/TitleBarText" android:text="appestoque"/>
+        <TextView style="@style/TitleBarText" android:text="@string/titulo_menu"/>
         <ImageView style="@style/TitleBarSeparator" />
         <ImageButton style="@style/TitleBarAction"
             android:id="@+id/btn_title_refresh"
