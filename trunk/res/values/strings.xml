@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="app_name">""</string>
+	<string name="app_nome">AppEstoque</string>	
 	<string name="description_refresh">Refresh</string>
 	<string name="btn_produto">Produto</string>
 	<string name="btn_estoque">Estoque</string>
@@ -8,4 +8,5 @@
 	<string name="description_home">Home</string> 	
 	<string name="description_search">Search</string>
 	<string name="titulo_produto">Produto</string>
+	<string name="titulo_menu">Menu</string>
 </resources>
