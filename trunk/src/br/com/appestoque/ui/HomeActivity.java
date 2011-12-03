@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import br.com.appestoque.R;
+import br.com.appestoque.Util;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -24,13 +25,12 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 public class HomeActivity extends Activity {
-	
+
 	//private static final String URL = "http://10.0.2.2:8888/rest/UsuarioRest?email=andre.tricano@gmail.com&senha=1234";
 	private static final String URL = "http://appestoque.appspot.com/rest/UsuarioRest?email=andre.tricano@gmail.com&senha=1234";
-
+	
 	@SuppressWarnings("unused")
 	private ProgressDialog progressDialog;
 
@@ -40,7 +40,8 @@ public class HomeActivity extends Activity {
 		setContentView(R.layout.activity_home);
 	}
 
-	public void onAtualizarClick(View v) {		
+	public void onAtualizarClick(View v) {
+		//progressDialog = ProgressDialog.show(this, "Sincronismo", getString(R.string.mensagem_sincronismo) , true, true);
 		Context context = getApplicationContext();
 		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		if(connectivity!=null){
@@ -57,23 +58,31 @@ public class HomeActivity extends Activity {
 					HttpEntity httpEntity = httpResponse.getEntity();
 					InputStream inputStream = httpEntity.getContent();
 					BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-					String data = bufferedReader.readLine();			
-					JSONArray jsonArray = new JSONArray(data);
+					String data = bufferedReader.readLine();
+					JSONArray objetos = new JSONArray(data);
+					
+					for(int i = 0; i<=objetos.length()-1; ++i){
+						objetos.getJSONObject(i).getString("nome");
+					}
+					
 				} catch (ClientProtocolException e) {
 					Log.e(this.toString(),e.getMessage());
-					e.printStackTrace();
+					Util.dialogo(HomeActivity.this,getString(R.string.mensagem_clientProtocolException));
 				} catch (IOException e) {
-					e.printStackTrace();
+					Log.e(this.toString(),e.getMessage());
+					Util.dialogo(HomeActivity.this,getString(R.string.mensagem_ioexception));
 				} catch (JSONException e) {
-					e.printStackTrace();
+					Log.e(this.toString(),e.getMessage());
+					Util.dialogo(HomeActivity.this,getString(R.string.mensagem_jsonexception));
 				}
 				
 			}else{
-				Toast.makeText(HomeActivity.this, "Informação de rede inexistente.", Toast.LENGTH_LONG).show();
+				Util.dialogo(HomeActivity.this, "Informação de rede inexistente.");
 			}
 		}else{
-			Toast.makeText(HomeActivity.this, "Conectividade inexistente", Toast.LENGTH_LONG).show();
+			Util.dialogo(HomeActivity.this, "Conectividade inexistente");
 		}
+		progressDialog.dismiss();
 	}
 
 	public void onProdutoClick(View v) {
