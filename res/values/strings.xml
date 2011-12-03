@@ -9,4 +9,11 @@
 	<string name="description_search">Search</string>
 	<string name="titulo_produto">Produto</string>
 	<string name="titulo_menu">Menu</string>
+	
+	<string name="mensagem_clientProtocolException">Desculpe, mas ocorreu uma exceção referente ao protocolo cliente.</string>
+	<string name="mensagem_ioexception">Desculpe, mas ocorreu uma exceção referente ao entrada e saida de arquivo.</string>
+	<string name="mensagem_jsonexception">Desculpe, mas ocorreu uma exceção referente a anotação de objetos javascript.</string>
+	
+	<string name="mensagem_sincronismo">Buscando informações. Aguarde...</string>
+	
 </resources>
