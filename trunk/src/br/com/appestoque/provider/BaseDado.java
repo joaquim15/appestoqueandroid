@@ -14,7 +14,8 @@ public class BaseDado extends SQLiteOpenHelper {
 	}
 
 	@Override
-	public void onCreate(SQLiteDatabase arg0) {
+	public void onCreate(SQLiteDatabase db) {
+		db.execSQL("CREATE TABLE produtos( id INTEGER PRIMARY KEY AUTOINCREMENT,nome TEXT NOT NULL,	preco float NOT NULL, ) ON CONFLICT REPLACE)");
 	}
 
 	@Override
