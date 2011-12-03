@@ -1,7 +1,20 @@
 package br.com.appestoque.ui;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import br.com.appestoque.R;
-import br.com.appestoque.provider.ProdutoDbAdapter;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -14,6 +27,9 @@ import android.view.View;
 import android.widget.Toast;
 
 public class HomeActivity extends Activity {
+	
+	//private static final String URL = "http://10.0.2.2:8888/rest/UsuarioRest?email=andre.tricano@gmail.com&senha=1234";
+	private static final String URL = "http://appestoque.appspot.com/rest/UsuarioRest?email=andre.tricano@gmail.com&senha=1234";
 
 	@SuppressWarnings("unused")
 	private ProgressDialog progressDialog;
@@ -33,6 +49,24 @@ public class HomeActivity extends Activity {
 				
 				//ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
 				//produtoDbAdapter.open();
+				
+				HttpClient httpclient = new DefaultHttpClient();
+				try {
+					HttpGet httpGet = new HttpGet(URL);
+			        HttpResponse httpResponse = httpclient.execute(httpGet);
+					HttpEntity httpEntity = httpResponse.getEntity();
+					InputStream inputStream = httpEntity.getContent();
+					BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+					String data = bufferedReader.readLine();			
+					JSONArray jsonArray = new JSONArray(data);
+				} catch (ClientProtocolException e) {
+					Log.e(this.toString(),e.getMessage());
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
 				
 			}else{
 				Toast.makeText(HomeActivity.this, "Informação de rede inexistente.", Toast.LENGTH_LONG).show();
@@ -57,5 +91,5 @@ public class HomeActivity extends Activity {
 		progressDialog = ProgressDialog.show(this, "",
 				"Loading. Please wait...", true);
 	}
-
+	
 }
