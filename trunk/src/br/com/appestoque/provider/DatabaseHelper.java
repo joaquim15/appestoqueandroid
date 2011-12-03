@@ -10,8 +10,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final int DATABASE_VERSION = 2;
 	
 	private static final String DATABASE_CREATE =
-        "create table produtos ( _id integer primary key autoincrement, "
-        + "nome text not null, numero text not null);";
+        "create table produtos ( 	" 
+		+ "	id integer primary key, "
+        + " nome text not null, 	" 
+        + " numero text not null,	"
+        + " preco real not null		"
+        + "  );";
 	
 	DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
