@@ -4,7 +4,6 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent" 
   android:background="@color/fundo_branco">
-  
   	<LinearLayout style="@style/TitleBar">
         <TextView style="@style/TitleBarText" android:text="@string/titulo_menu"/>
         <ImageView style="@style/TitleBarSeparator" />
@@ -14,7 +13,6 @@
             android:src="@drawable/ic_title_refresh"
             android:onClick="onAtualizarClick" />
     </LinearLayout>
-    
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
@@ -36,5 +34,4 @@
                 android:text="@string/btn_usuario"
                 android:drawableTop="@drawable/home_btn_usuario"/>        
         </LinearLayout>
-    
 </LinearLayout>
