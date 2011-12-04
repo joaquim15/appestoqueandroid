@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class ProdutoDbAdapter {
 	
-	private static final String DATABASE_TABLE = "appestoque.db";
+	private static final String DATABASE_TABLE = "produtos";
 	
 	private final Context context;
 	private DatabaseHelper dbHelper;
