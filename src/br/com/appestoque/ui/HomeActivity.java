@@ -63,10 +63,10 @@ public class HomeActivity extends Activity {
 					String numero = null; 
 					Double preco = null;
 					for(int i = 0; i<=objetos.length()-1; ++i){
-						id = objetos.getJSONObject(i).getLong(Constantes.PRODUTO_CHAVE_ID);
-						nome = objetos.getJSONObject(i).getString(Constantes.PRODUTO_CHAVE_NOME);
-						numero = objetos.getJSONObject(i).getString(Constantes.PRODUTO_CHAVE_NUMERO);
-						preco = objetos.getJSONObject(i).getDouble(Constantes.PRODUTO_CHAVE_PRECO);
+						id = objetos.getJSONObject(i).getLong(ProdutoDbAdapter.PRODUTO_CHAVE_ID);
+						nome = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NOME);
+						numero = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO);
+						preco = objetos.getJSONObject(i).getDouble(ProdutoDbAdapter.PRODUTO_CHAVE_PRECO);
 						produtoDbAdapter.criar(id, nome, numero, preco);
 					}
 					produtoDbAdapter.close();
