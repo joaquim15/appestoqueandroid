@@ -15,5 +15,6 @@
 	<string name="mensagem_jsonexception">Desculpe, mas ocorreu uma exceção referente a anotação de objetos javascript.</string>
 	
 	<string name="mensagem_sincronismo">Buscando informações. Aguarde...</string>
+	<string name="mensagem_sincronismo_conclusao">Processo de sincronismo concluido</string>
 	
 </resources>
