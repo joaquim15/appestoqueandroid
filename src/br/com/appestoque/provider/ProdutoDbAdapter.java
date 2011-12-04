@@ -1,6 +1,5 @@
 package br.com.appestoque.provider;
 
-import br.com.appestoque.Constantes;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 public class ProdutoDbAdapter {
 
-	public static final String PRODUTO_CHAVE_ID = "id";
+	public static final String PRODUTO_CHAVE_ID = "_id";
 	public static final String PRODUTO_CHAVE_NOME = "nome";
     public static final String PRODUTO_CHAVE_NUMERO = "numero";
     public static final String PRODUTO_CHAVE_PRECO = "preco";
