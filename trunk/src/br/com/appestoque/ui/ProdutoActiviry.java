@@ -1,5 +1,6 @@
 package br.com.appestoque.ui;
 
+import br.com.appestoque.R;
 import br.com.appestoque.provider.ProdutoDbAdapter;
 import android.app.ListActivity;
 import android.content.Intent;
@@ -13,13 +14,14 @@ public class ProdutoActiviry extends ListActivity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.notes_list);
 		ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
 		produtoDbAdapter.open();
 		Cursor cursor = produtoDbAdapter.listar();
 		startManagingCursor(cursor);
-		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME,ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO};
-		int[] to = new int[]{android.R.id.text1, android.R.id.text2};
-		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,android.R.layout.two_line_list_item,cursor,from,to);
+		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME};
+		int[] to = new int[]{android.R.id.text1};
+		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.notes_row,cursor,from,to);
 		setListAdapter(simpleCursorAdapter);
 		produtoDbAdapter.close();
 	}
