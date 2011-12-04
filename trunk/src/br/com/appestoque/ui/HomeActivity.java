@@ -70,6 +70,7 @@ public class HomeActivity extends Activity {
 						produtoDbAdapter.criar(id, nome, numero, preco);
 					}
 					produtoDbAdapter.close();
+					Util.dialogo(HomeActivity.this,getString(R.string.mensagem_sincronismo_conclusao));
 				} catch (ClientProtocolException e) {
 					Log.e(this.toString(),e.getMessage());
 					Util.dialogo(HomeActivity.this,getString(R.string.mensagem_clientProtocolException));
