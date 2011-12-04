@@ -67,6 +67,7 @@ public class HomeActivity extends Activity {
 						nome = objetos.getJSONObject(i).getString(Constantes.PRODUTO_CHAVE_NOME);
 						numero = objetos.getJSONObject(i).getString(Constantes.PRODUTO_CHAVE_NUMERO);
 						preco = objetos.getJSONObject(i).getDouble(Constantes.PRODUTO_CHAVE_PRECO);
+						produtoDbAdapter.criar(id, nome, numero, preco);
 					}
 					produtoDbAdapter.close();
 				} catch (ClientProtocolException e) {
