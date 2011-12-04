@@ -14,14 +14,14 @@ public class ProdutoActiviry extends ListActivity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.notes_list);
+		setContentView(R.layout.activity_produto);
 		ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
 		produtoDbAdapter.open();
 		Cursor cursor = produtoDbAdapter.listar();
 		startManagingCursor(cursor);
 		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME};
-		int[] to = new int[]{android.R.id.text1};
-		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.notes_row,cursor,from,to);
+		int[] to = new int[]{R.id.text1};
+		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.activity_produto_row,cursor,from,to);
 		setListAdapter(simpleCursorAdapter);
 		produtoDbAdapter.close();
 	}
