@@ -65,4 +65,9 @@
         <item name="android:textColor">@android:color/primary_text_light</item>
     </style>
     
+    <style name="NoteTime">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@android:color/secondary_text_light</item>
+    </style>
+    
 </resources>
