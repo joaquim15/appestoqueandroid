@@ -19,8 +19,8 @@ public class ProdutoActiviry extends ListActivity {
 		produtoDbAdapter.open();
 		Cursor cursor = produtoDbAdapter.listar();
 		startManagingCursor(cursor);
-		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME};
-		int[] to = new int[]{R.id.text1};
+		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME,ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO,ProdutoDbAdapter.PRODUTO_CHAVE_PRECO};
+		int[] to = new int[]{R.id.text1,R.id.text2,R.id.text3};
 		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.activity_produto_row,cursor,from,to);
 		setListAdapter(simpleCursorAdapter);
 		produtoDbAdapter.close();
