@@ -4,19 +4,28 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     style="@style/ListItem">
-	<TextView xmlns:android="http://schemas.android.com/apk/res/android" 
-		  android:id="@+id/text1" 
-    	  android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-    	  style="@style/TextHeader" />
+			<TextView xmlns:android="http://schemas.android.com/apk/res/android" 
+			  	android:id="@+id/text1" 
+	    	  	android:layout_width="fill_parent"
+	          	android:layout_height="wrap_content"
+	    	  	style="@style/TextHeader" />
+	    	<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+		        android:id="@+id/text2"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        style="@style/NoteTime" />
+         	
+	    	<!--    	
             <TextView xmlns:android="http://schemas.android.com/apk/res/android"
             	android:id="@+id/text2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                style="@style/TextBody" />
+                style="@style/TextHeader" />
             <TextView xmlns:android="http://schemas.android.com/apk/res/android"
                 android:id="@+id/text3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                style="@style/TextBody" />
+                style="@style/TextHeader" />
+            -->    
+            
 </LinearLayout>     
