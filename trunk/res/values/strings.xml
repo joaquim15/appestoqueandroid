@@ -18,5 +18,6 @@
 	<string name="mensagem_sincronismo_conclusao">Processo de sincronismo concluido</string>
 	
 	<string name="empty_sessions">No sessions found</string>
+	<string name="no_notes">No Notes Yet</string>
 	
 </resources>
