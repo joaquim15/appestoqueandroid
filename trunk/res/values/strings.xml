@@ -17,4 +17,6 @@
 	<string name="mensagem_sincronismo">Buscando informações. Aguarde...</string>
 	<string name="mensagem_sincronismo_conclusao">Processo de sincronismo concluido</string>
 	
+	<string name="empty_sessions">No sessions found</string>
+	
 </resources>
