@@ -1,10 +1,12 @@
 package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
+import br.com.appestoque.provider.ProdutoDbAdapter;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CursorAdapter;
 
 public class ProdutoActiviry extends ListActivity {
 
@@ -12,6 +14,11 @@ public class ProdutoActiviry extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_produto);
+		ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
+		produtoDbAdapter.open();
+		//setListAdapter(produtoDbAdapter.listar());
+		produtoDbAdapter.close();
+		
 	}
     
     public void onHomeClick(View v) {
