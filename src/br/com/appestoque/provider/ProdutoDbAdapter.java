@@ -49,5 +49,9 @@ public class ProdutoDbAdapter {
         return sqlDb.insert(DATABASE_TABLE, null, initialValues);
     }
 
+    public Cursor buscar(long id) {
+    	return sqlDb.query(DATABASE_TABLE, new String[] {PRODUTO_CHAVE_ID, 
+    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO}, PRODUTO_CHAVE_ID + " = " + id , null, null, null, null);
+    }
 	
 }
