@@ -18,17 +18,17 @@ public class ProdutoActiviry extends ListActivity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		Intent intent = getIntent();
-	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-	        String query = intent.getStringExtra(SearchManager.QUERY);
-	        Util.dialogo(this, query);
-	    }
-		
 		setContentView(R.layout.activity_produto);
 		ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
 		produtoDbAdapter.open();
-		Cursor cursor = produtoDbAdapter.listar();
+		Cursor cursor = null;
+		Intent intent = getIntent();
+	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+	        String query = intent.getStringExtra(SearchManager.QUERY);
+	        cursor = produtoDbAdapter.buscar(query);
+	    }else{
+	    	cursor = produtoDbAdapter.listar();
+	    }
 		startManagingCursor(cursor);
 		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME,ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO};
 		int[] to = new int[]{R.id.text1,R.id.text2};
@@ -46,8 +46,6 @@ public class ProdutoActiviry extends ListActivity {
     public void onListItemClick(ListView l , View v, int posicao, long id){
     	ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
 		produtoDbAdapter.open();
-//    	Util.dialogo(this,  "POSICAO: " + posicao);
-//    	Util.dialogo(this,  "ID: " + id);
 		Cursor cursor = produtoDbAdapter.buscar(id);
 		startManagingCursor(cursor);
 		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME,ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO};
