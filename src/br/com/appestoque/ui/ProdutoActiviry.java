@@ -4,6 +4,8 @@ import br.com.appestoque.R;
 import br.com.appestoque.Util;
 import br.com.appestoque.provider.ProdutoDbAdapter;
 import android.app.ListActivity;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +18,13 @@ public class ProdutoActiviry extends ListActivity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		Intent intent = getIntent();
+	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+	        String query = intent.getStringExtra(SearchManager.QUERY);
+	        Util.dialogo(this, query);
+	    }
+		
 		setContentView(R.layout.activity_produto);
 		ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
 		produtoDbAdapter.open();
@@ -46,6 +55,10 @@ public class ProdutoActiviry extends ListActivity {
 		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.activity_produto_row,cursor,from,to);
 		setListAdapter(simpleCursorAdapter);
     	produtoDbAdapter.close();
+    }
+    
+    public void onSearchClick(View v) {
+    	startSearch(null, false, Bundle.EMPTY, false);
     }
 	
 }
