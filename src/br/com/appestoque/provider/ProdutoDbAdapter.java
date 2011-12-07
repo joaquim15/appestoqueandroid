@@ -59,5 +59,9 @@ public class ProdutoDbAdapter {
     	return sqlDb.query(DATABASE_TABLE, new String[] {PRODUTO_CHAVE_ID, 
     			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO}, PRODUTO_CHAVE_NUMERO + " like '" + numero + "'" , null, null, null, null);
     }
+    
+    public void limpar(){
+    	sqlDb.delete(DATABASE_TABLE, null, null);
+    }
 	
 }
