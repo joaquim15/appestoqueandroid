@@ -76,6 +76,7 @@ public class HomeActivity extends Activity {
 								String numero = null;
 								Double preco = null;
 								produtoDbAdapter.open();
+								produtoDbAdapter.limpar();
 								for (int i = 0; i <= objetos.length() - 1; ++i) {
 									id = objetos.getJSONObject(i).getLong(ProdutoDbAdapter.PRODUTO_CHAVE_ID);
 									nome = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NOME);
