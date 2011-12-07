@@ -47,7 +47,7 @@ public class HomeActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_home);
 	}
-
+	
 	public void onAtualizarClick(View v) {
 		progressDialog = ProgressDialog.show(this, "","Sincronizando. Aguarde...", true);
 		DatabaseHelper databaseHelper = new DatabaseHelper(this);
@@ -104,11 +104,11 @@ public class HomeActivity extends Activity {
 						Util.dialogo(HomeActivity.this,getString(R.string.mensagem_jsonexception));					
 					}
 					
-					handler.post(new Runnable() {
-						@Override
-						public void run() {
-						}
-					});
+//					handler.post(new Runnable() {
+//						@Override
+//						public void run() {
+//						}
+//					});
 					
 				}catch (Throwable e) { 
 					Log.e(this.toString(), e.getMessage());
