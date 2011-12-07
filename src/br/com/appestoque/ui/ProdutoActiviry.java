@@ -58,5 +58,5 @@ public class ProdutoActiviry extends ListActivity {
     public void onSearchClick(View v) {
     	startSearch(null, false, Bundle.EMPTY, false);
     }
-	
+
 }
