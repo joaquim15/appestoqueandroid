@@ -17,6 +17,7 @@ import org.json.JSONException;
 import br.com.appestoque.Constantes;
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
+import br.com.appestoque.provider.DatabaseHelper;
 import br.com.appestoque.provider.ProdutoDbAdapter;
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -25,14 +26,20 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 
 public class HomeActivity extends Activity {
 
-	private static final String URL = "http://10.0.2.2:8888/rest/produtoRest?email=andre.tricano@gmail.com&senha=1234";
-	//private static final String URL = "http://appestoque.appspot.com/rest/UsuarioRest?email=andre.tricano@gmail.com&senha=1234";
+	ProdutoDbAdapter produtoDbAdapter;
 	
+	private Handler handler = new Handler();
+	
+	private static final String URL = "http://10.0.2.2:8888/rest/produtoRest?email=andre.tricano@gmail.com&senha=1234";
+	// private static final String URL =
+	// "http://appestoque.appspot.com/rest/UsuarioRest?email=andre.tricano@gmail.com&senha=1234";
+
 	private ProgressDialog progressDialog;
 
 	@Override
@@ -42,51 +49,74 @@ public class HomeActivity extends Activity {
 	}
 
 	public void onAtualizarClick(View v) {
-		Context context = getApplicationContext();
-		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-		if(connectivity!=null){
-			NetworkInfo networkInfo = connectivity.getActiveNetworkInfo();
-			if(networkInfo!=null&&networkInfo.isConnected()){
-				HttpClient httpclient = new DefaultHttpClient();
+		progressDialog = ProgressDialog.show(this, "","Sincronizando. Aguarde...", true);
+		DatabaseHelper databaseHelper = new DatabaseHelper(this);
+		databaseHelper.onUpgrade(databaseHelper.getWritableDatabase(), 0, 0);
+		produtoDbAdapter = new ProdutoDbAdapter(this);		
+		
+		new Thread(){
+			public void run() {
 				try {
-					HttpGet httpGet = new HttpGet(URL);
-			        HttpResponse httpResponse = httpclient.execute(httpGet);
-					HttpEntity httpEntity = httpResponse.getEntity();
-					InputStream inputStream = httpEntity.getContent();
-					BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-					String data = bufferedReader.readLine();
-					JSONArray objetos = new JSONArray(data);
-					ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
-					produtoDbAdapter.open();
-					Long id; 
-					String nome = null; 
-					String numero = null; 
-					Double preco = null;
-					for(int i = 0; i<=objetos.length()-1; ++i){
-						id = objetos.getJSONObject(i).getLong(ProdutoDbAdapter.PRODUTO_CHAVE_ID);
-						nome = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NOME);
-						numero = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO);
-						preco = objetos.getJSONObject(i).getDouble(ProdutoDbAdapter.PRODUTO_CHAVE_PRECO);
-						produtoDbAdapter.criar(id, nome, numero, preco);
+					try{
+						Context context = getApplicationContext();
+						ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+						if (connectivity != null) {
+							NetworkInfo networkInfo = connectivity.getActiveNetworkInfo();
+							if (networkInfo != null && networkInfo.isConnected()) {
+								HttpClient httpclient = new DefaultHttpClient();
+								HttpGet httpGet = new HttpGet(URL);
+								HttpResponse httpResponse = httpclient.execute(httpGet);
+								HttpEntity httpEntity = httpResponse.getEntity();
+								InputStream inputStream = httpEntity.getContent();
+								BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+								String data = bufferedReader.readLine();
+								JSONArray objetos = new JSONArray(data);
+								Long id;
+								String nome = null;
+								String numero = null;
+								Double preco = null;
+								produtoDbAdapter.open();
+								for (int i = 0; i <= objetos.length() - 1; ++i) {
+									id = objetos.getJSONObject(i).getLong(ProdutoDbAdapter.PRODUTO_CHAVE_ID);
+									nome = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NOME);
+									numero = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO);
+									preco = objetos.getJSONObject(i).getDouble(ProdutoDbAdapter.PRODUTO_CHAVE_PRECO);
+									produtoDbAdapter.criar(id, nome, numero, preco);
+								}
+								produtoDbAdapter.close();
+								Util.dialogo(HomeActivity.this,getString(R.string.mensagem_sincronismo_conclusao));
+			
+							} else {
+								Util.dialogo(HomeActivity.this,"Informação de rede inexistente.");
+							}
+						} else {
+							Util.dialogo(HomeActivity.this, "Conectividade inexistente");
+						}						
+					} catch (ClientProtocolException e) {
+						Log.e(this.toString(), e.getMessage());
+						Util.dialogo(HomeActivity.this,getString(R.string.mensagem_clientProtocolException));
+					} catch (IOException e) {
+						Log.e(this.toString(), e.getMessage());
+						Util.dialogo(HomeActivity.this,getString(R.string.mensagem_ioexception));
+					} catch (JSONException e) {
+						Log.e(this.toString(), e.getMessage());
+						Util.dialogo(HomeActivity.this,getString(R.string.mensagem_jsonexception));					
 					}
-					produtoDbAdapter.close();
-					Util.dialogo(HomeActivity.this,getString(R.string.mensagem_sincronismo_conclusao));
-				} catch (ClientProtocolException e) {
-					Log.e(this.toString(),e.getMessage());
-					Util.dialogo(HomeActivity.this,getString(R.string.mensagem_clientProtocolException));
-				} catch (IOException e) {
-					Log.e(this.toString(),e.getMessage());
-					Util.dialogo(HomeActivity.this,getString(R.string.mensagem_ioexception));
-				} catch (JSONException e) {
-					Log.e(this.toString(),e.getMessage());
-					Util.dialogo(HomeActivity.this,getString(R.string.mensagem_jsonexception));
+					
+					handler.post(new Runnable() {
+						@Override
+						public void run() {
+						}
+					});
+					
+				}catch (Throwable e) { 
+					Log.e(this.toString(), e.getMessage());
+				}finally {			
+					progressDialog.dismiss();
 				}
-			}else{
-				Util.dialogo(HomeActivity.this, "Informação de rede inexistente.");
 			}
-		}else{
-			Util.dialogo(HomeActivity.this, "Conectividade inexistente");
-		}
+		}.start();
+		
 	}
 
 	public void onProdutoClick(View v) {
@@ -104,5 +134,5 @@ public class HomeActivity extends Activity {
 		progressDialog = ProgressDialog.show(this, "",
 				"Loading. Please wait...", true);
 	}
-	
+
 }

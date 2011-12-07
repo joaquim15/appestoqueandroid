@@ -17,7 +17,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         + ProdutoDbAdapter.PRODUTO_CHAVE_PRECO + " real not null	 "
         + "  );";
 	
-	DatabaseHelper(Context context) {
+	public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -28,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		db.execSQL("DROP TABLE IF EXISTS notes");
+		db.execSQL("DROP TABLE IF EXISTS produtos");
         onCreate(db);
 	}
 
