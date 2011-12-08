@@ -14,7 +14,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import br.com.appestoque.Constantes;
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
 import br.com.appestoque.provider.DatabaseHelper;
@@ -36,9 +35,9 @@ public class HomeActivity extends Activity {
 	
 	private Handler handler = new Handler();
 	
-	private static final String URL = "http://10.0.2.2:8888/rest/produtoRest?email=andre.tricano@gmail.com&senha=1234";
-	// private static final String URL =
-	// "http://appestoque.appspot.com/rest/UsuarioRest?email=andre.tricano@gmail.com&senha=1234";
+	private static final String URL = "http://appestoque.appspot.com/rest/produtoRest?email=andre.tricano@gmail.com&senha=1234";
+	//private static final String URL = "http://10.0.2.2:8888/rest/produtoRest?email=andre.tricano@gmail.com&senha=1234";
+	//private static final String URL = "http://appestoque.appspot.com/rest/UsuarioRest?email=andre.tricano@gmail.com&senha=1234";
 
 	private ProgressDialog progressDialog;
 
