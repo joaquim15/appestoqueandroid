@@ -26,8 +26,7 @@ public class ProdutoDbAdapter {
 	
     public ProdutoDbAdapter open() throws SQLException {
     	dbHelper = new DatabaseHelper(context);
-    	sqlDb = context.openOrCreateDatabase(DatabaseHelper.DATABASE_NAME, Context.MODE_PRIVATE, null);
-    	//sqlDb = dbHelper.getWritableDatabase();
+    	sqlDb = dbHelper.getWritableDatabase();
         return this;
     }
 

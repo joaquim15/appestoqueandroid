@@ -26,6 +26,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 
@@ -33,7 +35,13 @@ public class HomeActivity extends Activity {
 
 	ProdutoDbAdapter produtoDbAdapter;
 	
-	private Handler handler = new Handler();
+	private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			progressDialog.dismiss();
+		}
+	};
 	
 	private static final String URL = "http://appestoque.appspot.com/rest/produtoRest?email=andre.tricano@gmail.com&senha=1234";
 	//private static final String URL = "http://10.0.2.2:8888/rest/produtoRest?email=andre.tricano@gmail.com&senha=1234";
@@ -49,12 +57,16 @@ public class HomeActivity extends Activity {
 	
 	public void onAtualizarClick(View v) {
 		progressDialog = ProgressDialog.show(this, "","Sincronizando. Aguarde...", true);
-		DatabaseHelper databaseHelper = new DatabaseHelper(this);
-		databaseHelper.onUpgrade(databaseHelper.getWritableDatabase(), 0, 0);
-		produtoDbAdapter = new ProdutoDbAdapter(this);		
-		
-		new Thread(){
+//		DatabaseHelper databaseHelper = new DatabaseHelper(this);
+//		databaseHelper.onUpgrade(databaseHelper.getWritableDatabase(), 0, 0);
+		produtoDbAdapter = new ProdutoDbAdapter(this);
+	
+		new Thread() {
+
 			public void run() {
+				
+				Looper.prepare();
+				
 				try {
 					try{
 						Context context = getApplicationContext();
@@ -102,19 +114,15 @@ public class HomeActivity extends Activity {
 						Log.e(this.toString(), e.getMessage());
 						Util.dialogo(HomeActivity.this,getString(R.string.mensagem_jsonexception));					
 					}
-					
-//					handler.post(new Runnable() {
-//						@Override
-//						public void run() {
-//						}
-//					});
-					
+				
 				}catch (Throwable e) { 
 					Log.e(this.toString(), e.getMessage());
-				}finally {			
-					progressDialog.dismiss();
 				}
+				
+				handler.sendEmptyMessage(0);
+				
 			}
+
 		}.start();
 		
 	}
@@ -125,14 +133,16 @@ public class HomeActivity extends Activity {
 
 	public void onEstoqueClick(View v) {
 		// Toast.makeText(HomeActivity.this,"Estoque",Toast.LENGTH_LONG).show();
-		progressDialog = ProgressDialog.show(this, "Exemplo",
-				"Buscando imagem, aguarde...", true, true);
+		progressDialog = ProgressDialog.show(this, "Sincronismo",
+				"Processando. Aguarde...", true, true);
 	}
 
 	public void onUsuarioClick(View v) {
 		// Toast.makeText(HomeActivity.this,"Usuário",Toast.LENGTH_LONG).show();
-		progressDialog = ProgressDialog.show(this, "",
-				"Loading. Please wait...", true);
+//		progressDialog = ProgressDialog.show(this, "",
+//				"Loading. Please wait...", true);
+		progressDialog = ProgressDialog.show(this, "Sincronismo",
+				"Processando. Aguarde...", true, true);
 	}
 
 }
