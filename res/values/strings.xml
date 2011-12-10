@@ -8,6 +8,7 @@
 	<string name="description_home">Home</string> 	
 	<string name="description_search">Search</string>
 	<string name="titulo_produto">Produto</string>
+	<string name="titulo_usuario">Usuário</string>
 	<string name="titulo_menu">Menu</string>
 	
 	<string name="mensagem_clientProtocolException">Desculpe, mas ocorreu uma exceção referente ao protocolo cliente.</string>
