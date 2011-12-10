@@ -56,7 +56,8 @@ public class ProdutoActiviry extends ListActivity {
     	
     	Intent intent = new Intent(this, ProdutoEditarActivity.class);
     	intent.putExtra(ProdutoDbAdapter.PRODUTO_CHAVE_ID, id);
-    	startActivityForResult(intent, 1);
+    	//startActivityForResult(intent, 1);
+    	startActivity(intent);
     }
     
     public void onSearchClick(View v) {
