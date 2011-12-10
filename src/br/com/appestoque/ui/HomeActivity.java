@@ -138,11 +138,7 @@ public class HomeActivity extends Activity {
 	}
 
 	public void onUsuarioClick(View v) {
-		// Toast.makeText(HomeActivity.this,"Usuário",Toast.LENGTH_LONG).show();
-//		progressDialog = ProgressDialog.show(this, "",
-//				"Loading. Please wait...", true);
-		progressDialog = ProgressDialog.show(this, "Sincronismo",
-				"Processando. Aguarde...", true, true);
+		startActivity(new Intent(this,UsuarioEditarActivity.class));
 	}
 
 }
