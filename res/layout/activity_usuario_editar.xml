@@ -9,9 +9,31 @@
 			android:contentDescription="@string/description_home" android:src="@drawable/ic_title_home"
 			android:onClick="onHomeClick" />
 		<ImageView style="@style/TitleBarSeparator" />
-		<TextView style="@style/TitleBarText" android:text="@string/titulo_produto" />		
+		<TextView style="@style/TitleBarText" android:text="@string/titulo_usuario" />		
 	</LinearLayout>
-	
-	
-	
+		<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				 android:layout_height="fill_parent" 
+				 android:layout_width="fill_parent"
+				 android:background="#ffffff">
+		<TableRow>
+			<TextView android:id="@+id/txtEmail" 
+					  android:text="Nome:"
+					  android:textColor="#000000" 
+					  android:width="100px"
+					  style="@style/SessionTitle"/>
+			<EditText android:id="@+id/edtEmail" 
+					  style="@style/SessionSubtitle"
+					  android:width="100px"/>
+		</TableRow>
+		<TableRow>
+			<TextView android:id="@+id/txtSenha" 
+			          android:text="Número:"
+					  android:textColor="#000000"
+					  android:width="100px" 
+					  style="@style/SessionTitle"/>
+			<EditText android:id="@+id/edtNumero"
+			          style="@style/SessionSubtitle"
+			          android:width="100px"/>
+		</TableRow>		
+	</TableLayout>
 </LinearLayout>	
