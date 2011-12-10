@@ -44,15 +44,19 @@ public class ProdutoActiviry extends ListActivity {
     }
     
     public void onListItemClick(ListView l , View v, int posicao, long id){
-    	ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
-		produtoDbAdapter.open();
-		Cursor cursor = produtoDbAdapter.buscar(id);
-		startManagingCursor(cursor);
-		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME,ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO};
-		int[] to = new int[]{R.id.text1,R.id.text2};
-		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.activity_produto_row,cursor,from,to);
-		setListAdapter(simpleCursorAdapter);
-    	produtoDbAdapter.close();
+//    	ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
+//		produtoDbAdapter.open();
+//		Cursor cursor = produtoDbAdapter.buscar(id);
+//		startManagingCursor(cursor);
+//		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME,ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO};
+//		int[] to = new int[]{R.id.text1,R.id.text2};
+//		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.activity_produto_row,cursor,from,to);
+//		setListAdapter(simpleCursorAdapter);
+//    	produtoDbAdapter.close();
+    	
+    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
+    	intent.putExtra(ProdutoDbAdapter.PRODUTO_CHAVE_ID, id);
+    	startActivityForResult(intent, 1);
     }
     
     public void onSearchClick(View v) {
