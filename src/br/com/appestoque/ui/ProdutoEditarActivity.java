@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.EditText;
 
+@SuppressWarnings("static-access")
 public class ProdutoEditarActivity extends Activity {
 
 	@Override
