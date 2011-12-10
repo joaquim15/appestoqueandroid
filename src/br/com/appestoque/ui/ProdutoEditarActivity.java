@@ -4,8 +4,11 @@ import br.com.appestoque.R;
 import br.com.appestoque.dominio.Produto;
 import br.com.appestoque.provider.ProdutoDbAdapter;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 @SuppressWarnings("static-access")
 public class ProdutoEditarActivity extends Activity {
@@ -19,11 +22,16 @@ public class ProdutoEditarActivity extends Activity {
 	    	ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
 			produtoDbAdapter.open();
 			Produto produto = produtoDbAdapter.buscar(extras.getLong(produtoDbAdapter.PRODUTO_CHAVE_ID));
-			((EditText) findViewById(R.id.edtNome)).setText(produto.getNome());
-			((EditText) findViewById(R.id.edtNumero)).setText(produto.getNumero());
-			((EditText) findViewById(R.id.edtPreco)).setText(produto.getPreco().toString());
+			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());
+			((TextView) findViewById(R.id.edtNumero)).setText(produto.getNumero());
+			((TextView) findViewById(R.id.edtPreco)).setText(produto.getPreco().toString());
 	    	produtoDbAdapter.close();
 		}
 	}
+	
+    public void onHomeClick(View v) {
+    	Intent intent = new Intent(this,ProdutoActiviry.class);
+        startActivity(intent);
+    }
 
 }
