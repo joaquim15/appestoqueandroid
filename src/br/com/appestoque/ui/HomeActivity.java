@@ -43,9 +43,8 @@ public class HomeActivity extends Activity {
 		}
 	};
 	
-	private static final String URL = "http://appestoque.appspot.com/rest/produtoRest?email=andre.tricano@gmail.com&senha=1234";
+	private static final String URL = "http://appestoque.appspot.com/rest/produtoRest?email=appestoque@gmail.com&senha=7872427@perfil";
 	//private static final String URL = "http://10.0.2.2:8888/rest/produtoRest?email=andre.tricano@gmail.com&senha=1234";
-	//private static final String URL = "http://appestoque.appspot.com/rest/UsuarioRest?email=andre.tricano@gmail.com&senha=1234";
 
 	private ProgressDialog progressDialog;
 
@@ -56,11 +55,20 @@ public class HomeActivity extends Activity {
 	}
 	
 	public void onAtualizarClick(View v) {
-		progressDialog = ProgressDialog.show(this, "","Sincronizando. Aguarde...", true);
+		
 //		DatabaseHelper databaseHelper = new DatabaseHelper(this);
 //		databaseHelper.onUpgrade(databaseHelper.getWritableDatabase(), 0, 0);
 		produtoDbAdapter = new ProdutoDbAdapter(this);
 	
+		Context context = getApplicationContext();
+		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		
+		if (connectivity != null) {
+			NetworkInfo networkInfo = connectivity.getActiveNetworkInfo();
+			if (networkInfo != null && networkInfo.isConnected()) {
+				
+				progressDialog = ProgressDialog.show(this, "","Sincronizando. Aguarde...", true);
+		
 		new Thread() {
 
 			public void run() {
@@ -69,11 +77,8 @@ public class HomeActivity extends Activity {
 				
 				try {
 					try{
-						Context context = getApplicationContext();
-						ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-						if (connectivity != null) {
-							NetworkInfo networkInfo = connectivity.getActiveNetworkInfo();
-							if (networkInfo != null && networkInfo.isConnected()) {
+						
+						
 								HttpClient httpclient = new DefaultHttpClient();
 								HttpGet httpGet = new HttpGet(URL);
 								HttpResponse httpResponse = httpclient.execute(httpGet);
@@ -98,12 +103,7 @@ public class HomeActivity extends Activity {
 								produtoDbAdapter.close();
 								Util.dialogo(HomeActivity.this,getString(R.string.mensagem_sincronismo_conclusao));
 			
-							} else {
-								Util.dialogo(HomeActivity.this,"Informação de rede inexistente.");
-							}
-						} else {
-							Util.dialogo(HomeActivity.this, "Conectividade inexistente");
-						}						
+												
 					} catch (ClientProtocolException e) {
 						Log.e(this.toString(), e.getMessage());
 						Util.dialogo(HomeActivity.this,getString(R.string.mensagem_clientProtocolException));
@@ -124,6 +124,13 @@ public class HomeActivity extends Activity {
 			}
 
 		}.start();
+		
+			} else {
+				Util.dialogo(HomeActivity.this,"Informação de rede inexistente.");
+			}
+		} else {
+			Util.dialogo(HomeActivity.this, "Conectividade inexistente");
+		}	
 		
 	}
 

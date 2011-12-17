@@ -1,11 +1,9 @@
 package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
-import br.com.appestoque.Util;
 import br.com.appestoque.provider.ProdutoDbAdapter;
 import android.app.ListActivity;
 import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -44,24 +42,13 @@ public class ProdutoActiviry extends ListActivity {
     }
     
     public void onListItemClick(ListView l , View v, int posicao, long id){
-//    	ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
-//		produtoDbAdapter.open();
-//		Cursor cursor = produtoDbAdapter.buscar(id);
-//		startManagingCursor(cursor);
-//		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME,ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO};
-//		int[] to = new int[]{R.id.text1,R.id.text2};
-//		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.activity_produto_row,cursor,from,to);
-//		setListAdapter(simpleCursorAdapter);
-//    	produtoDbAdapter.close();
-    	
     	Intent intent = new Intent(this, ProdutoEditarActivity.class);
     	intent.putExtra(ProdutoDbAdapter.PRODUTO_CHAVE_ID, id);
-    	//startActivityForResult(intent, 1);
     	startActivity(intent);
     }
     
     public void onSearchClick(View v) {
     	startSearch(null, false, Bundle.EMPTY, false);
     }
-
+    
 }
