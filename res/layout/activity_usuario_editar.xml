@@ -19,7 +19,7 @@
 			<TextView android:id="@+id/txtEmail" 
 					  android:text="Nome:"
 					  android:textColor="#000000" 
-					  android:width="100px"
+					  android:width="150px"
 					  style="@style/SessionTitle"/>
 			<EditText android:id="@+id/edtEmail" 
 					  style="@style/SessionSubtitle"
@@ -29,7 +29,7 @@
 			<TextView android:id="@+id/txtSenha" 
 			          android:text="Número:"
 					  android:textColor="#000000"
-					  android:width="100px" 
+					  android:width="150px" 
 					  style="@style/SessionTitle"/>
 			<EditText android:id="@+id/edtNumero"
 			          style="@style/SessionSubtitle"
