@@ -3,12 +3,15 @@ package br.com.appestoque.ui;
 import br.com.appestoque.R;
 import br.com.appestoque.provider.ProdutoDbAdapter;
 import android.app.ListActivity;
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class ProdutoActivity extends ListActivity{
@@ -21,7 +24,15 @@ public class ProdutoActivity extends ListActivity{
 		setContentView(R.layout.produto_activity);
 		ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
 		produtoDbAdapter.open();
-		mAdapter = new ProdutosAdapter(this,produtoDbAdapter.listar());
+		Cursor cursor = null;
+		Intent intent = getIntent();
+	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+	        String query = intent.getStringExtra(SearchManager.QUERY);
+	        cursor = produtoDbAdapter.buscar(query);
+	    }else{
+	    	cursor = produtoDbAdapter.listar();
+	    }
+		mAdapter = new ProdutosAdapter(this,cursor);
 		setListAdapter(mAdapter);
 	}
 	
@@ -45,5 +56,11 @@ public class ProdutoActivity extends ListActivity{
 		}
 		
 	}
+	
+    public void onListItemClick(ListView l , View v, int posicao, long id){
+    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
+    	intent.putExtra(ProdutoDbAdapter.PRODUTO_CHAVE_ID, id);
+    	startActivity(intent);
+    }
 	
 }

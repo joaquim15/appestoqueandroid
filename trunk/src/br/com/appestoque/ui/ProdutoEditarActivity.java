@@ -29,8 +29,7 @@ public class ProdutoEditarActivity extends Activity {
 	}
 	
     public void onHomeClick(View v) {
-    	Intent intent = new Intent(this,ProdutoActiviry.class);
-        startActivity(intent);
+    	finish();
     }
 
 }
