@@ -139,9 +139,10 @@ public class HomeActivity extends Activity {
 	}
 
 	public void onEstoqueClick(View v) {
+		startActivity(new Intent(this, ProdutoActivity.class));
 		// Toast.makeText(HomeActivity.this,"Estoque",Toast.LENGTH_LONG).show();
-		progressDialog = ProgressDialog.show(this, "Sincronismo",
-				"Processando. Aguarde...", true, true);
+//		progressDialog = ProgressDialog.show(this, "Sincronismo",
+//				"Processando. Aguarde...", true, true);
 	}
 
 	public void onUsuarioClick(View v) {
