@@ -18,6 +18,10 @@
         		  android:name=".ui.ProdutoEditarActivity">
         </activity>
         
+        <activity android:label="@string/app_nome" 
+        		  android:name=".ui.UsuarioEditarActivity">
+        </activity>
+        
         <activity
             android:name=".ui.ProdutoActiviry"
             android:label="@string/app_nome" >
