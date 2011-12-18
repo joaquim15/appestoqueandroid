@@ -5,4 +5,5 @@
     <color name="title_separator">#40ffffff</color>
     <color name="fundo_branco">#ffffffff</color>
     <color name="foreground1">#ff355689</color>
+    <color name="fundo">#ffffffff</color>
 </resources>
