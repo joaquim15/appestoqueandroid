@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" 
+  android:background="@color/fundo">
+    <LinearLayout style="@style/Titulo_Barra">
+        <TextView style="@style/Titulo_Barra_Texto" android:text="@string/titulo_barra"/>
+        <ImageView style="@style/Titulo_Barra_Separador" />
+        <ImageButton style="@style/Titulo_Barra_Acao"
+            android:id="@+id/btn_title_refresh"
+            android:contentDescription="@string/descricao_sincronizar"
+            android:src="@drawable/ic_title_refresh"
+            android:onClick="onAtualizarClick" />
+    </LinearLayout>
+</LinearLayout>
