@@ -23,13 +23,11 @@
                 android:onClick="onProdutoClick"
                 android:text="@string/btn_produto"
                 android:drawableTop="@drawable/home_btn_produto"/>
-            <!--      
             <Button android:id="@+id/home_btn_sessions"
                 style="@style/HomeButton"
                 android:onClick="onEstoqueClick"
                 android:text="@string/btn_estoque"
                 android:drawableTop="@drawable/home_btn_estoque"/>
-            -->    
             <Button android:id="@+id/home_btn_vendors"
                 style="@style/HomeButton"
                 android:onClick="onUsuarioClick"
