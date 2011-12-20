@@ -19,28 +19,37 @@
 			<TextView android:id="@+id/txtNome" 
 					  android:text="Nome:"
 					  android:textColor="#000000" 
-					  android:width="100px"
+					  android:layout_height="wrap_content" 
+				 	  android:layout_width="fill_parent"
 					  style="@style/SessionTitle"/>
 			<TextView android:id="@+id/edtNome" 
-					  style="@style/SessionSubtitle"/>
+					  style="@style/SessionSubtitle"
+					  android:layout_height="wrap_content" 
+				 	  android:layout_width="fill_parent"/>
 		</TableRow>
 		<TableRow>
 			<TextView android:id="@+id/txtNumero" 
 			          android:text="Número:"
 					  android:textColor="#000000"
-					  android:width="100px" 
+					  android:layout_height="wrap_content" 
+				 	  android:layout_width="fill_parent" 
 					  style="@style/SessionTitle"/>
 			<TextView android:id="@+id/edtNumero"
-			          style="@style/SessionSubtitle"/>
+			          style="@style/SessionSubtitle"
+			          android:layout_height="wrap_content" 
+				 	  android:layout_width="fill_parent"/>
 		</TableRow>
 		<TableRow>
 			<TextView android:id="@+id/txtPreco" 
 					  android:text="Preço:"
 					  android:textColor="#000000"
-					  android:width="100px" 
+					  android:layout_height="wrap_content" 
+				 	  android:layout_width="fill_parent" 
 					  style="@style/SessionTitle"/>
 			<TextView android:id="@+id/edtPreco"  
-					  style="@style/SessionSubtitle"/>
+					  style="@style/SessionSubtitle"
+					  android:layout_height="wrap_content" 
+				 	  android:layout_width="fill_parent"/>
 		</TableRow>
 	</TableLayout>
 </LinearLayout>
