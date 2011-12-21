@@ -7,9 +7,7 @@
 	<string name="btn_usuario">Usuário</string>   
 	<string name="description_home">Home</string> 	
 	<string name="description_search">Search</string>
-	<string name="titulo_produto">Produto</string>
-	<string name="titulo_usuario">Usuário</string>
-	<string name="titulo_menu">Menu</string>
+	
 	
 	<string name="mensagem_clientProtocolException">Desculpe, mas ocorreu uma exceção referente ao protocolo cliente.</string>
 	<string name="mensagem_ioexception">Desculpe, mas ocorreu uma exceção referente ao entrada e saida de arquivo.</string>
@@ -27,5 +25,15 @@
 	
 	<string name="titulo_barra">Session keywords</string>
 	<string name="descricao_sincronizar">Sincronizar</string>
+	
+	
+	
+	<!-- NOVA ESTRUTURA -->
+	
+	<string name="titulo_produto">Produto</string>
+	<string name="titulo_usuario">Usuário</string>
+	<string name="titulo_menu">Menu</string>
+	
+	<!-- NOVA ESTRUTURA -->
 	
 </resources>

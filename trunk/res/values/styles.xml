@@ -88,6 +88,9 @@
     </style>
     
     
+    
+    <!-- NOVA ESTRUTURA -->
+    
     <style name="Titulo_Barra">
         <item name="android:id">@id/title_container</item>
         <item name="android:layout_width">fill_parent</item>
@@ -122,5 +125,7 @@
         <item name="android:layout_height">fill_parent</item>
         <item name="android:background">@drawable/title_button</item>
     </style>
+    
+    <!-- NOVA ESTRUTURA -->
     
 </resources>
