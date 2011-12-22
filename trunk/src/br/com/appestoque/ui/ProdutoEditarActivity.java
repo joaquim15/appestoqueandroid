@@ -15,7 +15,7 @@ public class ProdutoEditarActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_produto_editar);
+		setContentView(R.layout.produto_editar_activity);
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
 	    	ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
