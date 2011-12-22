@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class UsuarioActivity extends Activity{
+public class UsuarioActivity extends BaseAtividade{
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
