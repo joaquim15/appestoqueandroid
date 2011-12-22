@@ -1,8 +1,12 @@
 package br.com.appestoque.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.view.View;
+import android.widget.Toast;
 import br.com.appestoque.R;
 
 public class IniciarAtividade extends BaseAtividade {
@@ -18,7 +22,9 @@ public class IniciarAtividade extends BaseAtividade {
 	}
 	
 	public void onUsuarioClick(View v) {
-		startActivity(new Intent(this,UsuarioEditarActivity.class));
+		String deviceId = Settings.System.getString(getContentResolver(),Settings.System.ANDROID_ID);
+		Toast.makeText(IniciarAtividade.this,deviceId,Toast.LENGTH_LONG).show();
+//		startActivity(new Intent(this,UsuarioActivity.class));
 	}
 	
 }
