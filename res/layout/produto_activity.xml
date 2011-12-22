@@ -6,6 +6,21 @@
   android:layout_height="fill_parent"
   android:background="@color/fundo_branco">
 
+	<LinearLayout style="@style/Titulo_Barra">
+		<ImageButton style="@style/Titulo_Barra_Acao"
+			android:contentDescription="@string/description_home" 
+			android:src="@drawable/ic_title_home"
+			android:onClick="onIniciarClick" />
+		<ImageView style="@style/Titulo_Barra_Separador" />
+		<TextView style="@style/TitleBarText" 
+				  android:text="@string/titulo_produto" />
+		<ImageView style="@style/TitleBarSeparator" />
+		<ImageButton style="@style/Titulo_Barra_Acao"
+			android:contentDescription="@string/description_search" 
+			android:src="@drawable/ic_title_search"
+			android:onClick="onBuscarClick" />
+	</LinearLayout>
+
 	 <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
