@@ -135,7 +135,7 @@ public class HomeActivity extends Activity {
 	}
 
 	public void onProdutoClick(View v) {
-		startActivity(new Intent(this, ProdutoActiviry.class));
+		startActivity(new Intent(this, ProdutoActivity.class));
 	}
 
 	public void onEstoqueClick(View v) {
