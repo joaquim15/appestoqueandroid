@@ -2,7 +2,7 @@ package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
 import br.com.appestoque.provider.ProdutoDbAdapter;
-import android.app.ListActivity;
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ProdutoActivity extends ListActivity{
+public class ProdutoActivity extends BaseListaAtividade{
 	
 	private CursorAdapter mAdapter;
 	
@@ -47,7 +47,7 @@ public class ProdutoActivity extends ListActivity{
 			final TextView titleView = (TextView) view.findViewById(R.id.session_title);
             final TextView subtitleView = (TextView) view.findViewById(R.id.session_subtitle);
             titleView.setText(cursor.getString(2));
-            subtitleView.setText(cursor.getString(1));
+            subtitleView.setText(cursor.getString(1));            
 		}
 
 		@Override
@@ -61,6 +61,16 @@ public class ProdutoActivity extends ListActivity{
     	Intent intent = new Intent(this, ProdutoEditarActivity.class);
     	intent.putExtra(ProdutoDbAdapter.PRODUTO_CHAVE_ID, id);
     	startActivity(intent);
+    }
+    
+    public void onIniciarClick(Context context) {
+        final Intent intent = new Intent(context,IniciarAtividade.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
+    }
+
+    public void onBuscarClick(Activity activity) {
+        activity.startSearch(null, false, Bundle.EMPTY, false);
     }
 	
 }
