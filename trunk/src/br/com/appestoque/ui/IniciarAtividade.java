@@ -1,10 +1,8 @@
 package br.com.appestoque.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.telephony.TelephonyManager;
 import android.view.View;
 import android.widget.Toast;
 import br.com.appestoque.R;

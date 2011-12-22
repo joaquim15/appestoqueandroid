@@ -20,18 +20,19 @@ public class ProdutoActivity extends BaseListaAtividade{
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
+		Intent intent = getIntent();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.produto_activity);
 		ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
 		produtoDbAdapter.open();
 		Cursor cursor = null;
-		Intent intent = getIntent();
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	        String query = intent.getStringExtra(SearchManager.QUERY);
 	        cursor = produtoDbAdapter.buscar(query);
 	    }else{
 	    	cursor = produtoDbAdapter.listar();
 	    }
+	    startManagingCursor(cursor); 
 		mAdapter = new ProdutosAdapter(this,cursor);
 		setListAdapter(mAdapter);
 	}
