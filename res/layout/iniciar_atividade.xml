@@ -10,6 +10,11 @@
         		  android:text="@string/titulo_menu"/>
         <ImageView style="@style/Titulo_Barra_Separador" />
         <ImageButton style="@style/Titulo_Barra_Acao"
+            android:id="@+id/btn_exportar"
+            android:src="@drawable/ic_title_export"
+            android:onClick="onExportarClick" />		  
+        <ImageView style="@style/Titulo_Barra_Separador" />
+        <ImageButton style="@style/Titulo_Barra_Acao"
             android:id="@+id/btn_atualizar"
             android:src="@drawable/ic_title_refresh"
             android:onClick="onAtualizarClick" />
@@ -20,13 +25,13 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1">
-            <Button android:id="@+id/home_btn_produto"
+            <Button android:id="@+id/btn_produto"
                 style="@style/botao"
                 android:onClick="onProdutoClick"
                 android:text="@string/btn_produto"
                 android:drawableTop="@drawable/home_btn_produto"/>
                 
-            <Button android:id="@+id/home_btn_vendors"
+            <Button android:id="@+id/btn_usuario"
                 style="@style/botao"
                 android:onClick="onUsuarioClick"
                 android:text="@string/btn_usuario"
