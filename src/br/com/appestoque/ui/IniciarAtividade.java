@@ -60,15 +60,10 @@ public class IniciarAtividade extends BaseAtividade {
 	}
 	
 	public void onExportarClick(View v) {
-		// Texto com a chamada para a notificação (barra de status)
-		String tickerText = "Você recebeu uma mensagem";
-
-		// Detalhes da mensagem, quem enviou e o texto
-		CharSequence titulo = "Ricardo";
-		CharSequence mensagem = "Exemplo de notificação";
-
-		// Exibe a notificação para abrir a RecebeuMensagemActivity
-		criarNotificacao(this, tickerText, titulo, mensagem, IniciarAtividade.class);
+		CharSequence chamada =  "Notificações APP-ESTOQUE";
+		CharSequence titulo = "Serial para Importação";
+		CharSequence mensagem = Util.serial(this);
+		Util.notificar(this, chamada, titulo, mensagem, IniciarAtividade.class);
 	}
 	
 	public void onAtualizarClick(View v) {
@@ -96,8 +91,8 @@ public class IniciarAtividade extends BaseAtividade {
 							try {
 
 								HttpClient httpclient = new DefaultHttpClient();
-								//String serial = Util.serial(IniciarAtividade.this);
-								String serial = "200141a5bb0c7345";
+								String serial = Util.serial(IniciarAtividade.this);
+								//String serial = "200141a5bb0c7345";
 								HttpGet httpGet = new HttpGet(URL+"?serial="+serial);
 								HttpResponse httpResponse = httpclient.execute(httpGet);
 								HttpEntity httpEntity = httpResponse.getEntity();
