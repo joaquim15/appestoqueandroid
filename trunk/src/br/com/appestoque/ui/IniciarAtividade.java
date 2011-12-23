@@ -60,8 +60,8 @@ public class IniciarAtividade extends BaseAtividade {
 	}
 	
 	public void onExportarClick(View v) {
-		CharSequence chamada =  "Notificações APP-ESTOQUE";
-		CharSequence titulo = "Serial para Importação";
+		CharSequence chamada =  "Notificação";
+		CharSequence titulo = "Serial";
 		CharSequence mensagem = Util.serial(this);
 		Util.notificar(this, chamada, titulo, mensagem, IniciarAtividade.class);
 	}
