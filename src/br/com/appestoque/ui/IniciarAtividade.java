@@ -34,8 +34,8 @@ import br.com.appestoque.provider.ProdutoDbAdapter;
 
 public class IniciarAtividade extends BaseAtividade {
 
-	//private static final String URL = "http://appestoque.appspot.com/rest/produtoRest";
-	private static final String URL = "http://10.0.2.2:8888/rest/produtoRest";
+	private static final String URL = "http://appestoque.appspot.com/rest/produtoRest";
+	//private static final String URL = "http://10.0.2.2:8888/rest/produtoRest";
 	
 	private ProgressDialog progressDialog;
 	
