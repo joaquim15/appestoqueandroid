@@ -30,12 +30,15 @@
 	
 	<!-- NOVA ESTRUTURA -->
 	
-	<string name="titulo_produto">Produto</string>
-	<string name="titulo_usuario">Usuário</string>
-	<string name="titulo_menu">Menu</string>
-	
-	<string name="texto_busca">Pesquisar por Código</string>
-	<string name="titulo_busca">Pesquisar por Código</string>
+		<!-- TITULOS -->
+		
+		<string name="titulo_produto">Produto</string>
+		<string name="titulo_usuario">Usuário</string>
+		<string name="titulo_menu">Menu</string>	
+		<string name="texto_busca">Pesquisar por Código</string>
+		<string name="titulo_busca">Pesquisar por Código</string>	
+		
+		<!-- MENSAGENS -->
 	
 	<!-- NOVA ESTRUTURA -->
 	
