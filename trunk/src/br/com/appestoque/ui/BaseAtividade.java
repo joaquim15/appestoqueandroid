@@ -1,11 +1,11 @@
 package br.com.appestoque.ui;
 
 import android.app.Activity;
-import android.content.Context;
+import android.view.View;
 
 public class BaseAtividade extends Activity{
 
-	public void finalizar(Context context) {
+	public void onFinalizarClick(View v) {
         finish();
     }
 	
