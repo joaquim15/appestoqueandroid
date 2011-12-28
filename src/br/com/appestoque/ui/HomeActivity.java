@@ -16,7 +16,6 @@ import org.json.JSONException;
 
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
-import br.com.appestoque.provider.DatabaseHelper;
 import br.com.appestoque.provider.ProdutoDbAdapter;
 import android.app.Activity;
 import android.app.ProgressDialog;

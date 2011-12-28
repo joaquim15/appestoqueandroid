@@ -4,7 +4,6 @@ import br.com.appestoque.R;
 import br.com.appestoque.dominio.Produto;
 import br.com.appestoque.provider.ProdutoDbAdapter;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
