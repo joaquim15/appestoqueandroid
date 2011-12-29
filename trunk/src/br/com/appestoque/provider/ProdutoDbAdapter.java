@@ -13,6 +13,8 @@ public class ProdutoDbAdapter {
 	public static final String PRODUTO_CHAVE_NOME = "nome";
     public static final String PRODUTO_CHAVE_NUMERO = "numero";
     public static final String PRODUTO_CHAVE_PRECO = "preco";
+    public static final String PRODUTO_CHAVE_ESTOQUE = "estoque";
+    public static final String PRODUTO_CHAVE_IMAGEM = "imagem";
 	
 	private static final String DATABASE_TABLE = "produtos";
 	

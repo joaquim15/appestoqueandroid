@@ -78,8 +78,7 @@ public class IniciarAtividade extends BaseAtividade {
 			NetworkInfo networkInfo = connectivity.getActiveNetworkInfo();
 			if (networkInfo != null && networkInfo.isConnected()) {
 
-				progressDialog = ProgressDialog.show(this, "",
-						"Sincronizando. Aguarde...", true);
+				progressDialog = ProgressDialog.show(this, "", "Sincronizando. Aguarde...", true);
 
 				new Thread() {
 
@@ -92,7 +91,7 @@ public class IniciarAtividade extends BaseAtividade {
 
 								HttpClient httpclient = new DefaultHttpClient();
 								String serial = Util.serial(IniciarAtividade.this);
-								//String serial = "200141a5bb0c7345";
+								//serial = "200141a5bb0c7345";
 								HttpGet httpGet = new HttpGet(URL+"?serial="+serial);
 								HttpResponse httpResponse = httpclient.execute(httpGet);
 								HttpEntity httpEntity = httpResponse.getEntity();
@@ -104,6 +103,8 @@ public class IniciarAtividade extends BaseAtividade {
 								String nome = null;
 								String numero = null;
 								Double preco = null;
+								Double estoque = null;
+								String imagem = null;
 								produtoDbAdapter.open();
 								produtoDbAdapter.limpar();
 								for (int i = 0; i <= objetos.length() - 1; ++i) {
@@ -111,27 +112,26 @@ public class IniciarAtividade extends BaseAtividade {
 									nome = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NOME);
 									numero = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO);
 									preco = objetos.getJSONObject(i).getDouble(ProdutoDbAdapter.PRODUTO_CHAVE_PRECO);
+									estoque = objetos.getJSONObject(i).getDouble(ProdutoDbAdapter.PRODUTO_CHAVE_ESTOQUE);
+									imagem = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_IMAGEM);
 									produtoDbAdapter.criar(id, nome, numero, preco);
+									
 								}
 								produtoDbAdapter.close();
-								Util.dialogo(
-										IniciarAtividade.this,
+								Util.dialogo(IniciarAtividade.this,
 										getString(R.string.mensagem_sincronismo_conclusao));
 
 							} catch (ClientProtocolException e) {
 								Log.e(this.toString(), e.getMessage());
-								Util.dialogo(
-										IniciarAtividade.this,
+								Util.dialogo(IniciarAtividade.this,	
 										getString(R.string.mensagem_clientProtocolException));
 							} catch (IOException e) {
 								Log.e(this.toString(), e.getMessage());
-								Util.dialogo(
-										IniciarAtividade.this,
+								Util.dialogo(IniciarAtividade.this,
 										getString(R.string.mensagem_ioexception));
 							} catch (JSONException e) {
 								Log.e(this.toString(), e.getMessage());
-								Util.dialogo(
-										IniciarAtividade.this,
+								Util.dialogo(IniciarAtividade.this,
 										getString(R.string.mensagem_jsonexception));
 							}
 
