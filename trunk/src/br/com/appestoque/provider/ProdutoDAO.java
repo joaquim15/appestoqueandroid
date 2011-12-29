@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-public class ProdutoDbAdapter {
+public class ProdutoDAO {
 
 	public static final String PRODUTO_CHAVE_ID = "_id";
 	public static final String PRODUTO_CHAVE_NOME = "nome";
@@ -23,13 +23,13 @@ public class ProdutoDbAdapter {
 	
 	private SQLiteDatabase sqlDb;
 	
-	public ProdutoDbAdapter(Context context) {
+	public ProdutoDAO(Context context) {
         this.context = context;
     }
 	
-    public ProdutoDbAdapter open() throws SQLException {
+    public ProdutoDAO open() throws SQLException {
     	dbHelper = new DatabaseHelper(context);
-    	sqlDb = dbHelper.getWritableDatabase();
+    	sqlDb = dbHelper.getWritableDatabase();    	
         return this;
     }
 

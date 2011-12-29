@@ -1,7 +1,7 @@
 package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
-import br.com.appestoque.provider.ProdutoDbAdapter;
+import br.com.appestoque.provider.ProdutoDAO;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
@@ -23,7 +23,7 @@ public class ProdutoActivity extends BaseListaAtividade{
 		Intent intent = getIntent();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.produto_activity);
-		ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
+		ProdutoDAO produtoDbAdapter = new ProdutoDAO(this);
 		produtoDbAdapter.open();
 		Cursor cursor = null;
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
@@ -60,7 +60,7 @@ public class ProdutoActivity extends BaseListaAtividade{
 	
     public void onListItemClick(ListView l , View v, int posicao, long id){
     	Intent intent = new Intent(this, ProdutoEditarActivity.class);
-    	intent.putExtra(ProdutoDbAdapter.PRODUTO_CHAVE_ID, id);
+    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
     	startActivity(intent);
     }
     

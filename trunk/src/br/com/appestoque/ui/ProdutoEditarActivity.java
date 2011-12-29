@@ -2,7 +2,7 @@ package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
 import br.com.appestoque.dominio.Produto;
-import br.com.appestoque.provider.ProdutoDbAdapter;
+import br.com.appestoque.provider.ProdutoDAO;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +17,7 @@ public class ProdutoEditarActivity extends Activity {
 		setContentView(R.layout.produto_editar_activity);
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
-	    	ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
+	    	ProdutoDAO produtoDbAdapter = new ProdutoDAO(this);
 			produtoDbAdapter.open();
 			Produto produto = produtoDbAdapter.buscar(extras.getLong(produtoDbAdapter.PRODUTO_CHAVE_ID));
 			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());

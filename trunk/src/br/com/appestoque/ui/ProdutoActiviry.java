@@ -1,7 +1,7 @@
 package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
-import br.com.appestoque.provider.ProdutoDbAdapter;
+import br.com.appestoque.provider.ProdutoDAO;
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;
@@ -17,7 +17,7 @@ public class ProdutoActiviry extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_produto);
-		ProdutoDbAdapter produtoDbAdapter = new ProdutoDbAdapter(this);
+		ProdutoDAO produtoDbAdapter = new ProdutoDAO(this);
 		produtoDbAdapter.open();
 		Cursor cursor = null;
 		Intent intent = getIntent();
@@ -28,7 +28,7 @@ public class ProdutoActiviry extends ListActivity {
 	    	cursor = produtoDbAdapter.listar();
 	    }
 		//startManagingCursor(cursor);
-		String[] from = new String[]{ProdutoDbAdapter.PRODUTO_CHAVE_NOME,ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO};
+		String[] from = new String[]{ProdutoDAO.PRODUTO_CHAVE_NOME,ProdutoDAO.PRODUTO_CHAVE_NUMERO};
 		int[] to = new int[]{R.id.text1,R.id.text2};
 		SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(this,R.layout.activity_produto_row,cursor,from,to);
 		setListAdapter(simpleCursorAdapter);
@@ -43,7 +43,7 @@ public class ProdutoActiviry extends ListActivity {
     
     public void onListItemClick(ListView l , View v, int posicao, long id){
     	Intent intent = new Intent(this, ProdutoEditarActivity.class);
-    	intent.putExtra(ProdutoDbAdapter.PRODUTO_CHAVE_ID, id);
+    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
     	startActivity(intent);
     }
     
