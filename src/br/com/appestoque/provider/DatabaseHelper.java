@@ -11,11 +11,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	
 	private static final String DATABASE_CREATE =
         " create table produtos ( " 
-		+ ProdutoDbAdapter.PRODUTO_CHAVE_ID + "	integer primary key, "
-        + ProdutoDbAdapter.PRODUTO_CHAVE_NOME + " text not null, 	 " 
-        + ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO + " text not null,	 "
-        + ProdutoDbAdapter.PRODUTO_CHAVE_PRECO + " real not null,	 "
-        + ProdutoDbAdapter.PRODUTO_CHAVE_ESTOQUE + " real not null	 "
+		+ ProdutoDAO.PRODUTO_CHAVE_ID + "	integer primary key, "
+        + ProdutoDAO.PRODUTO_CHAVE_NOME + " text not null, 	 " 
+        + ProdutoDAO.PRODUTO_CHAVE_NUMERO + " text not null,	 "
+        + ProdutoDAO.PRODUTO_CHAVE_PRECO + " real not null,	 "
+        + ProdutoDAO.PRODUTO_CHAVE_ESTOQUE + " real not null	 "
         + "  );";
 	
 	public DatabaseHelper(Context context) {

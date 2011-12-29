@@ -16,7 +16,7 @@ import org.json.JSONException;
 
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
-import br.com.appestoque.provider.ProdutoDbAdapter;
+import br.com.appestoque.provider.ProdutoDAO;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -32,7 +32,7 @@ import android.view.View;
 
 public class HomeActivity extends Activity {
 
-	ProdutoDbAdapter produtoDbAdapter;
+	ProdutoDAO produtoDbAdapter;
 	
 	private Handler handler = new Handler() {
 		@Override
@@ -57,7 +57,7 @@ public class HomeActivity extends Activity {
 		
 //		DatabaseHelper databaseHelper = new DatabaseHelper(this);
 //		databaseHelper.onUpgrade(databaseHelper.getWritableDatabase(), 0, 0);
-		produtoDbAdapter = new ProdutoDbAdapter(this);
+		produtoDbAdapter = new ProdutoDAO(this);
 	
 		Context context = getApplicationContext();
 		ConnectivityManager connectivity = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -93,10 +93,10 @@ public class HomeActivity extends Activity {
 								produtoDbAdapter.open();
 								produtoDbAdapter.limpar();
 								for (int i = 0; i <= objetos.length() - 1; ++i) {
-									id = objetos.getJSONObject(i).getLong(ProdutoDbAdapter.PRODUTO_CHAVE_ID);
-									nome = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NOME);
-									numero = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO);
-									preco = objetos.getJSONObject(i).getDouble(ProdutoDbAdapter.PRODUTO_CHAVE_PRECO);
+									id = objetos.getJSONObject(i).getLong(ProdutoDAO.PRODUTO_CHAVE_ID);
+									nome = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NOME);
+									numero = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NUMERO);
+									preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
 									produtoDbAdapter.criar(id, nome, numero, preco);
 								}
 								produtoDbAdapter.close();

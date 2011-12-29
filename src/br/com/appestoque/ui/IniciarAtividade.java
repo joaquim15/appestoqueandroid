@@ -30,7 +30,7 @@ import android.util.Log;
 import android.view.View;
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
-import br.com.appestoque.provider.ProdutoDbAdapter;
+import br.com.appestoque.provider.ProdutoDAO;
 
 public class IniciarAtividade extends BaseAtividade {
 
@@ -39,7 +39,7 @@ public class IniciarAtividade extends BaseAtividade {
 	
 	private ProgressDialog progressDialog;
 	
-	private ProdutoDbAdapter produtoDbAdapter;
+	private ProdutoDAO produtoDbAdapter;
 	
 	private Handler handler = new Handler() {
 		@Override
@@ -68,7 +68,7 @@ public class IniciarAtividade extends BaseAtividade {
 	
 	public void onAtualizarClick(View v) {
 
-		produtoDbAdapter = new ProdutoDbAdapter(this);
+		produtoDbAdapter = new ProdutoDAO(this);
 
 		Context context = getApplicationContext();
 		ConnectivityManager connectivity = (ConnectivityManager) context
@@ -108,12 +108,12 @@ public class IniciarAtividade extends BaseAtividade {
 								produtoDbAdapter.open();
 								produtoDbAdapter.limpar();
 								for (int i = 0; i <= objetos.length() - 1; ++i) {
-									id = objetos.getJSONObject(i).getLong(ProdutoDbAdapter.PRODUTO_CHAVE_ID);
-									nome = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NOME);
-									numero = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_NUMERO);
-									preco = objetos.getJSONObject(i).getDouble(ProdutoDbAdapter.PRODUTO_CHAVE_PRECO);
-									estoque = objetos.getJSONObject(i).getDouble(ProdutoDbAdapter.PRODUTO_CHAVE_ESTOQUE);
-									imagem = objetos.getJSONObject(i).getString(ProdutoDbAdapter.PRODUTO_CHAVE_IMAGEM);
+									id = objetos.getJSONObject(i).getLong(ProdutoDAO.PRODUTO_CHAVE_ID);
+									nome = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NOME);
+									numero = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NUMERO);
+									preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
+									estoque = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_ESTOQUE);
+									imagem = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_IMAGEM);
 									produtoDbAdapter.criar(id, nome, numero, preco);
 									
 								}
