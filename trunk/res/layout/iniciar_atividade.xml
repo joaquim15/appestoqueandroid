@@ -6,10 +6,6 @@
   android:background="@color/fundo">
   
     <LinearLayout style="@style/Titulo_Barra">
-    	<ImageButton style="@style/Titulo_Barra_Acao"
-			android:src="@drawable/ic_title_home"
-			android:onClick="onFinalizarClick" />
-		<ImageView style="@style/Titulo_Barra_Separador" />
         <TextView style="@style/Titulo_Barra_Texto" 
         		  android:text="@string/titulo_menu"/>
         <ImageView style="@style/Titulo_Barra_Separador" />
