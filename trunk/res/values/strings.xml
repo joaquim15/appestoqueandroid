@@ -37,6 +37,7 @@
 		<string name="titulo_menu">Menu</string>	
 		<string name="texto_busca">Pesquisar por Código</string>
 		<string name="titulo_busca">Pesquisar por Código</string>	
+		<string name="pasta_externa_imagens">/appestoque-imagens</string>
 		
 		<!-- MENSAGENS -->
 	
