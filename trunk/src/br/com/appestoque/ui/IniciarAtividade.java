@@ -154,29 +154,4 @@ public class IniciarAtividade extends BaseAtividade {
 
 	}
 	
-	protected void criarNotificacao(Context context, CharSequence mensagemBarraStatus, CharSequence titulo,CharSequence mensagem, Class<?> activity) {
-
-		// Recupera o serviço do NotificationManager
-		NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
-		Notification n = new Notification(R.drawable.icon, mensagemBarraStatus, System.currentTimeMillis());
-
-		// PendingIntent para executar a Activity se o usuário selecionar a
-		// notificação
-		PendingIntent p = PendingIntent.getActivity(this, 0, new Intent(this, activity), 0);
-
-		// Informações
-		n.setLatestEventInfo(this, titulo, mensagem, p);
-
-		// Precisa de permissão: <uses-permission
-		// android:name="android.permission.VIBRATE" />
-		// espera 100ms e vibra por 250ms, depois espera por 100 ms e vibra por
-		// 500ms.
-		n.vibrate = new long[] { 100, 250, 100, 500 };
-
-		// id (numero único) que identifica esta notificação
-		nm.notify(0, n);
-	}
-
-	
 }
