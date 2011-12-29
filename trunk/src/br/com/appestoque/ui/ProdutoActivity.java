@@ -1,7 +1,7 @@
 package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
-import br.com.appestoque.provider.ProdutoDAO;
+import br.com.appestoque.dao.ProdutoDAO;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
@@ -16,25 +16,21 @@ import android.widget.TextView;
 
 public class ProdutoActivity extends BaseListaAtividade{
 	
-	private CursorAdapter mAdapter;
-	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		Intent intent = getIntent();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.produto_activity);
-		ProdutoDAO produtoDbAdapter = new ProdutoDAO(this);
-		produtoDbAdapter.open();
+		ProdutoDAO produtoDAO = new ProdutoDAO(this);
 		Cursor cursor = null;
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	        String query = intent.getStringExtra(SearchManager.QUERY);
-	        cursor = produtoDbAdapter.buscar(query);
+	        cursor = produtoDAO.buscar(query);
 	    }else{
-	    	cursor = produtoDbAdapter.listar();
+	    	cursor = produtoDAO.listar();
 	    }
 	    startManagingCursor(cursor); 
-		mAdapter = new ProdutosAdapter(this,cursor);
-		setListAdapter(mAdapter);
+		setListAdapter(new ProdutosAdapter(this,cursor));
 	}
 	
 	private class ProdutosAdapter extends CursorAdapter {
