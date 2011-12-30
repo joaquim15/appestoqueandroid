@@ -20,8 +20,8 @@ public class ProdutoActivity extends BaseListaAtividade{
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
-		Intent intent = getIntent();
 		super.onCreate(savedInstanceState);
+		Intent intent = getIntent();		
 		setContentView(R.layout.produto_activity);
 		produtoDAO = new ProdutoDAO(this);
 		Cursor cursor = null;
