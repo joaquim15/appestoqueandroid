@@ -6,16 +6,13 @@
 	<uses-sdk android:minSdkVersion="7" />
 	<application android:icon="@drawable/icon"
 				 android:label="@string/app_nome">
-
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.IniciarAtividade">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoEditarActivity"/>
-
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.SEARCH" />
