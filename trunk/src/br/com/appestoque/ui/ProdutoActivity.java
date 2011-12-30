@@ -16,12 +16,14 @@ import android.widget.TextView;
 
 public class ProdutoActivity extends BaseListaAtividade{
 	
+	private ProdutoDAO produtoDAO;
+	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		Intent intent = getIntent();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.produto_activity);
-		ProdutoDAO produtoDAO = new ProdutoDAO(this);
+		produtoDAO = new ProdutoDAO(this);
 		Cursor cursor = null;
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	        String query = intent.getStringExtra(SearchManager.QUERY);
@@ -29,10 +31,10 @@ public class ProdutoActivity extends BaseListaAtividade{
 	    }else{
 	    	cursor = produtoDAO.listar();
 	    }
-	    startManagingCursor(cursor); 
+	    startManagingCursor(cursor);
 		setListAdapter(new ProdutosAdapter(this,cursor));
 	}
-	
+
 	private class ProdutosAdapter extends CursorAdapter {
 
 		public ProdutosAdapter(Context context, Cursor cursor) {

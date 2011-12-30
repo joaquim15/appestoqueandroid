@@ -19,42 +19,44 @@ public class ProdutoDAO {
     private static final String TABELA = "produtos";
     
 	private DatabaseHelper databaseHelper;	
-	private SQLiteDatabase sqliteDatabase;
 	
 	public ProdutoDAO(Context context) {
 		this.databaseHelper = new DatabaseHelper(context);
     }
 	
 	public Cursor listar() {
-		sqliteDatabase = databaseHelper.getReadableDatabase();
-    	return sqliteDatabase.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
+		final SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
+		Cursor cursor = db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
     			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO}, null, null, null, null, null);
+    	return cursor;
     }
 	
     public long criar(Long id, String nome, String numero, double preco) {
-    	sqliteDatabase = databaseHelper.getWritableDatabase();
+    	final SQLiteDatabase db = databaseHelper.getWritableDatabase();
         ContentValues initialValues = new ContentValues();
         initialValues.put(PRODUTO_CHAVE_ID, id);
         initialValues.put(PRODUTO_CHAVE_NOME, nome);
         initialValues.put(PRODUTO_CHAVE_NUMERO, numero);        
         initialValues.put(PRODUTO_CHAVE_PRECO, preco);
-        return sqliteDatabase.insert(TABELA, null,initialValues);
+        long ret = db.insert(TABELA, null,initialValues);
+        return ret;
     }
     
     public Cursor buscar(String numero) {
-    	sqliteDatabase = databaseHelper.getReadableDatabase();
-    	return sqliteDatabase.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
+    	final SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
+    	Cursor cursor = db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
     			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO}, PRODUTO_CHAVE_NUMERO + " like '" + numero + "%'" , null, null, null, null);
+    	return cursor;
     }
     
     public void limpar(){
-    	sqliteDatabase = databaseHelper.getWritableDatabase();
-    	sqliteDatabase.delete(TABELA, null, null);
+    	final SQLiteDatabase db = databaseHelper.getWritableDatabase();
+    	db.delete(TABELA, null, null);
     }
     
     public Produto buscar(long id){
-    	sqliteDatabase = databaseHelper.getReadableDatabase();
-    	Cursor cursor =  sqliteDatabase.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
+    	final SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
+    	Cursor cursor =  db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
     							PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO}, PRODUTO_CHAVE_ID + " = " + id , 
     							null, null, null, null);
     	if(cursor.getCount()>0){
