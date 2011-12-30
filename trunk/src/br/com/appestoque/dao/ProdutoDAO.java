@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import br.com.appestoque.dominio.Produto;
-import br.com.appestoque.provider.DatabaseHelper;
+import br.com.appestoque.dao.DatabaseHelper;
 
 public class ProdutoDAO {
 	
