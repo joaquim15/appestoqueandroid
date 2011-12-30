@@ -1,6 +1,6 @@
 package br.com.appestoque.dao;
 
-import br.com.appestoque.provider.ProdutoDAO;
+import br.com.appestoque.dao.ProdutoDAO;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
