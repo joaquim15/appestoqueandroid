@@ -18,7 +18,7 @@ public class ProdutoDAO {
     
     private static final String TABELA = "produtos";
     
-	private DatabaseHelper databaseHelper;	
+	private DatabaseHelper databaseHelper;
 	
 	public ProdutoDAO(Context context) {
 		this.databaseHelper = new DatabaseHelper(context);
@@ -69,6 +69,12 @@ public class ProdutoDAO {
     		return produto;
     	}else{
     		return null;
+    	}
+    }
+    
+    public void fechar(){
+    	if(databaseHelper!=null){
+    		databaseHelper.close();
     	}
     }
 
