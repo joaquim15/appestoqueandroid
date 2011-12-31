@@ -10,13 +10,15 @@ import android.widget.TextView;
 
 public class ProdutoEditarActivity extends Activity {
 
+	private ProdutoDAO produtoDAO;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.produto_editar_activity);
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
-	    	ProdutoDAO produtoDAO = new ProdutoDAO(this);
+	    	produtoDAO = new ProdutoDAO(this);
 			Produto produto = produtoDAO.buscar(extras.getLong(ProdutoDAO.PRODUTO_CHAVE_ID));
 			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());
 			((TextView) findViewById(R.id.edtNumero)).setText(produto.getNumero());
@@ -24,7 +26,11 @@ public class ProdutoEditarActivity extends Activity {
 		}
 	}
 	
-    public void onHomeClick(View v) {
+    @Override
+    protected void onPause(){
+    	super.onPause();
+    	setResult(RESULT_CANCELED);
+    	produtoDAO.fechar();
     	finish();
     }
 
