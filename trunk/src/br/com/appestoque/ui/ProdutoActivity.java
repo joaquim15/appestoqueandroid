@@ -71,5 +71,11 @@ public class ProdutoActivity extends BaseListaAtividade{
     public void onBuscarClick(Activity activity) {
         activity.startSearch(null, false, Bundle.EMPTY, false);
     }
+    
+    @Override
+    protected void onDestroy(){
+    	super.onDestroy();
+    	produtoDAO.fechar();
+    }
 	
 }
