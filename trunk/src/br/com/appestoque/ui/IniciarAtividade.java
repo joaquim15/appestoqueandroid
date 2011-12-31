@@ -148,7 +148,17 @@ public class IniciarAtividade extends BaseAtividade {
 		} else {
 			Util.dialogo(IniciarAtividade.this, "Conectividade inexistente");
 		}
+		
+		produtoDAO.fechar();
 
 	}
+	
+    @Override
+    protected void onDestroy(){
+    	super.onDestroy();
+    	if(produtoDAO!=null){
+    		produtoDAO.fechar();
+    	}
+    }
 	
 }
