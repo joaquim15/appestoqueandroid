@@ -91,7 +91,7 @@ public class IniciarAtividade extends BaseAtividade {
 
 								HttpClient httpclient = new DefaultHttpClient();
 								String serial = Util.serial(IniciarAtividade.this);
-								//serial = "200141a5bb0c7345";
+								serial = "200141a5bb0c7345";
 								HttpGet httpGet = new HttpGet(URL+"?serial="+serial);
 								HttpResponse httpResponse = httpclient.execute(httpGet);
 								HttpEntity httpEntity = httpResponse.getEntity();
@@ -104,7 +104,8 @@ public class IniciarAtividade extends BaseAtividade {
 								String numero = null;
 								Double preco = null;
 								Double estoque = null;
-								String imagem = null;
+								String imagem = null;								
+								produtoDAO.limpar();
 								for (int i = 0; i <= objetos.length() - 1; ++i) {
 									id = objetos.getJSONObject(i).getLong(ProdutoDAO.PRODUTO_CHAVE_ID);
 									nome = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NOME);
