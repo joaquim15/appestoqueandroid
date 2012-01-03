@@ -31,7 +31,7 @@ public class ProdutoDAO {
     	return cursor;
     }
 	
-    public long criar(Long id, String nome, String numero, double preco) {
+    public long criar(Long id, String nome, String numero, double preco, double estoque, String imagem) {
     	SQLiteDatabase db = databaseHelper.getWritableDatabase();
         ContentValues initialValues = new ContentValues();
         initialValues.put(PRODUTO_CHAVE_ID, id);

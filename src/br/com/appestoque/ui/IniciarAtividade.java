@@ -113,8 +113,7 @@ public class IniciarAtividade extends BaseAtividade {
 									preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
 									estoque = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_ESTOQUE);
 									imagem = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_IMAGEM);
-									produtoDAO.criar(id, nome, numero, preco);
-									
+									produtoDAO.criar(id, nome, numero, preco, estoque, imagem);
 								}
 								Util.dialogo(IniciarAtividade.this,
 										getString(R.string.mensagem_sincronismo_conclusao));
