@@ -38,6 +38,8 @@ public class ProdutoDAO {
         initialValues.put(PRODUTO_CHAVE_NOME, nome);
         initialValues.put(PRODUTO_CHAVE_NUMERO, numero);        
         initialValues.put(PRODUTO_CHAVE_PRECO, preco);
+        initialValues.put(PRODUTO_CHAVE_ESTOQUE, estoque);
+        initialValues.put(PRODUTO_CHAVE_IMAGEM, imagem);
         long ret = db.insert(TABELA, null,initialValues);
         return ret;
     }

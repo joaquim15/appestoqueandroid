@@ -20,6 +20,7 @@ import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -114,6 +115,11 @@ public class IniciarAtividade extends BaseAtividade {
 									estoque = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_ESTOQUE);
 									imagem = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_IMAGEM);
 									produtoDAO.criar(id, nome, numero, preco, estoque, imagem);
+									if(imagem!=null&&!imagem.equals("")){
+										Bitmap bitmap = Util.downloadImagem(imagem);
+										String arquivo = id.toString() + ".jpg";
+										Util.salvar(bitmap,arquivo);
+									}
 								}
 								Util.dialogo(IniciarAtividade.this,
 										getString(R.string.mensagem_sincronismo_conclusao));

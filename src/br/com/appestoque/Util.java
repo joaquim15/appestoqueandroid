@@ -56,12 +56,12 @@ public class Util {
 	public static String armazenamentoExterno(){
     	String raiz = Environment.getExternalStorageDirectory().toString();
         new File(raiz + R.string.pasta_externa_imagens).mkdirs();
-        return raiz + R.string.pasta_externa_imagens;
+        return raiz + R.string.pasta_externa_imagens +"/";
     }
 	
-	public static void salvar(Bitmap bitmap, String pasta, String nome){
+	public static void salvar(Bitmap bitmap, String nome){
         try{
-            String caminho = pasta + "/" + nome;
+            String caminho = armazenamentoExterno() + nome;
             FileOutputStream stream = new FileOutputStream(caminho);
             bitmap.compress(CompressFormat.JPEG, 100, stream);
             stream.flush();
