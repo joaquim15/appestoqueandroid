@@ -56,7 +56,10 @@ public class Util {
 	public static String armazenamentoExterno(){
     	String raiz = Environment.getExternalStorageDirectory().toString();
     	String caminho = raiz + "/appestoque";
-        new File( caminho ).mkdirs();
+        File dir = new File(caminho);
+        if(!dir.exists()){
+        	dir.mkdirs();
+        }        
         return caminho +"/";
     }
 	
