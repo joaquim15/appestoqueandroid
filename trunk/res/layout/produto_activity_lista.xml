@@ -1,10 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:padding="6dip">
+    <ImageView
+        android:id="@+id/imagem"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/icon" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="fill_parent">
+        <TextView
+        	android:id="@+id/numero"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            style="@style/SessionTitle"/>
+        <TextView  
+        	android:id="@+id/nome"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1" 
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            style="@style/SessionSubtitle"/>
+    </LinearLayout>
+</LinearLayout>
+
+<!--  
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:id="@+id/produto_lista"
   android:layout_width="fill_parent"
   android:layout_height="wrap_content"
   style="@style/ListItem"
   android:background="@color/fundo_branco">
+    
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/icon" />
+    
     
 	<TextView
         android:id="@+id/session_title"
@@ -23,3 +65,4 @@
         style="@style/SessionSubtitle" />        
     
 </RelativeLayout>
+-->
