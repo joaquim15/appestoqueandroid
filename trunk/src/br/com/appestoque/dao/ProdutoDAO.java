@@ -27,7 +27,7 @@ public class ProdutoDAO {
 	public Cursor listar() {		
 		SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
 		Cursor cursor = db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
-    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO}, null, null, null, null, null);
+    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE, PRODUTO_CHAVE_IMAGEM}, null, null, null, null, null);
     	return cursor;
     }
 	
@@ -47,7 +47,7 @@ public class ProdutoDAO {
     public Cursor buscar(String numero) {
     	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
     	Cursor cursor = db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
-    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO}, PRODUTO_CHAVE_NUMERO + " like '" + numero + "%'" , null, null, null, null);
+    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE, PRODUTO_CHAVE_IMAGEM}, PRODUTO_CHAVE_NUMERO + " like '" + numero + "%'" , null, null, null, null);
     	return cursor;
     }
     
@@ -59,7 +59,7 @@ public class ProdutoDAO {
     public Produto buscar(long id){
     	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
     	Cursor cursor =  db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
-    							PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO}, PRODUTO_CHAVE_ID + " = " + id , 
+    							PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE, PRODUTO_CHAVE_IMAGEM}, PRODUTO_CHAVE_ID + " = " + id , 
     							null, null, null, null);    	
     	if(cursor.getCount()>0){
     		cursor.moveToFirst();
