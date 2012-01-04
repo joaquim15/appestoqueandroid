@@ -1,16 +1,22 @@
 package br.com.appestoque.ui;
 
+import java.io.File;
+
 import br.com.appestoque.R;
+import br.com.appestoque.Util;
 import br.com.appestoque.dao.ProdutoDAO;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -43,10 +49,17 @@ public class ProdutoActivity extends BaseListaAtividade{
 
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
-			final TextView titleView = (TextView) view.findViewById(R.id.session_title);
-            final TextView subtitleView = (TextView) view.findViewById(R.id.session_subtitle);
-            titleView.setText(cursor.getString(2));
-            subtitleView.setText(cursor.getString(1));            
+			final TextView numero = (TextView) view.findViewById(R.id.numero);
+            final TextView nome = (TextView) view.findViewById(R.id.nome);
+            final ImageView img = (ImageView) view.findViewById(R.id.imagem);
+            numero.setText(cursor.getString(2));
+            nome.setText(cursor.getString(1));
+            String imagem = Util.armazenamentoExterno() + cursor.getString(0) + ".jpg";			
+			File file = new  File(imagem);
+			if(file.exists()){
+				Bitmap bitmap = BitmapFactory.decodeFile(imagem);
+				img.setImageBitmap(bitmap);
+			}
 		}
 
 		@Override
