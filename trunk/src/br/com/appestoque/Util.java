@@ -55,8 +55,9 @@ public class Util {
 	
 	public static String armazenamentoExterno(){
     	String raiz = Environment.getExternalStorageDirectory().toString();
-        new File(raiz + R.string.pasta_externa_imagens).mkdirs();
-        return raiz + R.string.pasta_externa_imagens +"/";
+    	String caminho = raiz + "/appestoque";
+        new File( caminho ).mkdirs();
+        return caminho +"/";
     }
 	
 	public static void salvar(Bitmap bitmap, String nome){
