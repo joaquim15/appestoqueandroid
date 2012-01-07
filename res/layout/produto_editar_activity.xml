@@ -50,10 +50,9 @@
 					  android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent"/>
 		</TableRow>
+		<ImageView android:layout_width="wrap_content" 
+		           android:layout_height="wrap_content" 
+		           android:id="@+id/imgProduto">
+		</ImageView>
 	</TableLayout>
-	
-	<ImageView android:id="@+id/imgProduto" 
-			   android:layout_width="fill_parent" 
-			   android:layout_height="fill_parent"/>	
-	
 </LinearLayout>
