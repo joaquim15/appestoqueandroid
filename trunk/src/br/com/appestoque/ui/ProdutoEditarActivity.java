@@ -26,11 +26,9 @@ public class ProdutoEditarActivity extends Activity {
 		if(extras!=null){
 	    	produtoDAO = new ProdutoDAO(this);
 			Produto produto = produtoDAO.buscar(extras.getLong(ProdutoDAO.PRODUTO_CHAVE_ID));
-			/*
 			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());
 			((TextView) findViewById(R.id.edtNumero)).setText(produto.getNumero());
 			((TextView) findViewById(R.id.edtPreco)).setText(produto.getPreco().toString());
-			*/
 			String imagem = Util.armazenamentoExterno() + produto.getId().toString() + ".jpg";			
 			File file = new  File(imagem);
 			if(file.exists()){
