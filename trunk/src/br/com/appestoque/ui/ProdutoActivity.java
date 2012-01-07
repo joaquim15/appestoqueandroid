@@ -15,6 +15,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -51,15 +52,12 @@ public class ProdutoActivity extends BaseListaAtividade{
 		public void bindView(View view, Context context, Cursor cursor) {
 			final TextView numero = (TextView) view.findViewById(R.id.numero);
             final TextView nome = (TextView) view.findViewById(R.id.nome);
-            final ImageView img = (ImageView) view.findViewById(R.id.imagem);
+            final CheckBox estrela = (CheckBox) view.findViewById(R.id.estrela);
             numero.setText(cursor.getString(2));
             nome.setText(cursor.getString(1));
             String imagem = Util.armazenamentoExterno() + cursor.getString(0) + ".jpg";			
 			File file = new  File(imagem);
-			if(file.exists()){
-				Bitmap bitmap = BitmapFactory.decodeFile(imagem);
-				img.setImageBitmap(bitmap);
-			}
+            estrela.setChecked(file.exists());
 		}
 
 		@Override
