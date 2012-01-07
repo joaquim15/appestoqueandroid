@@ -3,12 +3,19 @@
     android:layout_width="fill_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:padding="6dip">
-    <ImageView
-        android:id="@+id/imagem"
+    
+    <CheckBox
+        android:id="@+id/estrela"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:src="@drawable/icon" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dip"
+        android:layout_marginLeft="4dip"
+        android:focusable="false"
+        android:clickable="false"
+        android:button="@android:drawable/btn_star" />
+        
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dip"
@@ -31,38 +38,3 @@
             style="@style/SessionSubtitle"/>
     </LinearLayout>
 </LinearLayout>
-
-<!--  
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/produto_lista"
-  android:layout_width="fill_parent"
-  android:layout_height="wrap_content"
-  style="@style/ListItem"
-  android:background="@color/fundo_branco">
-    
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_alignParentLeft="true"
-        android:src="@drawable/icon" />
-    
-    
-	<TextView
-        android:id="@+id/session_title"
-        android:layout_alignParentLeft="true"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        style="@style/SessionTitle" />
-        
-    <TextView
-        android:id="@+id/session_subtitle"
-        android:layout_below="@id/session_title"
-        android:layout_alignParentLeft="true"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="2dip"
-        style="@style/SessionSubtitle" />        
-    
-</RelativeLayout>
--->
