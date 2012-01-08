@@ -14,9 +14,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -92,7 +89,7 @@ public class IniciarAtividade extends BaseAtividade {
 
 								HttpClient httpclient = new DefaultHttpClient();
 								String serial = Util.serial(IniciarAtividade.this);
-								serial = "200141a5bb0c7345";
+								//serial = "200141a5bb0c7345";
 								HttpGet httpGet = new HttpGet(URL+"?serial="+serial);
 								HttpResponse httpResponse = httpclient.execute(httpGet);
 								HttpEntity httpEntity = httpResponse.getEntity();
@@ -115,9 +112,10 @@ public class IniciarAtividade extends BaseAtividade {
 									estoque = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_ESTOQUE);
 									imagem = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_IMAGEM);
 									produtoDAO.criar(id, nome, numero, preco, estoque, imagem);
-									if(imagem!=null&&!imagem.equals("")){
+									if(imagem!=null&&!imagem.equals("")){										
+										String extensao = imagem.substring(imagem.length()-4,imagem.length()); 										
 										Bitmap bitmap = Util.downloadImagem(imagem);
-										String arquivo = id.toString() + ".jpg";
+										String arquivo = id.toString() + extensao;
 										Util.salvar(bitmap,arquivo);
 									}
 								}
