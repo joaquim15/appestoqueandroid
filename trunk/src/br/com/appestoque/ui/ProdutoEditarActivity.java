@@ -10,7 +10,6 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +28,7 @@ public class ProdutoEditarActivity extends Activity {
 			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());
 			((TextView) findViewById(R.id.edtNumero)).setText(produto.getNumero());
 			((TextView) findViewById(R.id.edtPreco)).setText(produto.getPreco().toString());
+			((TextView) findViewById(R.id.edtEstoque)).setText(produto.getEstoque().toString());
 			String imagem = Util.armazenamentoExterno() + produto.getId().toString() + ".jpg";			
 			File file = new  File(imagem);
 			if(file.exists()){
