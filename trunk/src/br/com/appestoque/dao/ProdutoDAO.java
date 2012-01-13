@@ -83,6 +83,7 @@ public class ProdutoDAO {
     		produto.setNome(cursor.getString(1));
     		produto.setNumero(cursor.getString(2));
     		produto.setPreco(cursor.getDouble(3));
+    		produto.setEstoque(cursor.getDouble(4));
     		return produto;
     	}else{
     		return null;
