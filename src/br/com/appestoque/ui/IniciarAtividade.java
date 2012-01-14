@@ -32,8 +32,8 @@ import br.com.appestoque.dao.ProdutoDAO;
 
 public class IniciarAtividade extends BaseAtividade {
 
-	private static final String URL = "http://appestoque.appspot.com/rest/produtoRest";
-	//private static final String URL = "http://10.0.2.2:8888/rest/produtoRest";
+	//private static final String URL = "http://appestoque.appspot.com/rest/produtoRest";
+	private static final String URL = "http://10.0.2.2:8888/rest/produtoRest";
 	
 	private ProgressDialog progressDialog;
 	
@@ -89,7 +89,7 @@ public class IniciarAtividade extends BaseAtividade {
 
 								HttpClient httpclient = new DefaultHttpClient();
 								String serial = Util.serial(IniciarAtividade.this);
-								//serial = "200141a5bb0c7345";
+								serial = "200141a5bb0c7345";
 								HttpGet httpGet = new HttpGet(URL+"?serial="+serial);
 								HttpResponse httpResponse = httpclient.execute(httpGet);
 								HttpEntity httpEntity = httpResponse.getEntity();
