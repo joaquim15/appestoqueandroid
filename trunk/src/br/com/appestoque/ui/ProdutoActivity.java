@@ -4,10 +4,8 @@ import br.com.appestoque.R;
 import br.com.appestoque.Util;
 import br.com.appestoque.dao.ProdutoDAO;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -19,7 +17,6 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class ProdutoActivity extends BaseListaAtividade{
 	
