@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" 
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent" 
 	android:background="@color/fundo_branco">
-	
-    <LinearLayout style="@style/Titulo_Barra">
+
+	<LinearLayout style="@style/Titulo_Barra">
 		<TextView style="@style/TitleBarText" 
 				  android:text="@string/titulo_produto" />
 	</LinearLayout>
-	
-	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-				 android:layout_height="fill_parent" 
-				 android:layout_width="fill_parent"
-				 android:background="#ffffff">
-		<TableRow>
+
 			<TextView android:id="@+id/txtNome" 
 					  android:text="Nome:"
 					  android:textColor="#000000" 
@@ -25,8 +21,6 @@
 					  style="@style/SessionSubtitle"
 					  android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent"/>
-		</TableRow>
-		<TableRow>
 			<TextView android:id="@+id/txtNumero" 
 			          android:text="Número:"
 					  android:textColor="#000000"
@@ -37,8 +31,6 @@
 			          style="@style/SessionSubtitle"
 			          android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent"/>
-		</TableRow>
-		<TableRow>
 			<TextView android:id="@+id/txtPreco" 
 					  android:text="Preço:"
 					  android:textColor="#000000"
@@ -49,8 +41,6 @@
 					  style="@style/SessionSubtitle"
 					  android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent"/>
-		</TableRow>
-		<TableRow>
 			<TextView android:id="@+id/txtEstoque" 
 					  android:text="Estoque:"
 					  android:textColor="#000000"
@@ -61,10 +51,18 @@
 					  style="@style/SessionSubtitle"
 					  android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent"/>
-		</TableRow>
-		<ImageView android:layout_width="wrap_content" 
-		           android:layout_height="wrap_content" 
-		           android:id="@+id/imgProduto">
-		</ImageView>
-	</TableLayout>
+	
+			<Gallery android:id="@+id/gallery"
+               android:layout_width="fill_parent"
+         	   android:layout_height="wrap_content"
+         	   android:gravity="fill_vertical|fill_horizontal"/>
+
+			<ImageView
+		      android:id="@+id/fullview"
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:adjustViewBounds="true"
+		      android:scaleType="centerInside">
+		   </ImageView>
+	
 </LinearLayout>
