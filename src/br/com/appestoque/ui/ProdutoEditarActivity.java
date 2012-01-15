@@ -8,6 +8,7 @@ import br.com.appestoque.dominio.Produto;
 import br.com.appestoque.dao.ProdutoDAO;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -40,11 +41,10 @@ public class ProdutoEditarActivity extends Activity {
 			((TextView) findViewById(R.id.edtPreco)).setText(produto.getPreco().toString());
 			((TextView) findViewById(R.id.edtEstoque)).setText(produto.getEstoque().toString());
 			
-			imagens = new String[4];
-			imagens[0] = Util.armazenamentoExterno() + produto.getId().toString() + "_1.png";
-			imagens[1] = Util.armazenamentoExterno() + produto.getId().toString() + "_2.png";
-			imagens[2] = Util.armazenamentoExterno() + produto.getId().toString() + "_3.png";
-			imagens[3] = Util.armazenamentoExterno() + produto.getId().toString() + "_4.png";
+			imagens = new String[]{	Util.armazenamentoExterno() + produto.getId().toString() + "_1.png",
+									Util.armazenamentoExterno() + produto.getId().toString() + "_2.png",
+									Util.armazenamentoExterno() + produto.getId().toString() + "_3.png",
+									Util.armazenamentoExterno() + produto.getId().toString() + "_4.png"};
 			
 			Gallery gallery = (Gallery) findViewById(R.id.gallery);
 		    gallery.setAdapter(new Adaptador(this,imagens));
@@ -52,9 +52,9 @@ public class ProdutoEditarActivity extends Activity {
 		    gallery.setOnItemClickListener(new OnItemClickListener() {
 		    	@Override
 		    	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		        	ImageView fullView = (ImageView) findViewById(R.id.fullview);
-		        	Bitmap bitmap = BitmapFactory.decodeFile(imagens[arg2]);
-		        	fullView.setImageBitmap(bitmap);
+		    		Intent intent = new Intent(getBaseContext(),ProdutoImagemActivity.class);
+		        	intent.putExtra("imagemCentral", imagens[arg2]);
+		        	startActivity(intent);
 		    	}
 		    });
 			
