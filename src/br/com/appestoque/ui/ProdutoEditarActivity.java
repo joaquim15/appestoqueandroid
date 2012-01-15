@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.CursorAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,7 +47,7 @@ public class ProdutoEditarActivity extends Activity {
 			imagens[3] = Util.armazenamentoExterno() + produto.getId().toString() + "_4.png";
 			
 			Gallery gallery = (Gallery) findViewById(R.id.gallery);
-		    gallery.setAdapter(new ImageAdapter(this,imagens));
+		    gallery.setAdapter(new Adaptador(this,imagens));
 		    
 		    gallery.setOnItemClickListener(new OnItemClickListener() {
 		    	@Override
