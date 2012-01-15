@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center_vertical">
-    <Gallery android:id="@+id/gallery"
+<LinearLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+   android:layout_width="fill_parent"
+   android:layout_height="fill_parent" >
+   <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:padding="5px">
+      <Gallery android:id="@+id/gallery"
                android:layout_width="fill_parent"
          	   android:layout_height="wrap_content"
-         	   android:gravity="center"/>
-	<ImageView android:id="@+id/imagemCentral"
-			      android:layout_width="fill_parent"
-			      android:layout_height="fill_parent"
-			      android:adjustViewBounds="true"
-			      android:scaleType="centerInside"/>
+         	   android:gravity="fill_vertical|fill_horizontal"/>
+   </LinearLayout>
+   <LinearLayout
+      android:id="@+id/imageBox"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="4"
+      android:scrollbarStyle="outsideInset"
+      android:padding="5px">
+	   <ImageView
+	      android:id="@+id/imagem"
+	      android:layout_width="fill_parent"
+	      android:layout_height="wrap_content"
+	      android:adjustViewBounds="true"
+	      android:scaleType="centerInside">
+	   </ImageView>
+   </LinearLayout>
 </LinearLayout>

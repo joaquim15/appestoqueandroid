@@ -49,4 +49,10 @@
 					  style="@style/SessionSubtitle"
 					  android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent"/>
+			<Button android:layout_height="wrap_content" 
+					android:text="Imagem"
+					android:layout_width="wrap_content" 
+					android:id="@+id/button1"
+					android:onClick="onClick">
+			</Button>
 </LinearLayout>
