@@ -1,22 +1,25 @@
 package br.com.appestoque.ui;
 
-import java.io.File;
-
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
 import br.com.appestoque.dao.ProdutoDAO;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ProdutoActivity extends BaseListaAtividade{
 	
@@ -49,12 +52,12 @@ public class ProdutoActivity extends BaseListaAtividade{
 		public void bindView(View view, Context context, Cursor cursor) {
 			final TextView numero = (TextView) view.findViewById(R.id.numero);
             final TextView nome = (TextView) view.findViewById(R.id.nome);
-            final CheckBox estrela = (CheckBox) view.findViewById(R.id.estrela);
+            final ImageView icone = (ImageView) view.findViewById(R.id.icone);
             numero.setText(cursor.getString(2));
             nome.setText(cursor.getString(1));
-            String imagem = Util.armazenamentoExterno() + cursor.getString(0) + ".jpg";			
-			File file = new  File(imagem);
-            estrela.setChecked(file.exists());
+            String imagem = Util.armazenamentoExterno() + cursor.getString(0) + "_1.png";			
+			Bitmap bitmap = BitmapFactory.decodeFile(imagem);
+			icone.setImageBitmap(bitmap);
 		}
 
 		@Override
@@ -65,9 +68,9 @@ public class ProdutoActivity extends BaseListaAtividade{
 	}
 	
     public void onListItemClick(ListView l , View v, int posicao, long id){
-    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
-    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
-    	startActivity(intent);
+//    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
+//    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
+//    	startActivity(intent);
     }
     
     public void onIniciarClick(Context context) {
