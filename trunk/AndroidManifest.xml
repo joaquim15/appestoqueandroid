@@ -12,6 +12,7 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoImagemActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoEditarActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoActivity">
 			<intent-filter>
