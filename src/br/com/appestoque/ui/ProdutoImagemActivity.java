@@ -3,9 +3,7 @@ package br.com.appestoque.ui;
 import java.io.File;
 
 import br.com.appestoque.R;
-import br.com.appestoque.Util;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,7 +37,7 @@ public class ProdutoImagemActivity extends BaseAtividade {
 		gallery.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				ImageView imageView = (ImageView) findViewById(R.id.imagemCentral);			
+				ImageView imageView = (ImageView) findViewById(R.id.imagem);			
 		    	Bitmap bitmap = BitmapFactory.decodeFile(imagens[arg2]);
 		    	imageView.setImageBitmap(bitmap);
 			}
