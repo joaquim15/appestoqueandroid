@@ -3,6 +3,9 @@ package br.com.appestoque.ui;
 import java.io.File;
 
 import br.com.appestoque.R;
+import br.com.appestoque.Util;
+import br.com.appestoque.dao.ProdutoDAO;
+import br.com.appestoque.dominio.Produto;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -14,10 +17,12 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class ProdutoImagemActivity extends BaseAtividade {
 
+	private ProdutoDAO produtoDAO;
 	String[] imagens;
 	
 	@Override
@@ -28,7 +33,17 @@ public class ProdutoImagemActivity extends BaseAtividade {
 		
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
-			imagens = extras.getStringArray("imagens"); 
+	    	produtoDAO = new ProdutoDAO(this);
+			Produto produto = produtoDAO.buscar(extras.getLong(ProdutoDAO.PRODUTO_CHAVE_ID));
+			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());
+			((TextView) findViewById(R.id.edtNumero)).setText(produto.getNumero());
+			((TextView) findViewById(R.id.edtPreco)).setText(produto.getPreco().toString());
+			((TextView) findViewById(R.id.edtEstoque)).setText(produto.getEstoque().toString());
+		    imagens = new String[]{	Util.armazenamentoExterno() + produto.getId().toString() + "_1.png",
+									Util.armazenamentoExterno() + produto.getId().toString() + "_2.png",
+									Util.armazenamentoExterno() + produto.getId().toString() + "_3.png",
+									Util.armazenamentoExterno() + produto.getId().toString() + "_4.png"};
+			
 		}
 
 		Gallery gallery = (Gallery) findViewById(R.id.gallery);
@@ -44,6 +59,14 @@ public class ProdutoImagemActivity extends BaseAtividade {
 		});
 		
 	}
+	
+    @Override
+    protected void onPause(){
+    	super.onPause();
+    	setResult(RESULT_CANCELED);
+    	produtoDAO.fechar();
+    	finish();
+    }
 	
     private class Adaptador extends BaseAdapter{
 
