@@ -17,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class ProdutoImagemActivity extends BaseAtividade {
@@ -33,10 +32,6 @@ public class ProdutoImagemActivity extends BaseAtividade {
 		if(extras!=null){
 	    	produtoDAO = new ProdutoDAO(this);
 			Produto produto = produtoDAO.buscar(extras.getLong(ProdutoDAO.PRODUTO_CHAVE_ID));
-			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());
-			((TextView) findViewById(R.id.edtNumero)).setText(produto.getNumero());
-			((TextView) findViewById(R.id.edtPreco)).setText(produto.getPreco().toString());
-			((TextView) findViewById(R.id.edtEstoque)).setText(produto.getEstoque().toString());
 		    imagens = new String[]{	Util.armazenamentoExterno() + produto.getId().toString() + "_1.png",
 									Util.armazenamentoExterno() + produto.getId().toString() + "_2.png",
 									Util.armazenamentoExterno() + produto.getId().toString() + "_3.png",
