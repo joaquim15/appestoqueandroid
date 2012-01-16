@@ -62,6 +62,11 @@ public class Util {
         }        
         return caminho +"/";
     }
+    
+	public static boolean arquivoExiste(String arquivo){
+        File dir = new File(arquivo);
+        return dir.exists();
+    }
 	
 	public static void salvar(Bitmap bitmap, String nome){
         try{

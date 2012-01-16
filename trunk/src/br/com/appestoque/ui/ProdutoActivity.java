@@ -59,9 +59,11 @@ public class ProdutoActivity extends BaseListaAtividade{
             final ImageView icone = (ImageView) view.findViewById(R.id.icone);
             numero.setText(cursor.getString(2));
             nome.setText(cursor.getString(1));
-            String imagem = Util.armazenamentoExterno() + cursor.getString(0) + "_1.png";			
-			Bitmap bitmap = BitmapFactory.decodeFile(imagem);
-			icone.setImageBitmap(bitmap);
+            String imagem = Util.armazenamentoExterno() + cursor.getString(0) + "_1.png";
+            if(Util.arquivoExiste(imagem)){
+            	Bitmap bitmap = BitmapFactory.decodeFile(imagem);
+    			icone.setImageBitmap(bitmap);
+            }
 		}
 
 		@Override
