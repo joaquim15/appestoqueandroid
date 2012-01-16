@@ -27,10 +27,8 @@ public class ProdutoImagemActivity extends BaseAtividade {
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		
 		super.onCreate(savedInstanceState);		
 		setContentView(R.layout.produto_imagem_activity);
-		
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
 	    	produtoDAO = new ProdutoDAO(this);
