@@ -43,10 +43,4 @@ public class ProdutoEditarActivity extends Activity {
     	finish();
     }
     
-    public void onClick(View v) {
-    	Intent intent = new Intent(this,ProdutoImagemActivity.class);
-    	intent.putExtra("imagens", imagens);
-		startActivity(intent);
-	}
-
 }
