@@ -35,7 +35,8 @@ public class ProdutoImagemActivity extends BaseAtividade {
 		    imagens = new String[]{	Util.armazenamentoExterno() + produto.getId().toString() + "_1.png",
 									Util.armazenamentoExterno() + produto.getId().toString() + "_2.png",
 									Util.armazenamentoExterno() + produto.getId().toString() + "_3.png",
-									Util.armazenamentoExterno() + produto.getId().toString() + "_4.png"};
+									Util.armazenamentoExterno() + produto.getId().toString() + "_4.png",
+									Util.armazenamentoExterno() + produto.getId().toString() + "_5.png"};
 			
 		}
 
