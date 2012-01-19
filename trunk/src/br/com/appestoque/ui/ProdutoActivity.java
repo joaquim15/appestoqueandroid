@@ -63,6 +63,8 @@ public class ProdutoActivity extends BaseListaAtividade{
             if(Util.arquivoExiste(imagem)){
             	Bitmap bitmap = BitmapFactory.decodeFile(imagem);
     			icone.setImageBitmap(bitmap);
+            }else{
+            	icone.setImageBitmap(null);
             }
 		}
 
@@ -74,9 +76,9 @@ public class ProdutoActivity extends BaseListaAtividade{
 	}
 	
     public void onListItemClick(ListView l , View v, int posicao, long id){
-    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
-    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
-    	startActivity(intent);
+//    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
+//    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
+//    	startActivity(intent);
     }
     
     @Override
