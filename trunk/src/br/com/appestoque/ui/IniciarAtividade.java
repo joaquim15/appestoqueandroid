@@ -102,11 +102,6 @@ public class IniciarAtividade extends BaseAtividade {
 								String numero = null;
 								Double preco = null;
 								Double estoque = null;
-								String imagem1 = null;
-								String imagem2 = null;
-								String imagem3 = null;
-								String imagem4 = null;
-								String imagem5 = null;
 								produtoDAO.limpar();
 								for (int i = 0; i <= objetos.length() - 1; ++i) {
 									id = objetos.getJSONObject(i).getLong(ProdutoDAO.PRODUTO_CHAVE_ID);
@@ -114,57 +109,7 @@ public class IniciarAtividade extends BaseAtividade {
 									numero = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NUMERO);
 									preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
 									estoque = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_ESTOQUE);
-									imagem1 = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_IMAGEM_1);
-									imagem2 = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_IMAGEM_2);
-									imagem3 = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_IMAGEM_3);
-									imagem4 = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_IMAGEM_4);
-									imagem5 = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_IMAGEM_5);									
-									produtoDAO.criar(id, nome, numero, preco, estoque, imagem1, imagem2, imagem3, imagem4, imagem5);
-									
-									if(imagem1!=null&&!imagem1.equals("")){										
-										String extensao = imagem1.substring(imagem1.length()-4,imagem1.length()); 										
-										Bitmap bitmap = Util.downloadImagem(imagem1);
-										if(bitmap!=null){
-											String arquivo = id.toString() + "_1" + extensao;
-											Util.salvar(bitmap,arquivo);
-										}
-									}
-									
-									if(imagem2!=null&&!imagem2.equals("")){										
-										String extensao = imagem2.substring(imagem2.length()-4,imagem2.length()); 										
-										Bitmap bitmap = Util.downloadImagem(imagem2);
-										if(bitmap!=null){
-											String arquivo = id.toString() + "_2" + extensao;
-											Util.salvar(bitmap,arquivo);
-										}
-									}
-									
-									if(imagem3!=null&&!imagem3.equals("")){										
-										String extensao = imagem3.substring(imagem3.length()-4,imagem3.length()); 										
-										Bitmap bitmap = Util.downloadImagem(imagem3);
-										if(bitmap!=null){
-											String arquivo = id.toString() + "_3" + extensao;
-											Util.salvar(bitmap,arquivo);
-										}
-									}
-									
-									if(imagem4!=null&&!imagem4.equals("")){										
-										String extensao = imagem4.substring(imagem4.length()-4,imagem4.length()); 										
-										Bitmap bitmap = Util.downloadImagem(imagem4);
-										if(bitmap!=null){
-											String arquivo = id.toString() + "_4" + extensao;
-											Util.salvar(bitmap,arquivo);
-										}
-									}
-									
-									if(imagem5!=null&&!imagem5.equals("")){										
-										String extensao = imagem5.substring(imagem5.length()-4,imagem5.length()); 										
-										Bitmap bitmap = Util.downloadImagem(imagem5);
-										if(bitmap!=null){
-											String arquivo = id.toString() + "_5" + extensao;
-											Util.salvar(bitmap,arquivo);
-										}
-									}
+									produtoDAO.criar(id, nome, numero, preco, estoque);
 								}
 								Util.dialogo(IniciarAtividade.this,
 										getString(R.string.mensagem_sincronismo_conclusao));

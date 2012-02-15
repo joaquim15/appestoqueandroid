@@ -14,11 +14,6 @@ public class ProdutoDAO {
     public static final String PRODUTO_CHAVE_NUMERO = "numero";
     public static final String PRODUTO_CHAVE_PRECO = "preco";
     public static final String PRODUTO_CHAVE_ESTOQUE = "estoque";
-    public static final String PRODUTO_CHAVE_IMAGEM_1 = "imagem1";
-    public static final String PRODUTO_CHAVE_IMAGEM_2 = "imagem2";
-    public static final String PRODUTO_CHAVE_IMAGEM_3 = "imagem3";
-    public static final String PRODUTO_CHAVE_IMAGEM_4 = "imagem4";
-    public static final String PRODUTO_CHAVE_IMAGEM_5 = "imagem5";
     
     private static final String TABELA = "produtos";
     
@@ -31,14 +26,11 @@ public class ProdutoDAO {
 	public Cursor listar() {		
 		SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
 		Cursor cursor = db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
-    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE, 
-    			PRODUTO_CHAVE_IMAGEM_1, PRODUTO_CHAVE_IMAGEM_2, PRODUTO_CHAVE_IMAGEM_3, PRODUTO_CHAVE_IMAGEM_4, 
-    			PRODUTO_CHAVE_IMAGEM_5}, null, null, null, null, null);
+    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE}, null, null, null, null, null);
     	return cursor;
     }
 	
-    public long criar(Long id, String nome, String numero, double preco, double estoque, 
-    		String imagem1,	String imagem2, String imagem3, String imagem4, String imagem5) {
+    public long criar(Long id, String nome, String numero, double preco, double estoque) {
     	SQLiteDatabase db = databaseHelper.getWritableDatabase();
         ContentValues initialValues = new ContentValues();
         initialValues.put(PRODUTO_CHAVE_ID, id);
@@ -46,11 +38,6 @@ public class ProdutoDAO {
         initialValues.put(PRODUTO_CHAVE_NUMERO, numero);        
         initialValues.put(PRODUTO_CHAVE_PRECO, preco);
         initialValues.put(PRODUTO_CHAVE_ESTOQUE, estoque);
-        initialValues.put(PRODUTO_CHAVE_IMAGEM_1, imagem1);
-        initialValues.put(PRODUTO_CHAVE_IMAGEM_2, imagem2);
-        initialValues.put(PRODUTO_CHAVE_IMAGEM_3, imagem3);
-        initialValues.put(PRODUTO_CHAVE_IMAGEM_4, imagem4);
-        initialValues.put(PRODUTO_CHAVE_IMAGEM_5, imagem5);
         long ret = db.insert(TABELA, null,initialValues);
         return ret;
     }
@@ -58,9 +45,7 @@ public class ProdutoDAO {
     public Cursor buscar(String numero) {
     	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
     	Cursor cursor = db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
-    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE, 
-    			PRODUTO_CHAVE_IMAGEM_1, PRODUTO_CHAVE_IMAGEM_2, PRODUTO_CHAVE_IMAGEM_3, 
-    			PRODUTO_CHAVE_IMAGEM_4, PRODUTO_CHAVE_IMAGEM_5}, PRODUTO_CHAVE_NUMERO + " like '" + numero + "%'" , null, null, null, null);
+    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE}, PRODUTO_CHAVE_NUMERO + " like '" + numero + "%'" , null, null, null, null);
     	return cursor;
     }
     
@@ -72,9 +57,7 @@ public class ProdutoDAO {
     public Produto buscar(long id){
     	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
     	Cursor cursor =  db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
-    							PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE, 
-    							PRODUTO_CHAVE_IMAGEM_1, PRODUTO_CHAVE_IMAGEM_2, PRODUTO_CHAVE_IMAGEM_3, 
-    							PRODUTO_CHAVE_IMAGEM_4, PRODUTO_CHAVE_IMAGEM_5}, PRODUTO_CHAVE_ID + " = " + id , 
+    							PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE}, PRODUTO_CHAVE_ID + " = " + id , 
     							null, null, null, null);    	
     	if(cursor.getCount()>0){
     		cursor.moveToFirst();
