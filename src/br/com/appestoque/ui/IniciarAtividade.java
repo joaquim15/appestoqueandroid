@@ -124,36 +124,46 @@ public class IniciarAtividade extends BaseAtividade {
 									if(imagem1!=null&&!imagem1.equals("")){										
 										String extensao = imagem1.substring(imagem1.length()-4,imagem1.length()); 										
 										Bitmap bitmap = Util.downloadImagem(imagem1);
-										String arquivo = id.toString() + "_1" + extensao;
-										Util.salvar(bitmap,arquivo);
+										if(bitmap!=null){
+											String arquivo = id.toString() + "_1" + extensao;
+											Util.salvar(bitmap,arquivo);
+										}
 									}
 									
 									if(imagem2!=null&&!imagem2.equals("")){										
 										String extensao = imagem2.substring(imagem2.length()-4,imagem2.length()); 										
 										Bitmap bitmap = Util.downloadImagem(imagem2);
-										String arquivo = id.toString() + "_2" + extensao;
-										Util.salvar(bitmap,arquivo);
+										if(bitmap!=null){
+											String arquivo = id.toString() + "_2" + extensao;
+											Util.salvar(bitmap,arquivo);
+										}
 									}
 									
 									if(imagem3!=null&&!imagem3.equals("")){										
 										String extensao = imagem3.substring(imagem3.length()-4,imagem3.length()); 										
 										Bitmap bitmap = Util.downloadImagem(imagem3);
-										String arquivo = id.toString() + "_3" + extensao;
-										Util.salvar(bitmap,arquivo);
+										if(bitmap!=null){
+											String arquivo = id.toString() + "_3" + extensao;
+											Util.salvar(bitmap,arquivo);
+										}
 									}
 									
 									if(imagem4!=null&&!imagem4.equals("")){										
 										String extensao = imagem4.substring(imagem4.length()-4,imagem4.length()); 										
 										Bitmap bitmap = Util.downloadImagem(imagem4);
-										String arquivo = id.toString() + "_4" + extensao;
-										Util.salvar(bitmap,arquivo);
+										if(bitmap!=null){
+											String arquivo = id.toString() + "_4" + extensao;
+											Util.salvar(bitmap,arquivo);
+										}
 									}
 									
 									if(imagem5!=null&&!imagem5.equals("")){										
 										String extensao = imagem5.substring(imagem5.length()-4,imagem5.length()); 										
 										Bitmap bitmap = Util.downloadImagem(imagem5);
-										String arquivo = id.toString() + "_5" + extensao;
-										Util.salvar(bitmap,arquivo);
+										if(bitmap!=null){
+											String arquivo = id.toString() + "_5" + extensao;
+											Util.salvar(bitmap,arquivo);
+										}
 									}
 								}
 								Util.dialogo(IniciarAtividade.this,
