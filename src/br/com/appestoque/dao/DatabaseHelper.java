@@ -23,12 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	        + ProdutoDAO.PRODUTO_CHAVE_NOME      + " text not null, 	 	" 
 	        + ProdutoDAO.PRODUTO_CHAVE_NUMERO    + " text not null,	 	 	"
 	        + ProdutoDAO.PRODUTO_CHAVE_PRECO     + " real not null,	 	 	"
-	        + ProdutoDAO.PRODUTO_CHAVE_ESTOQUE   + " real not null,	 	 	"
-	        + ProdutoDAO.PRODUTO_CHAVE_IMAGEM_1  + " text,  	 		 	"
-	        + ProdutoDAO.PRODUTO_CHAVE_IMAGEM_2  + " text,  	 		 	"
-	        + ProdutoDAO.PRODUTO_CHAVE_IMAGEM_3  + " text,  	 		 	"
-	        + ProdutoDAO.PRODUTO_CHAVE_IMAGEM_4  + " text,  	 		 	"
-	        + ProdutoDAO.PRODUTO_CHAVE_IMAGEM_5  + " text  	 		 		"
+	        + ProdutoDAO.PRODUTO_CHAVE_ESTOQUE   + " real not null	 	 	"
         + "  );";
 	
 	public DatabaseHelper(Context context) {
@@ -47,11 +42,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		int version = oldVersion;
         switch (version) {
             case VERSAO_LANCAMENTO:
-                db.execSQL("ALTER TABLE " + Tabelas.PRODUTOS + " ADD COLUMN " + ProdutoDAO.PRODUTO_CHAVE_IMAGEM_1 + " TEXT");
-                db.execSQL("ALTER TABLE " + Tabelas.PRODUTOS + " ADD COLUMN " + ProdutoDAO.PRODUTO_CHAVE_IMAGEM_2 + " TEXT");
-                db.execSQL("ALTER TABLE " + Tabelas.PRODUTOS + " ADD COLUMN " + ProdutoDAO.PRODUTO_CHAVE_IMAGEM_3 + " TEXT");
-                db.execSQL("ALTER TABLE " + Tabelas.PRODUTOS + " ADD COLUMN " + ProdutoDAO.PRODUTO_CHAVE_IMAGEM_4 + " TEXT");
-                db.execSQL("ALTER TABLE " + Tabelas.PRODUTOS + " ADD COLUMN " + ProdutoDAO.PRODUTO_CHAVE_IMAGEM_5 + " TEXT");
                 db.execSQL("ALTER TABLE " + Tabelas.PRODUTOS + " ADD COLUMN " + ProdutoDAO.PRODUTO_CHAVE_ESTOQUE + " real not null default 0 ");
                 version = VERSAO_3;
         }
