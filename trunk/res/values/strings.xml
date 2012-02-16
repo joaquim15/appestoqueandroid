@@ -5,6 +5,7 @@
 	<string name="btn_produto">Produto</string>
 	<string name="btn_estoque">Estoque</string>
 	<string name="btn_usuario">Usuário</string>   
+	<string name="btn_cliente">Cliente</string>
 	<string name="description_home">Home</string> 	
 	<string name="description_search">Search</string>
 	
