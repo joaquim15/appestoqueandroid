@@ -4,15 +4,25 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Date;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.protocol.HTTP;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -25,14 +35,15 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import br.com.appestoque.HttpCliente;
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
 import br.com.appestoque.dao.ProdutoDAO;
 
 public class IniciarAtividade extends BaseAtividade {
 
-	private static final String URL = "http://appestoque.appspot.com/rest/produtoRest";
-	//private static final String URL = "http://10.0.2.2:8888/rest/produtoRest";
+	//private static final String URL = "http://appestoque.appspot.com/rest/produtoRest";
+	private static final String URL = "http://10.0.2.2:8888/rest/produtoRest";
 	
 	private ProgressDialog progressDialog;
 	
@@ -50,6 +61,42 @@ public class IniciarAtividade extends BaseAtividade {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.iniciar_atividade);
+	}
+	
+	public void onClienteClick(View v) {
+
+		JSONObject pedido = new JSONObject();
+		try {
+			
+			pedido.put("numero", "15000");
+			pedido.put("data", new Date("15/02/2012"));
+			pedido.put("idRepresentante", 10L);
+			pedido.put("idCliente", 20L);
+			
+			JSONArray itens = new JSONArray();
+			
+			JSONObject item1 = new JSONObject();
+			item1.put("quantidade", 1.0);
+			item1.put("valor", 9.77);
+			item1.put("idPedido", 1L);
+			item1.put("idProduto", 2L);
+			itens.put(item1);
+			
+			JSONObject item2 = new JSONObject();
+			item2.put("quantidade", 3.0);
+			item2.put("valor", 3.98);
+			item2.put("idPedido", 3L);
+			item2.put("idProduto", 6L);
+			pedido.put("itens",item2);
+			itens.put(item2);
+			
+			pedido.put("itens", itens);
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		JSONObject jsonObjRecv = HttpCliente.SendHttpPost("http://10.0.2.2:8888/clienteRestFull", pedido);
+		
 	}
 	
 	public void onProdutoClick(View v) {
