@@ -30,6 +30,11 @@
                 android:onClick="onProdutoClick"
                 android:text="@string/btn_produto"
                 android:drawableTop="@drawable/home_btn_produto"/>
+            <Button android:id="@+id/btn_cliente"
+                style="@style/botao"
+                android:text="@string/btn_cliente"
+                android:onClick="onClienteClick"
+                android:drawableTop="@drawable/home_btn_cliente"/>    
      </LinearLayout>
     
 </LinearLayout>
