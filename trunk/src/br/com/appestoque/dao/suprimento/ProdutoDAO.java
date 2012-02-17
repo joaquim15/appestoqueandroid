@@ -14,7 +14,6 @@ public class ProdutoDAO implements IDAO<Produto,Long> {
 	public static final String PRODUTO_CHAVE_NOME = "nome";
     public static final String PRODUTO_CHAVE_NUMERO = "numero";
     public static final String PRODUTO_CHAVE_PRECO = "preco";
-    public static final String PRODUTO_CHAVE_ESTOQUE = "estoque";
     
     private static final String TABELA = "produtos";
     
@@ -29,20 +28,18 @@ public class ProdutoDAO implements IDAO<Produto,Long> {
 		Cursor cursor = db.query(TABELA, new String[] {	PRODUTO_CHAVE_ID, 
     													PRODUTO_CHAVE_NOME, 
     													PRODUTO_CHAVE_NUMERO, 
-    													PRODUTO_CHAVE_PRECO, 
-    													PRODUTO_CHAVE_ESTOQUE}, 
+    													PRODUTO_CHAVE_PRECO}, 
     													null, null, null, null, null);
     	return cursor;
     }
 	
-    public long criar(Long id, String nome, String numero, double preco, double estoque) {
+    public long criar(Long id, String nome, String numero, double preco) {
     	SQLiteDatabase db = databaseHelper.getWritableDatabase();
         ContentValues initialValues = new ContentValues();
         initialValues.put(PRODUTO_CHAVE_ID, id);
         initialValues.put(PRODUTO_CHAVE_NOME, nome);
         initialValues.put(PRODUTO_CHAVE_NUMERO, numero);        
         initialValues.put(PRODUTO_CHAVE_PRECO, preco);
-        initialValues.put(PRODUTO_CHAVE_ESTOQUE, estoque);
         long ret = db.insert(TABELA, null,initialValues);
         return ret;
     }
@@ -50,7 +47,7 @@ public class ProdutoDAO implements IDAO<Produto,Long> {
     public Cursor pesquisar(String numero) {
     	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
     	Cursor cursor = db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
-    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE}, PRODUTO_CHAVE_NUMERO + " like '" + numero + "%'" , null, null, null, null);
+    			PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO}, PRODUTO_CHAVE_NUMERO + " like '" + numero + "%'" , null, null, null, null);
     	return cursor;
     }
     
@@ -62,7 +59,7 @@ public class ProdutoDAO implements IDAO<Produto,Long> {
     public Produto pesquisar(long id){
     	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
     	Cursor cursor =  db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
-    							PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE}, PRODUTO_CHAVE_ID + " = " + id , 
+    							PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO}, PRODUTO_CHAVE_ID + " = " + id , 
     							null, null, null, null);    	
     	if(cursor.getCount()>0){
     		cursor.moveToFirst();

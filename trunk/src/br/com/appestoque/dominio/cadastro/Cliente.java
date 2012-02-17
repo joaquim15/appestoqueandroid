@@ -6,22 +6,24 @@ public class Cliente {
 	private String nome;
 	private String cnpj;
 	private String endereco;
-	private Integer numero;
+	private Long numero;
 	private String cep;
 	private String complemento;
 	private String bairro;
 	private String cidade;
 	
+	public Cliente() {
+	}
+	
 	public Cliente(	Long id,
 					String nome, 
 					String cnpj, 
 					String endereco,
-					Integer numero, 
+					Long numero, 
 					String cep, 
 					String complemento, 
 					String bairro,
-					String cidade) {
-		super();
+					String cidade ) {
 		this.id = id;
 		this.nome = nome;
 		this.cnpj = cnpj;
@@ -56,10 +58,10 @@ public class Cliente {
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
 	}
-	public Integer getNumero() {
+	public Long getNumero() {
 		return numero;
 	}
-	public void setNumero(Integer numero) {
+	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
 	public String getCep() {
