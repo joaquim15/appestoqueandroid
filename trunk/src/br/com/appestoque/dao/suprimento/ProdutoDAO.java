@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import br.com.appestoque.dao.DatabaseHelper;
 import br.com.appestoque.dao.IDAO;
-import br.com.appestoque.dominio.Produto;
+import br.com.appestoque.dominio.suprimento.Produto;
 
 public class ProdutoDAO implements IDAO<Produto,Long> {
 	

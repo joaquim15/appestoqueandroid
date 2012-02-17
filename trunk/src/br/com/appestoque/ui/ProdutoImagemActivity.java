@@ -5,7 +5,7 @@ import java.io.File;
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
-import br.com.appestoque.dominio.Produto;
+import br.com.appestoque.dominio.suprimento.Produto;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
