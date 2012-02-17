@@ -30,7 +30,7 @@ import android.view.View;
 import br.com.appestoque.HttpCliente;
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
-import br.com.appestoque.dao.ProdutoDAO;
+import br.com.appestoque.dao.suprimento.ProdutoDAO;
 
 public class IniciarAtividade extends BaseAtividade {
 
