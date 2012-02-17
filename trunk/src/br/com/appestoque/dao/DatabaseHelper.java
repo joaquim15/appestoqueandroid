@@ -10,21 +10,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
 	private static final String TAG = "Appestoque";
 	
-	public static final String BASEDEDADOS_ARQUIVO = "appestoque.db";
-	
-	private static final int VERSAO_LANCAMENTO = 2;
-    private static final int VERSAO_3 = 3;
-
-    private static final int BASEDEDADOS_VERSAO = VERSAO_3;
-	
-	private static final String DATABASE_CREATE =
-        " create table "+ Tabelas.PRODUTOS +" ( "
-			+ ProdutoDAO.PRODUTO_CHAVE_ID        + " integer primary key,  	"
-	        + ProdutoDAO.PRODUTO_CHAVE_NOME      + " text not null, 	 	" 
-	        + ProdutoDAO.PRODUTO_CHAVE_NUMERO    + " text not null,	 	 	"
-	        + ProdutoDAO.PRODUTO_CHAVE_PRECO     + " real not null,	 	 	"
-	        + ProdutoDAO.PRODUTO_CHAVE_ESTOQUE   + " real not null	 	 	"
-        + "  );";
+	public static final String BASEDEDADOS_ARQUIVO = "appestoque.db";	
+    private static final int BASEDEDADOS_VERSAO = 0;
 	
 	public DatabaseHelper(Context context) {
         super(context, BASEDEDADOS_ARQUIVO, null, BASEDEDADOS_VERSAO);        
@@ -32,19 +19,37 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(DATABASE_CREATE);
+		db.execSQL(" create table "+ Tabelas.PRODUTOS 	 + " ( "
+					+ ProdutoDAO.PRODUTO_CHAVE_ID        + " integer primary key,  	"
+			        + ProdutoDAO.PRODUTO_CHAVE_NOME      + " text not null, 	 	" 
+			        + ProdutoDAO.PRODUTO_CHAVE_NUMERO    + " text not null,	 	 	"
+			        + ProdutoDAO.PRODUTO_CHAVE_PRECO     + " real not null	 	 	"
+			        + "  );");
+		
+		db.execSQL(" create table "+ Tabelas.CLIENTES 	 + " ( "
+				+ ProdutoDAO.PRODUTO_CHAVE_ID        + " integer primary key,  	"
+		        + ProdutoDAO.PRODUTO_CHAVE_NOME      + " text not null, 	 	" 
+		        + ProdutoDAO.PRODUTO_CHAVE_NUMERO    + " text not null,	 	 	"
+		        + ProdutoDAO.PRODUTO_CHAVE_PRECO     + " real not null	 	 	"
+		        + "  );");
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		
-		Log.d(TAG, "onUpgrade() de " + oldVersion + " para " + newVersion);
-		int version = oldVersion;
-        switch (version) {
-            case VERSAO_LANCAMENTO:
-                db.execSQL("ALTER TABLE " + Tabelas.PRODUTOS + " ADD COLUMN " + ProdutoDAO.PRODUTO_CHAVE_ESTOQUE + " real not null default 0 ");
-                version = VERSAO_3;
-        }
+		switch (newVersion) {
+			case 0: db.execSQL("DROP TABLE IF EXISTS " + Tabelas.PRODUTOS);
+			db.execSQL("DROP TABLE IF EXISTS " + Tabelas.PRODUTOS);
+		}
+		
+		Log.d( TAG , "onUpgrade() de " + oldVersion + " para " + newVersion );
+		
+//		int version = oldVersion;
+//        switch (version) {
+//            case VERSAO_LANCAMENTO:
+//                db.execSQL("ALTER TABLE " + Tabelas.PRODUTOS + " ADD COLUMN " + ProdutoDAO.PRODUTO_CHAVE_ESTOQUE + " real not null default 0 ");
+//                version = VERSAO_3;
+//        }
 		
 	}
 	

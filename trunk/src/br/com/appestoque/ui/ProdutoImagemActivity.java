@@ -31,7 +31,7 @@ public class ProdutoImagemActivity extends BaseAtividade {
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
 	    	produtoDAO = new ProdutoDAO(this);
-			Produto produto = produtoDAO.buscar(extras.getLong(ProdutoDAO.PRODUTO_CHAVE_ID));
+			Produto produto = produtoDAO.pesquisar(extras.getLong(ProdutoDAO.PRODUTO_CHAVE_ID));
 		    imagens = new String[]{	Util.armazenamentoExterno() + produto.getId().toString() + "_1.png",
 									Util.armazenamentoExterno() + produto.getId().toString() + "_2.png",
 									Util.armazenamentoExterno() + produto.getId().toString() + "_3.png",

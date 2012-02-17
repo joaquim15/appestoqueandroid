@@ -18,7 +18,7 @@ public class ProdutoEditarActivity extends Activity {
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
 	    	produtoDAO = new ProdutoDAO(this);
-			Produto produto = produtoDAO.buscar(extras.getLong(ProdutoDAO.PRODUTO_CHAVE_ID));
+			Produto produto = produtoDAO.pesquisar(extras.getLong(ProdutoDAO.PRODUTO_CHAVE_ID));
 			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());
 			((TextView) findViewById(R.id.edtNumero)).setText(produto.getNumero());
 			((TextView) findViewById(R.id.edtPreco)).setText(produto.getPreco().toString());
