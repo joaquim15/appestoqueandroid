@@ -37,7 +37,7 @@ public class ProdutoActivity extends BaseListaAtividade{
 		Cursor cursor = null;
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	        String query = intent.getStringExtra(SearchManager.QUERY);
-	        cursor = produtoDAO.buscar(query);
+	        cursor = produtoDAO.pesquisar(query);
 	    }else{
 	    	cursor = produtoDAO.listar();
 	    }
