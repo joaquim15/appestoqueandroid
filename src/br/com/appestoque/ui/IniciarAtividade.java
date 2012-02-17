@@ -147,8 +147,7 @@ public class IniciarAtividade extends BaseAtividade {
 									nome = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NOME);
 									numero = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NUMERO);
 									preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
-									estoque = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_ESTOQUE);
-									produtoDAO.criar(id, nome, numero, preco, estoque);
+									produtoDAO.criar(id, nome, numero, preco);
 								}
 								Util.dialogo(IniciarAtividade.this,
 										getString(R.string.mensagem_sincronismo_conclusao));
