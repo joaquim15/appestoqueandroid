@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import br.com.appestoque.dominio.Produto;
 import br.com.appestoque.dao.DatabaseHelper;
 
-public class ProdutoDAO {
+public class ProdutoDAO implements IDAO<Produto,Long> {
 	
 	public static final String PRODUTO_CHAVE_ID = "_id";
 	public static final String PRODUTO_CHAVE_NOME = "nome";
@@ -54,7 +54,7 @@ public class ProdutoDAO {
     	db.delete(TABELA, null, null);
     }
     
-    public Produto buscar(long id){
+    public Produto pesquisar(long id){
     	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
     	Cursor cursor =  db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
     							PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_PRECO, PRODUTO_CHAVE_ESTOQUE}, PRODUTO_CHAVE_ID + " = " + id , 
