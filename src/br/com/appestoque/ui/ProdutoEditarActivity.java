@@ -1,7 +1,7 @@
 package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
-import br.com.appestoque.dominio.Produto;
+import br.com.appestoque.dominio.suprimento.Produto;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import android.app.Activity;
 import android.os.Bundle;
