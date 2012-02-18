@@ -22,7 +22,6 @@ public class ProdutoEditarActivity extends Activity {
 			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());
 			((TextView) findViewById(R.id.edtNumero)).setText(produto.getNumero());
 			((TextView) findViewById(R.id.edtPreco)).setText(produto.getPreco().toString());
-			((TextView) findViewById(R.id.edtEstoque)).setText(produto.getEstoque().toString());
 		}
 	}
 	
