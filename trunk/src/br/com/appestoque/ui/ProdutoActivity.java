@@ -1,15 +1,12 @@
 package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
-import br.com.appestoque.Util;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -19,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.CursorAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -56,16 +52,8 @@ public class ProdutoActivity extends BaseListaAtividade{
 		public void bindView(View view, Context context, Cursor cursor) {
 			final TextView numero = (TextView) view.findViewById(R.id.numero);
             final TextView nome = (TextView) view.findViewById(R.id.nome);
-            final ImageView icone = (ImageView) view.findViewById(R.id.icone);
             numero.setText(cursor.getString(2));
             nome.setText(cursor.getString(1));
-            String imagem = Util.armazenamentoExterno() + cursor.getString(0) + "_1.png";
-            if(Util.arquivoExiste(imagem)){
-            	Bitmap bitmap = BitmapFactory.decodeFile(imagem);
-    			icone.setImageBitmap(bitmap);
-            }else{
-            	icone.setImageBitmap(null);
-            }
 		}
 
 		@Override
