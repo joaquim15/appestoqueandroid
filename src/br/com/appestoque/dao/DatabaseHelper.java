@@ -11,7 +11,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	private static final String TAG = "Appestoque";
 	
 	public static final String BASEDEDADOS_ARQUIVO = "appestoque.db";	
-    private static final int BASEDEDADOS_VERSAO = 0;
+    private static final int BASEDEDADOS_VERSAO = 1;
 	
 	public DatabaseHelper(Context context) {
         super(context, BASEDEDADOS_ARQUIVO, null, BASEDEDADOS_VERSAO);        
