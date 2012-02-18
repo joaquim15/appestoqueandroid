@@ -3,17 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:padding="6dip">
-    
-    <ImageView
-        android:id="@+id/icone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="6dip"
-        android:src="@drawable/icon"/>
-        
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dip"
