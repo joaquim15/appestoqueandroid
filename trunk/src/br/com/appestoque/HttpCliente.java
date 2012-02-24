@@ -8,10 +8,18 @@ import java.util.zip.GZIPInputStream;
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import br.com.appestoque.ui.IniciarAtividade;
+import android.content.Context;
 import android.util.Log;
 
 public class HttpCliente {
@@ -19,7 +27,6 @@ public class HttpCliente {
 	private static final String TAG = "HttpClient";
 
 	public static JSONObject SendHttpPost(String URL, JSONObject jsonObjSend) {
-
 		try {
 			DefaultHttpClient httpclient = new DefaultHttpClient();
 			HttpPost httpPostRequest = new HttpPost(URL);
@@ -61,9 +68,7 @@ public class HttpCliente {
 				return jsonObjRecv;
 			} 
 
-		}
-		catch (Exception e)
-		{
+		}catch (Exception e){
 			// More about HTTP exception handling in another tutorial.
 			// For now we just print the stack trace.
 			e.printStackTrace();
@@ -101,5 +106,27 @@ public class HttpCliente {
 		return sb.toString();
 	}
 	
+	public static JSONArray ReceiveHttpPost(String URL, Context context) {
+	
+		JSONArray objetos = null;
+		try{
+			HttpClient httpclient = new DefaultHttpClient();
+			HttpGet httpGet = new HttpGet(URL);
+			HttpResponse httpResponse = httpclient.execute(httpGet);
+			HttpEntity httpEntity = httpResponse.getEntity();
+			InputStream inputStream = httpEntity.getContent();
+			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+			String data = bufferedReader.readLine();
+			objetos = new JSONArray(data);
+		} catch (ClientProtocolException e) {
+			Util.dialogo(context, String.valueOf(R.string.mensagem_clientProtocolException));
+		} catch (IOException e) {
+			Util.dialogo(context,String.valueOf(R.string.mensagem_ioexception));
+		} catch (JSONException e) {
+			Util.dialogo(context,String.valueOf(R.string.mensagem_jsonexception));
+		}
+		return objetos;
+		
+	}
 	
 }
