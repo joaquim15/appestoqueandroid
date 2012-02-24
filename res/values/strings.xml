@@ -17,6 +17,12 @@
 	<string name="mensagem_sincronismo">Buscando informações. Aguarde...</string>
 	<string name="mensagem_sincronismo_conclusao">Processo de sincronismo concluido</string>
 	
+	<string name="mensagem_1">Sincronizando. Aguarde...</string>
+	<string name="mensagem_2">Informação de rede inexistente.</string>
+	<string name="mensagem_3">Conectividade inexistente</string>
+	<string name="mensagem_4">Erro ao atualizar produto</string>
+	
+	
 	<string name="empty_sessions">No sessions found</string>
 	<string name="no_notes">No Notes Yet</string>
 	
