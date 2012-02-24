@@ -140,7 +140,6 @@ public class IniciarAtividade extends BaseAtividade {
 								String nome = null;
 								String numero = null;
 								Double preco = null;
-								Double estoque = null;
 								produtoDAO.limpar();
 								for (int i = 0; i <= objetos.length() - 1; ++i) {
 									id = objetos.getJSONObject(i).getLong(ProdutoDAO.PRODUTO_CHAVE_ID);

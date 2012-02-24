@@ -8,13 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -64,39 +59,39 @@ public class ProdutoActivity extends BaseListaAtividade{
 	}
 	
     public void onListItemClick(ListView l , View v, int posicao, long id){
-//    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
-//    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
-//    	startActivity(intent);
+    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
+    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
+    	startActivity(intent);
     }
     
-    @Override
-	public void onCreateContextMenu(ContextMenu menu, View v,
-			ContextMenuInfo menuInfo) {
-		super.onCreateContextMenu(menu, v, menuInfo);
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.produto_menu, menu);
-	}
+//    @Override
+//	public void onCreateContextMenu(ContextMenu menu, View v,
+//			ContextMenuInfo menuInfo) {
+//		super.onCreateContextMenu(menu, v, menuInfo);
+//		MenuInflater inflater = getMenuInflater();
+//		inflater.inflate(R.menu.produto_menu, menu);
+//	}
     
-	@Override
-	public boolean onContextItemSelected(MenuItem item) {
-		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
-				.getMenuInfo();
-		Intent intent = null;
-		switch (item.getItemId()) {
-		case R.id.item_menu_texto:
-			intent = new Intent(this, ProdutoEditarActivity.class);
-			intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, info.id);
-			startActivity(intent);
-			return true;
-		case R.id.item_menu_imagem:
-			intent = new Intent(this, ProdutoImagemActivity.class);
-			intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, info.id);
-			startActivity(intent);
-			return true;
-		default:
-			return super.onContextItemSelected(item);
-		}
-	}
+//	@Override
+//	public boolean onContextItemSelected(MenuItem item) {
+//		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
+//				.getMenuInfo();
+//		Intent intent = null;
+//		switch (item.getItemId()) {
+//		case R.id.item_menu_texto:
+//			intent = new Intent(this, ProdutoEditarActivity.class);
+//			intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, info.id);
+//			startActivity(intent);
+//			return true;
+//		case R.id.item_menu_imagem:
+//			intent = new Intent(this, ProdutoImagemActivity.class);
+//			intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, info.id);
+//			startActivity(intent);
+//			return true;
+//		default:
+//			return super.onContextItemSelected(item);
+//		}
+//	}
     
     public void onIniciarClick(Context context) {
         final Intent intent = new Intent(context,IniciarAtividade.class);
