@@ -26,7 +26,7 @@ public class ClienteActivity extends BaseListaAtividade{
 		Cursor cursor = null;
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	        String query = intent.getStringExtra(SearchManager.QUERY);
-	        //cursor = clienteDAO.pesquisar(query);
+	        cursor = clienteDAO.pesquisar(query);
 	    }else{
 	    	cursor = clienteDAO.listar();
 	    }
