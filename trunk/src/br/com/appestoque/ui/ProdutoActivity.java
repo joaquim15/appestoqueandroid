@@ -35,27 +35,7 @@ public class ProdutoActivity extends BaseListaAtividade{
 			super.handleMessage(msg);	
 			progressDialog.dismiss();
 		}
-		
 	};
-	
-	@Override
-    protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		Intent intent = getIntent();		
-		setContentView(R.layout.produto_activity);
-		produtoDAO = new ProdutoDAO(this);
-		Cursor cursor = null;
-	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-	        String query = intent.getStringExtra(SearchManager.QUERY);
-	        cursor = produtoDAO.pesquisar(query);
-	    }else{
-	    	cursor = produtoDAO.listar();
-	    }
-	    startManagingCursor(cursor);	    
-		setListAdapter(new ProdutosAdapter(this,cursor));
-		registerForContextMenu(getListView());
-	}
 
 	private class ProdutosAdapter extends CursorAdapter {
 
@@ -76,6 +56,25 @@ public class ProdutoActivity extends BaseListaAtividade{
 			return getLayoutInflater().inflate(R.layout.produto_activity_lista, parent, false);
 		}
 		
+	}
+	
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		Intent intent = getIntent();		
+		setContentView(R.layout.produto_activity);
+		produtoDAO = new ProdutoDAO(this);
+		Cursor cursor = null;
+	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+	        String query = intent.getStringExtra(SearchManager.QUERY);
+	        cursor = produtoDAO.pesquisar(query);
+	    }else{
+	    	cursor = produtoDAO.listar();
+	    }
+	    startManagingCursor(cursor);	    
+		setListAdapter(new ProdutosAdapter(this,cursor));
+		registerForContextMenu(getListView());
 	}
 	
     public void onListItemClick(ListView l , View v, int posicao, long id){
