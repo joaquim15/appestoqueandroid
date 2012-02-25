@@ -17,6 +17,7 @@ import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import br.com.appestoque.Constantes;
 import br.com.appestoque.HttpCliente;
@@ -135,6 +136,12 @@ public class ClienteActivity extends BaseListaAtividade{
 			Util.dialogo(ClienteActivity.this, getString(R.string.mensagem_3));
 		}	
     	
+    }
+
+    public void onListItemClick(ListView l , View v, int posicao, long id){
+    	Intent intent = new Intent(this, ClienteEditarActivity.class);
+    	intent.putExtra(ClienteDAO.CLIENTE_CHAVE_ID, id);
+    	startActivity(intent);
     }
     
     public void onIniciarClick(Context context) {
