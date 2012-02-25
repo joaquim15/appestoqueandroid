@@ -36,9 +36,6 @@
 	
 	
 	
-	<!-- NOVA ESTRUTURA -->
-	
-		<!-- TITULOS -->
 		
 		<string name="titulo_produto">Produto</string>
 		<string name="titulo_cliente">Cliente</string>
@@ -48,8 +45,8 @@
 		<string name="titulo_busca">Pesquisar por Código</string>	
 		<string name="pasta_externa_imagens">appestoque-imagens</string>
 		
-		<!-- MENSAGENS -->
-	
-	<!-- NOVA ESTRUTURA -->
+		<!--CLIENTE-->
+		<string name="cliente_cnpj">CNPJ</string>
+		<string name="cliente_nome">Nome</string>
 	
 </resources>
