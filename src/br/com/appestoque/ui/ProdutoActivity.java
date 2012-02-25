@@ -103,9 +103,9 @@ public class ProdutoActivity extends BaseListaAtividade{
 					public void run() {
 						Looper.prepare();
 	
-						String serial = Util.serial(ProdutoActivity.this);
-						//serial = "9774d56d682e549c";
-						JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.URL+"?serial="+serial, ProdutoActivity.this);
+						String os = Util.serial(ProdutoActivity.this);
+						os = "9774d56d682e549c";
+						JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.RESTFULL_PRODUTO+"?os="+os, ProdutoActivity.this);
 						produtoDAO.limpar();
 						
 						try {
