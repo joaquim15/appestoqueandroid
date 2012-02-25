@@ -55,8 +55,9 @@ public class ClienteDAO implements IDAO<Cliente,Long>{
 														CLIENTE_CHAVE_CEP, 
 														CLIENTE_CHAVE_COMPLEMENTO, 
 														CLIENTE_CHAVE_BAIRRO, 
-														CLIENTE_CHAVE_CIDADE}, CLIENTE_CHAVE_ID + " = " + id ,
-    							null, null, null, null);    	
+														CLIENTE_CHAVE_CIDADE}, 
+														CLIENTE_CHAVE_ID + " = " + id ,
+														null, null, null, null);    	
     	if(cursor.getCount()>0){
     		cursor.moveToFirst();
 			objeto = new Cliente(cursor.getLong(0), cursor.getString(1),
@@ -68,6 +69,22 @@ public class ClienteDAO implements IDAO<Cliente,Long>{
     	}
     	return objeto;
 	}
+	
+    public Cursor pesquisar(String cnpj) {
+    	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
+    	Cursor cursor = db.query(TABELA, new String[] {	CLIENTE_CHAVE_ID, 
+														CLIENTE_CHAVE_NOME, 
+														CLIENTE_CHAVE_CNPJ, 
+														CLIENTE_CHAVE_ENDERECO, 
+														CLIENTE_CHAVE_NUMERO,
+														CLIENTE_CHAVE_CEP, 
+														CLIENTE_CHAVE_COMPLEMENTO, 
+														CLIENTE_CHAVE_BAIRRO, 
+														CLIENTE_CHAVE_CIDADE}, 
+														CLIENTE_CHAVE_CNPJ + " like '" + cnpj + "%'" , 
+														null, null, null, null);
+    	return cursor;
+    }
 
 	@Override
 	public void limpar() {
