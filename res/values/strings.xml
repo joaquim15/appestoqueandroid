@@ -41,6 +41,7 @@
 		<!-- TITULOS -->
 		
 		<string name="titulo_produto">Produto</string>
+		<string name="titulo_cliente">Cliente</string>
 		<string name="titulo_usuario">Usuário</string>
 		<string name="titulo_menu">Menu</string>	
 		<string name="texto_busca">Pesquisar por Código</string>
