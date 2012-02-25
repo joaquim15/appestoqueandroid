@@ -14,6 +14,7 @@
 		</activity>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoImagemActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoEditarActivity"/>
+		
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.SEARCH" />
@@ -21,6 +22,15 @@
 			</intent-filter>
 			<meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
 		</activity>
+		
+		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ClienteActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.SEARCH" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+			<meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
+		</activity>
+		
 	</application>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
