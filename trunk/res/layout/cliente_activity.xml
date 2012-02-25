@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@color/fundo_branco">
+
+	<LinearLayout style="@style/Titulo_Barra">
+		<ImageButton style="@style/Titulo_Barra_Acao"
+			android:contentDescription="@string/description_home" 
+			android:src="@drawable/ic_title_home"
+			android:onClick="onIniciarClick" />
+		<ImageView style="@style/Titulo_Barra_Separador" />
+		<TextView style="@style/TitleBarText" 
+				  android:text="@string/titulo_produto" />
+		<ImageView style="@style/TitleBarSeparator" />
+		<ImageButton style="@style/Titulo_Barra_Acao"
+			android:contentDescription="@string/description_search" 
+			android:src="@drawable/ic_title_search"
+			android:onClick="onBuscarClick" />
+		<ImageView style="@style/Titulo_Barra_Separador" />
+        <ImageButton style="@style/Titulo_Barra_Acao"
+            android:id="@+id/btn_atualizar"
+            android:src="@drawable/ic_title_refresh"
+            android:onClick="onAtualizarClick" />	
+	</LinearLayout>
+
+	 <ListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/fundo_branco"/>
+    
+</LinearLayout>
