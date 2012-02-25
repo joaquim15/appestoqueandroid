@@ -13,7 +13,7 @@
 			android:onClick="onIniciarClick" />
 		<ImageView style="@style/Titulo_Barra_Separador" />
 		<TextView style="@style/TitleBarText" 
-				  android:text="@string/titulo_produto" />
+				  android:text="@string/titulo_cliente" />
 		<ImageView style="@style/TitleBarSeparator" />
 		<ImageButton style="@style/Titulo_Barra_Acao"
 			android:contentDescription="@string/description_search" 
