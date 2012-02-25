@@ -48,5 +48,11 @@
 		<!--CLIENTE-->
 		<string name="cliente_cnpj">CNPJ</string>
 		<string name="cliente_nome">Nome</string>
+		<string name="cliente_endereco">Endereco</string>
+		<string name="cliente_numero">Número</string>
+		<string name="cliente_cep">Cep</string>
+		<string name="cliente_complemento">Complemento</string>
+		<string name="cliente_bairro">Bairro</string>
+		<string name="cliente_cidade">Cidade</string>
 	
 </resources>
