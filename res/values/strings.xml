@@ -21,6 +21,7 @@
 	<string name="mensagem_2">Informação de rede inexistente.</string>
 	<string name="mensagem_3">Conectividade inexistente</string>
 	<string name="mensagem_4">Erro ao atualizar produto</string>
+	<string name="mensagem_5">Nenhuma informação foi encontrada no sincronismo.</string>
 	
 	
 	<string name="empty_sessions">No sessions found</string>
