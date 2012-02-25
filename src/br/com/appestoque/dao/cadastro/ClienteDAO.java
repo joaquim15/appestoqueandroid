@@ -1,5 +1,6 @@
 package br.com.appestoque.dao.cadastro;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,7 +20,7 @@ public class ClienteDAO implements IDAO<Cliente,Long>{
 	public static final String CLIENTE_CHAVE_BAIRRO = "bairro";
 	public static final String CLIENTE_CHAVE_CIDADE = "cidade";
 
-	private static final String TABELA = "cliente";
+	private static final String TABELA = "clientes";
     
 	private DatabaseHelper databaseHelper;
 	
@@ -42,6 +43,30 @@ public class ClienteDAO implements IDAO<Cliente,Long>{
 														null, null, null, null, null);
     	return cursor;
 	}
+	
+	public long criar(	Long id,
+						String nome, 
+						String cnpj, 
+						String endereco,
+						Long numero, 
+						String cep, 
+						String complemento, 
+						String bairro,
+						String cidade) {
+    	SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(CLIENTE_CHAVE_ID,id);
+        initialValues.put(CLIENTE_CHAVE_NOME,nome); 
+        initialValues.put(CLIENTE_CHAVE_CNPJ,cnpj); 
+        initialValues.put(CLIENTE_CHAVE_ENDERECO,endereco);
+        initialValues.put(CLIENTE_CHAVE_NUMERO,numero); 
+        initialValues.put(CLIENTE_CHAVE_CEP,cep); 
+        initialValues.put(CLIENTE_CHAVE_COMPLEMENTO,complemento); 
+        initialValues.put(CLIENTE_CHAVE_BAIRRO,bairro);
+        initialValues.put(CLIENTE_CHAVE_CIDADE,cidade);
+        long ret = db.insert(TABELA, null,initialValues);
+        return ret;
+    }
 
 	@Override
 	public Cliente pesquisar(long id) {
