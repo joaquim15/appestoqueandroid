@@ -12,9 +12,11 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
-		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoImagemActivity"/>
-		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoEditarActivity"/>
 		
+<!-- 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoImagemActivity"/> -->
+
+		<!-- SUPRIMENTO -->
+		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoEditarActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ProdutoActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.SEARCH" />
@@ -23,6 +25,8 @@
 			<meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
 		</activity>
 		
+		<!-- CADASTRO -->
+		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ClienteEditarActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ClienteActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.SEARCH" />
