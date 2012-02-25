@@ -6,7 +6,6 @@ public class Produto {
 	private String nome;
 	private String numero;
 	private Double preco;
-	private Double estoque;
 	
 	public Produto() {
 	}
@@ -34,14 +33,6 @@ public class Produto {
 	}
 	public void setPreco(Double preco) {
 		this.preco = preco;
-	}
-
-	public Double getEstoque() {
-		return estoque;
-	}
-
-	public void setEstoque(Double estoque) {
-		this.estoque = estoque;
 	}
 
 }

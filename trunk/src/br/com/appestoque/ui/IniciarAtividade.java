@@ -128,7 +128,7 @@ public class IniciarAtividade extends BaseAtividade {
 
 								HttpClient httpclient = new DefaultHttpClient();
 								String serial = Util.serial(IniciarAtividade.this);
-								//serial = "9774d56d682e549c";
+								serial = "9774d56d682e549c";
 								HttpGet httpGet = new HttpGet(URL+"?serial="+serial);
 								HttpResponse httpResponse = httpclient.execute(httpGet);
 								HttpEntity httpEntity = httpResponse.getEntity();
