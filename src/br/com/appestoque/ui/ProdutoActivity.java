@@ -1,8 +1,6 @@
 package br.com.appestoque.ui;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-
 import br.com.appestoque.Constantes;
 import br.com.appestoque.HttpCliente;
 import br.com.appestoque.R;
@@ -35,9 +33,10 @@ public class ProdutoActivity extends BaseListaAtividade{
 	private Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
+			super.handleMessage(msg);	
 			progressDialog.dismiss();
 		}
+		
 	};
 	
 	@Override
@@ -102,30 +101,27 @@ public class ProdutoActivity extends BaseListaAtividade{
 				new Thread() {
 					public void run() {
 						Looper.prepare();
-	
 						String os = Util.serial(ProdutoActivity.this);
 						os = "9774d56d682e549c";
-						JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.RESTFULL_PRODUTO+"?os="+os, ProdutoActivity.this);
-						produtoDAO.limpar();
-						
+						//os = "6d682e549c";
 						try {
-							Long id;
-							String nome = null;
-							String numero = null;
-							Double preco = null;
-							for (int i = 0; i <= objetos.length() - 1; ++i) {
-								id = objetos.getJSONObject(i).getLong(ProdutoDAO.PRODUTO_CHAVE_ID);
-								nome = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NOME);
-								numero = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NUMERO);
-								preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
-								produtoDAO.criar(id, nome, numero, preco);
-							}
-						} catch (JSONException e) {
-							Util.dialogo(ProdutoActivity.this,getString(R.string.mensagem_4));
-							Log.e(Constantes.TAG,e.getMessage());
-							e.printStackTrace();
+							JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.RESTFULL_PRODUTO + "?os=" + os,ProdutoActivity.this);
+							if (objetos != null) {
+								produtoDAO.limpar();
+								Long id;
+								String nome = null;
+								String numero = null;
+								Double preco = null;
+								for (int i = 0; i <= objetos.length() - 1; ++i) {
+									id = objetos.getJSONObject(i).getLong(ProdutoDAO.PRODUTO_CHAVE_ID);
+									nome = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NOME);
+									numero = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NUMERO);
+									preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
+									produtoDAO.criar(id, nome, numero, preco);
+								}
+							}						
+						} catch (Exception e) {
 						}
-						
 						handler.sendEmptyMessage(0);
 					}
 				}.start();
