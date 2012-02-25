@@ -45,8 +45,10 @@ public class ClienteActivity extends BaseListaAtividade{
 
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
-            final TextView nome = (TextView) view.findViewById(R.id.nome);
+			final TextView cnpj = (TextView) view.findViewById(R.id.cnpj);
+            final TextView nome = (TextView) view.findViewById(R.id.nome);            
             nome.setText(cursor.getString(1));
+            cnpj.setText(cursor.getString(2));
 		}
 
 		@Override
