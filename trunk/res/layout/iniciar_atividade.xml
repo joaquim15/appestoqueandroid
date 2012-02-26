@@ -35,6 +35,11 @@
                 android:text="@string/btn_cliente"
                 android:onClick="onClienteClick"
                 android:drawableTop="@drawable/home_btn_cliente"/>    
+            <Button android:id="@+id/btn_pedido"
+                style="@style/botao"
+                android:text="@string/btn_pedido"
+                android:onClick="onPedidoClick"
+                android:drawableTop="@drawable/home_btn_pedido"/>    
      </LinearLayout>
     
 </LinearLayout>
