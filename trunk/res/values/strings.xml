@@ -54,5 +54,9 @@
 		<string name="cliente_complemento">Complemento</string>
 		<string name="cliente_bairro">Bairro</string>
 		<string name="cliente_cidade">Cidade</string>
+		
+		<string name="menu_visualizar">Visualizar</string>
+		<string name="menu_criar_pedido">Criar Pedido</string>
+		<string name="menu_sincronizar">Sincronizar</string>
 	
 </resources>
