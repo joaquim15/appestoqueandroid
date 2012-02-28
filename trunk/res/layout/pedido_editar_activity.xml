@@ -7,22 +7,24 @@
 	android:background="@color/fundo_branco">
 	<LinearLayout style="@style/Titulo_Barra">
 		<TextView style="@style/TitleBarText" 
-				  android:text="@string/titulo_produto" />
+				  android:text="@string/titulo_pedido" />
 	</LinearLayout>
-			<TextView android:id="@+id/txtPreco" 
-					  android:text="Número"
+			<TextView android:id="@+id/txtNumero" 
+					  android:text="@string/cliente_nome"
 					  android:textColor="#000000"
 					  android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent" 
 					  style="@style/SessionTitle"/>
-			<EditText android:layout_width="fill_parent" android:id="@+id/editText1" android:layout_height="wrap_content">
+			<EditText android:layout_width="fill_parent" 
+			          android:id="@+id/editText1" 
+			          android:layout_height="wrap_content">
 				<requestFocus></requestFocus>
 			</EditText>
-			<TextView android:id="@+id/txtPreco" 
+			<TextView android:id="@+id/txtData" 
 					  android:text="Data"
 					  android:textColor="#000000"
 					  android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent" 
 					  style="@style/SessionTitle"/>
-			<DatePicker android:id="@+id/data" android:layout_width="wrap_content" android:layout_height="wrap_content"></DatePicker>
+			<DatePicker android:id="@+id/data" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
 </LinearLayout>
