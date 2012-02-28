@@ -58,6 +58,7 @@
 		<string name="cliente_cidade">Cidade</string>
 		
 		<!--PEDIDO-->
+		<string name="pedido_cliente">Cliente</string>
 		<string name="pedido_numero">Número</string>
 		<string name="pedido_data">Data</string>
 		
