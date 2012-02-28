@@ -9,6 +9,7 @@ public class Pedido {
 	private Long id;
 	private String numero;
 	private Date data;
+	private String observacao;
 	private Long idCliente;
 	private Cliente cliente;
 	
@@ -19,11 +20,13 @@ public class Pedido {
 	public Pedido(	Long id, 
 					String numero, 
 					Date data, 
+					String observacao,
 					Long idCliente) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.data = data;
+		this.observacao = observacao; 
 		this.idCliente = idCliente;
 	}
 	
@@ -51,6 +54,14 @@ public class Pedido {
 		this.data = data;
 	}
 	
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
 	public Long getIdCliente() {
 		return idCliente;
 	}
