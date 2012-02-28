@@ -171,7 +171,8 @@ public class ClienteActivity extends BaseListaAtividade{
 	public boolean onContextItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 			case R.id.item_menu_criar_pedido:
-				Toast.makeText(getApplicationContext(), "Criar pedido", Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(this, PedidoEditarActivity.class);
+		    	startActivity(intent);
 				return true;
 			case R.id.item_menu_visualizar:
 				Toast.makeText(getApplicationContext(), "Visualizar", Toast.LENGTH_SHORT).show();
