@@ -26,6 +26,7 @@
 		</activity>
 		
 		<!-- CADASTRO -->
+		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.PedidoEditarActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ClienteEditarActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ClienteActivity">
 			<intent-filter>
