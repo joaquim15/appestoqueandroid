@@ -14,11 +14,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import br.com.appestoque.Constantes;
 import br.com.appestoque.HttpCliente;
 import br.com.appestoque.R;
@@ -144,15 +149,37 @@ public class ClienteActivity extends BaseListaAtividade{
     	startActivity(intent);
     }
     
-    public void onIniciarClick(Context context) {
-        final Intent intent = new Intent(context,IniciarAtividade.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        context.startActivity(intent);
-    }
+	public void onIniciarClick(Context context) {
+		final Intent intent = new Intent(context, IniciarAtividade.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		context.startActivity(intent);
+	}
 
     public void onBuscarClick(Activity activity) {
         activity.startSearch(null, false, Bundle.EMPTY, false);
     }
+    
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.cliente_menu, menu);
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.item_menu_criar_pedido:
+				Toast.makeText(getApplicationContext(), "Criar pedido", Toast.LENGTH_SHORT).show();
+				return true;
+			case R.id.item_menu_visualizar:
+				Toast.makeText(getApplicationContext(), "Visualizar", Toast.LENGTH_SHORT).show();
+				return true;
+			default:
+				return super.onContextItemSelected(item);
+		}
+	}
     
     @Override
     protected void onDestroy(){
@@ -162,3 +189,17 @@ public class ClienteActivity extends BaseListaAtividade{
 	
 
 }
+
+//final CharSequence[] items = {getString(R.string.menu_criar_pedido),
+//		getString(R.string.menu_sincronizar),
+//		getString(R.string.menu_visualizar)};
+//AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//clienteDAO = new ClienteDAO(this);
+//builder.setTitle(clienteDAO.pesquisar(id).getNome());
+//builder.setItems(items, new DialogInterface.OnClickListener() {
+//    public void onClick(DialogInterface dialog, int item) {
+//        Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
+//    }
+//});
+//AlertDialog alert = builder.create();
+//alert.show();
