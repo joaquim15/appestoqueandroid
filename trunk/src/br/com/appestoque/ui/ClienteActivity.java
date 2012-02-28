@@ -20,6 +20,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -169,9 +170,11 @@ public class ClienteActivity extends BaseListaAtividade{
 
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		switch (item.getItemId()) {
 			case R.id.item_menu_criar_pedido:
 				Intent intent = new Intent(this, PedidoEditarActivity.class);
+				intent.putExtra(ClienteDAO.CLIENTE_CHAVE_ID, info.id);
 		    	startActivity(intent);
 				return true;
 			case R.id.item_menu_visualizar:
