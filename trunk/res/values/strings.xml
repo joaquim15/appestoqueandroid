@@ -36,6 +36,8 @@
 	
 	
 	
+		<string name="botao_salvar">Salvar</string>
+		<string name="botao_cancelar">Cancelar</string>
 		
 		<string name="titulo_produto">Produto</string>
 		<string name="titulo_cliente">Cliente</string>
@@ -61,6 +63,7 @@
 		<string name="pedido_cliente">Cliente</string>
 		<string name="pedido_numero">Número</string>
 		<string name="pedido_data">Data</string>
+		<string name="pedido_obs">Observação</string>
 		
 		<string name="menu_visualizar">Visualizar</string>
 		<string name="menu_criar_pedido">Criar pedido</string>
