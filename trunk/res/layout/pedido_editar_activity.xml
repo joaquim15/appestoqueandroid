@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" 
+	android:background="@color/fundo_branco">
+	<LinearLayout style="@style/Titulo_Barra">
+		<TextView style="@style/TitleBarText" 
+				  android:text="@string/titulo_produto" />
+	</LinearLayout>
+			<TextView android:id="@+id/txtPreco" 
+					  android:text="Número"
+					  android:textColor="#000000"
+					  android:layout_height="wrap_content" 
+				 	  android:layout_width="fill_parent" 
+					  style="@style/SessionTitle"/>
+			<EditText android:layout_width="fill_parent" android:id="@+id/editText1" android:layout_height="wrap_content">
+				<requestFocus></requestFocus>
+			</EditText>
+			<TextView android:id="@+id/txtPreco" 
+					  android:text="Data"
+					  android:textColor="#000000"
+					  android:layout_height="wrap_content" 
+				 	  android:layout_width="fill_parent" 
+					  style="@style/SessionTitle"/>
+			<DatePicker android:id="@+id/data" android:layout_width="wrap_content" android:layout_height="wrap_content"></DatePicker>
+</LinearLayout>
