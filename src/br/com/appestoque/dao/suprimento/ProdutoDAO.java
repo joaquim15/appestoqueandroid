@@ -15,7 +15,7 @@ public class ProdutoDAO implements IDAO<Produto,Long> {
     public static final String PRODUTO_CHAVE_NUMERO = "numero";
     public static final String PRODUTO_CHAVE_PRECO = "preco";
     
-    private static final String TABELA = "produtos";
+    public static final String TABELA = "produtos";
     
 	private DatabaseHelper databaseHelper;
 	
