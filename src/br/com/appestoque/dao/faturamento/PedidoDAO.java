@@ -1,5 +1,9 @@
 package br.com.appestoque.dao.faturamento;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -35,17 +39,54 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
     	return cursor;
 	}
 	
+	public long criar(String numero, Date data, String obs, Long idCliente) {
+    	SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        ContentValues initialValues = new ContentValues();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+        //initialValues.put(PEDIDO_CHAVE_ID,id);
+        initialValues.put(PEDIDO_CHAVE_NUMERO,numero);
+        initialValues.put(PEDIDO_CHAVE_DATA,dateFormat.format(data));
+        initialValues.put(PEDIDO_CHAVE_OBS,obs);
+        initialValues.put(PEDIDO_CHAVE_CLIENTE,idCliente);
+        
+        long ret = db.insert(TABELA, null,initialValues);
+        return ret;
+    }
+	
 	@Override
 	public Pedido pesquisar(long id) {
-		return null;
+    	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
+    	Cursor cursor =  db.query(TABELA, new String[] {PEDIDO_CHAVE_ID,
+														PEDIDO_CHAVE_NUMERO,
+														PEDIDO_CHAVE_DATA,
+														PEDIDO_CHAVE_OBS,
+														PEDIDO_CHAVE_CLIENTE}, PEDIDO_CHAVE_ID + " = " + id , 
+    							null, null, null, null);    	
+    	if(cursor.getCount()>0){
+    		cursor.moveToFirst();
+    		Pedido pedido = new Pedido();
+    		pedido.setId(cursor.getLong(0));
+    		pedido.setNumero(cursor.getString(1));
+    		pedido.setData(new Date(cursor.getString(2)));
+    		pedido.setObs(cursor.getString(3));
+    		pedido.setIdCliente(cursor.getLong(4));
+    		return pedido;
+    	}else{
+    		return null;
+    	}
 	}
 	
 	@Override
 	public void limpar() {
+		SQLiteDatabase db = databaseHelper.getWritableDatabase();
+    	db.delete(TABELA, null, null);
 	}
 	
 	@Override
 	public void fechar() {
+		if(databaseHelper!=null){
+    		databaseHelper.close();
+    	}
 	}
 
 }
