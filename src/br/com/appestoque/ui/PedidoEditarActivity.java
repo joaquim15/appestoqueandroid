@@ -3,7 +3,6 @@ package br.com.appestoque.ui;
 import java.util.Calendar;
 
 import br.com.appestoque.R;
-import br.com.appestoque.Util;
 import br.com.appestoque.dao.cadastro.ClienteDAO;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dominio.cadastro.Cliente;
