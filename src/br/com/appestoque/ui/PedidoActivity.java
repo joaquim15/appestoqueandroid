@@ -33,7 +33,7 @@ public class PedidoActivity extends BaseListaAtividade{
 
 		@Override
 		public View newView(Context context, Cursor cursor, ViewGroup parent) {
-			return getLayoutInflater().inflate(R.layout.cliente_activity_lista, parent, false);
+			return getLayoutInflater().inflate(R.layout.pedido_activity_lista, parent, false);
 		}
 		
 	}
@@ -43,7 +43,7 @@ public class PedidoActivity extends BaseListaAtividade{
 		super.onCreate(savedInstanceState);
 		
 		Intent intent = getIntent();		
-		setContentView(R.layout.cliente_activity);
+		setContentView(R.layout.pedido_activity);
 		pedidoDAO = new PedidoDAO(this);
 		Cursor cursor = null;
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
