@@ -20,7 +20,7 @@ public class ClienteDAO implements IDAO<Cliente,Long>{
 	public static final String CLIENTE_CHAVE_BAIRRO = "bairro";
 	public static final String CLIENTE_CHAVE_CIDADE = "cidade";
 
-	private static final String TABELA = "clientes";
+	public static final String TABELA = "clientes";
     
 	private DatabaseHelper databaseHelper;
 	

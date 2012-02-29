@@ -1,6 +1,7 @@
 package br.com.appestoque.dao;
 
 import br.com.appestoque.dao.cadastro.ClienteDAO;
+import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,24 +21,32 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		
-		db.execSQL(" create table "+ Tabelas.PRODUTOS 	+ " ( "
-					+ ProdutoDAO.PRODUTO_CHAVE_ID       + " integer primary key,  	"
-			        + ProdutoDAO.PRODUTO_CHAVE_NOME     + " text not null, 	 		" 
-			        + ProdutoDAO.PRODUTO_CHAVE_NUMERO   + " text not null,	 	 	"
-			        + ProdutoDAO.PRODUTO_CHAVE_PRECO    + " real not null	 	 	"
+		db.execSQL(" create table "+ ProdutoDAO.TABELA 		+ " ( "
+					+ ProdutoDAO.PRODUTO_CHAVE_ID       	+ " integer primary key,  				"
+			        + ProdutoDAO.PRODUTO_CHAVE_NOME     	+ " text not null, 	 					" 
+			        + ProdutoDAO.PRODUTO_CHAVE_NUMERO   	+ " text not null,	 	 				"
+			        + ProdutoDAO.PRODUTO_CHAVE_PRECO    	+ " real not null	 	 				"
 			        + "  ); ");
 		
-		db.execSQL(" create table "+ Tabelas.CLIENTES 	+ " ( "
-				+ ClienteDAO.CLIENTE_CHAVE_ID        	+ " integer primary key,  	"
-		        + ClienteDAO.CLIENTE_CHAVE_NOME      	+ " text not null, 	 		" 
-		        + ClienteDAO.CLIENTE_CHAVE_CNPJ      	+ " text not null,	 	 	"
-		        + ClienteDAO.CLIENTE_CHAVE_ENDERECO  	+ " text not null,	 	 	"
-		        + ClienteDAO.CLIENTE_CHAVE_NUMERO    	+ " INTEGER not null,	 	"
-		        + ClienteDAO.CLIENTE_CHAVE_CEP       	+ " text not null,	 	 	"
-		        + ClienteDAO.CLIENTE_CHAVE_COMPLEMENTO  + " text not null,	 	 	"
-		        + ClienteDAO.CLIENTE_CHAVE_BAIRRO  		+ " text not null,	 	 	"
-		        + ClienteDAO.CLIENTE_CHAVE_CIDADE  		+ " text not null	 	 	"
-		        + "  ); ");
+		db.execSQL(" create table "+ ClienteDAO.TABELA 		+ " ( "
+					+ ClienteDAO.CLIENTE_CHAVE_ID        	+ " integer primary key,  				"
+			        + ClienteDAO.CLIENTE_CHAVE_NOME      	+ " text not null, 	 					" 
+			        + ClienteDAO.CLIENTE_CHAVE_CNPJ      	+ " text not null,	 	 				"
+			        + ClienteDAO.CLIENTE_CHAVE_ENDERECO  	+ " text not null,	 	 				"
+			        + ClienteDAO.CLIENTE_CHAVE_NUMERO    	+ " integer not null,	 				"
+			        + ClienteDAO.CLIENTE_CHAVE_CEP       	+ " text not null,	 	 				"
+			        + ClienteDAO.CLIENTE_CHAVE_COMPLEMENTO  + " text not null,	 	 				"
+			        + ClienteDAO.CLIENTE_CHAVE_BAIRRO  		+ " text not null,	 	 				"
+			        + ClienteDAO.CLIENTE_CHAVE_CIDADE  		+ " text not null	 	 				"
+			        + "  ); ");
+		
+		db.execSQL(" create table "+ PedidoDAO.TABELA 		+ " ( "
+					+ PedidoDAO.PEDIDO_CHAVE_ID  			+ " integer primary key AUTOINCREMENT,	"
+			        + PedidoDAO.PEDIDO_CHAVE_NUMERO     	+ " text not null, 	 					" 
+			        + PedidoDAO.PEDIDO_CHAVE_DATA     		+ " date not null, 	 					"
+			        + PedidoDAO.PEDIDO_CHAVE_OBS     		+ " text not null, 	 					"
+			        + PedidoDAO.PEDIDO_CHAVE_CLIENTE     	+ " integer not null 					"
+			        + "  ); ");
 		
 	}
 
@@ -49,9 +58,4 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		}
 	}
 	
-	interface Tabelas {
-        String PRODUTOS = "produtos";
-        String CLIENTES = "clientes";
-	};    
-
 }
