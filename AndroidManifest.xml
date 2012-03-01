@@ -25,10 +25,19 @@
 			<meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
 		</activity>
 		
-		<!-- CADASTRO -->
-		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.PedidoEditarActivity"/>
+		<!-- CADASTRO -->		
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ClienteEditarActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ClienteActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.SEARCH" />
+				<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+			<meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
+		</activity>
+		
+		<!-- FATURAMENTO -->
+		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.PedidoEditarActivity"/>
+		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.PedidoActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.SEARCH" />
 				<category android:name="android.intent.category.DEFAULT" />
