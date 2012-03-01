@@ -3,6 +3,8 @@ package br.com.appestoque.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,10 @@ public class PedidoActivity extends BaseListaAtividade{
             data.setText(cursor.getString(2));
             ClienteDAO clienteDAO = new ClienteDAO(getApplicationContext());
             cliente.setText(clienteDAO.pesquisar(cursor.getLong(4)).getNome());
+            
+            final View iconView = view.findViewById(android.R.id.icon1);
+            LayerDrawable iconDrawable = (LayerDrawable) iconView.getBackground();
+            iconDrawable.getDrawable(0).setColorFilter(-14002535, PorterDuff.Mode.SRC_ATOP);
 		}
 
 		@Override

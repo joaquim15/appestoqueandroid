@@ -10,5 +10,17 @@ public class Constantes {
 	public static final String RESTFULL_PRODUTO = "http://10.0.2.2:8888/produtoRestFull";
 	public static final String RESTFULL_CLIENTE = "http://10.0.2.2:8888/clienteRestFull";
 	
+	public static final int COR_AZUL_1 = -14002535;
+	public static final int COR_AZUL_2 = -15750145;
+	public static final int COR_AZUL_3 = -16750900;
+	
+	public static final int COR_AMARELO_1 = -13312;
+	public static final int COR_AMARELO_2 = -1134063;
+	
+	public static final int COR_VERMELHO_1 = -65536;
+	public static final int COR_VERMELHO_2 = -4259840;
+	
+	public static final int COR_VERDE_1 = -16745921;
+	public static final int COR_VERDE_2 = -16737991;
 		
 }

@@ -18,6 +18,7 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
 	public static final String PEDIDO_CHAVE_DATA = "data";
 	public static final String PEDIDO_CHAVE_OBS = "obs";
 	public static final String PEDIDO_CHAVE_CLIENTE = "idCliente";
+	public static final String PEDIDO_CHAVE_SINCRONISMO = "sincronismo";
 	
 	public static final String TABELA = "pedidos";
 	
