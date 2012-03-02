@@ -44,12 +44,8 @@ public class PedidoEditarActivity extends Activity {
 		
 		pedidoDAO.criar(numero.getText().toString(), calendario.getTime(), obs.getText().toString(), new Long(id.getText().toString()) );
 		
-//		Util.dialogo(this, id.getText().toString()) ;
-//		Util.dialogo(this, numero.getText().toString()) ;
-//		Util.dialogo(this, Integer.toString(data.getDayOfMonth()) );
-//		Util.dialogo(this, Integer.toString(data.getMonth()+1) );
-//		Util.dialogo(this, Integer.toString(data.getYear()) );
-//		Util.dialogo(this, obs.getText().toString() ) ;
+		setResult(RESULT_OK);
+		this.finish();
 		
 	}
 	

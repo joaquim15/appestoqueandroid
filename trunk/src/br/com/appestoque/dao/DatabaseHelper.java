@@ -45,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 			        + PedidoDAO.PEDIDO_CHAVE_NUMERO     	+ " text not null, 	 					" 
 			        + PedidoDAO.PEDIDO_CHAVE_DATA     		+ " date not null, 	 					"
 			        + PedidoDAO.PEDIDO_CHAVE_OBS     		+ " text not null, 	 					"
-			        + PedidoDAO.PEDIDO_CHAVE_CLIENTE     	+ " integer not null 					"
+			        + PedidoDAO.PEDIDO_CHAVE_CLIENTE     	+ " integer not null, 					"
 			        + PedidoDAO.PEDIDO_CHAVE_SINCRONISMO   	+ " integer DEFAULT 0 					"
 			        + "  ); ");
 		
