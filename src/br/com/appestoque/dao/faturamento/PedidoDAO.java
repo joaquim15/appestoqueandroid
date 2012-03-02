@@ -35,7 +35,8 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
 														PEDIDO_CHAVE_NUMERO,
 														PEDIDO_CHAVE_DATA,
 														PEDIDO_CHAVE_OBS,
-														PEDIDO_CHAVE_CLIENTE}, 
+														PEDIDO_CHAVE_CLIENTE,
+														PEDIDO_CHAVE_SINCRONISMO}, 
 														null, null, null, null, null);
     	return cursor;
 	}
@@ -61,14 +62,17 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
 														PEDIDO_CHAVE_NUMERO,
 														PEDIDO_CHAVE_DATA,
 														PEDIDO_CHAVE_OBS,
-														PEDIDO_CHAVE_CLIENTE}, PEDIDO_CHAVE_ID + " = " + id , 
+														PEDIDO_CHAVE_CLIENTE,
+														PEDIDO_CHAVE_SINCRONISMO
+														}, PEDIDO_CHAVE_ID + " = " + id , 
     							null, null, null, null);    	
     	if(cursor.getCount()>0){
     		cursor.moveToFirst();
     		Pedido pedido = new Pedido();
     		pedido.setId(cursor.getLong(0));
     		pedido.setNumero(cursor.getString(1));
-    		pedido.setData(new Date(cursor.getString(2)));
+    		long millis = cursor.getLong(2);
+    		pedido.setData(new Date(millis));
     		pedido.setObs(cursor.getString(3));
     		pedido.setIdCliente(cursor.getLong(4));
     		return pedido;
