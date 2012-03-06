@@ -100,23 +100,23 @@ public class PedidoActivity extends BaseListaAtividade{
 			case R.id.item_menu_sincronizar:
 				pedidoDAO = new PedidoDAO(this);
 				Pedido pedido = pedidoDAO.pesquisar(info.id);
-				JSONObject json = new JSONObject();
+				JSONObject pedidoJSON = new JSONObject();
 				try {
-					json.put("numero",pedido.getNumero());
-					json.put("data",pedido.getData());
-					json.put("idCliente",pedido.getIdCliente());
-					json.put("obs",pedido.getObs());
+					pedidoJSON.put("numero",pedido.getNumero());
+					pedidoJSON.put("data",pedido.getData());
+					pedidoJSON.put("idCliente",pedido.getIdCliente());
+					pedidoJSON.put("obs",pedido.getObs());
 					
-					JSONObject par = new JSONObject();
+					JSONObject parametroJSON = new JSONObject();
 					String os = Util.serial(PedidoActivity.this);
 					os = "9774d56d682e549c";
 					//os = "6d682e549c";
-					par.put("os", os);
-					json.put("parametro",par);
+					parametroJSON.put("os", os);
+					pedidoJSON.put("parametro",parametroJSON);
 				} catch (JSONException e) {
 					Log.e(Constantes.TAG, e.getMessage());
 				}	
-				JSONObject jsonObjRecv = HttpCliente.SendHttpPost("http://10.0.2.2:8888/pedidoRestFull", json);
+				JSONObject jsonObjRecv = HttpCliente.SendHttpPost("http://10.0.2.2:8888/pedidoRestFull",pedidoJSON);
 				return true;
 			case R.id.item_menu_visualizar:
 				Toast.makeText(getApplicationContext(), "Visualizar", Toast.LENGTH_SHORT).show();

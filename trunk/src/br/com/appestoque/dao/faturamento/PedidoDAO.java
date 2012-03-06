@@ -68,8 +68,7 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
     		Pedido pedido = new Pedido();
     		pedido.setId(cursor.getLong(0));
     		pedido.setNumero(cursor.getString(1));
-    		long millis = cursor.getLong(2);
-    		pedido.setData(new Date(millis));
+    		pedido.setData(new Date(cursor.getLong(2)));
     		pedido.setObs(cursor.getString(3));
     		pedido.setIdCliente(cursor.getLong(4));
     		return pedido;
