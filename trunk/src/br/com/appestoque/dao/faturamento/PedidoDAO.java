@@ -1,6 +1,5 @@
 package br.com.appestoque.dao.faturamento;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import android.content.ContentValues;
@@ -41,13 +40,11 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
     	return cursor;
 	}
 	
-	public long criar(String numero, Date data, String obs, Long idCliente) {
+	public long criar(String numero, long data, String obs, Long idCliente) {
     	SQLiteDatabase db = databaseHelper.getWritableDatabase();
         ContentValues initialValues = new ContentValues();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-        //initialValues.put(PEDIDO_CHAVE_ID,id);
         initialValues.put(PEDIDO_CHAVE_NUMERO,numero);
-        initialValues.put(PEDIDO_CHAVE_DATA,dateFormat.format(data));
+        initialValues.put(PEDIDO_CHAVE_DATA,data);
         initialValues.put(PEDIDO_CHAVE_OBS,obs);
         initialValues.put(PEDIDO_CHAVE_CLIENTE,idCliente);
         

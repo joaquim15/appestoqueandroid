@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -79,5 +82,16 @@ public class Util {
             Log.e("Não foi possível salvar", e.toString());
         }
     }
+	
+	public static String millisegundosDate( Long millisegundos ){
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return simpleDateFormat.format(new Date(millisegundos));
+	}
+	
+	public static Long dateMillisegundos( int ano, int mes, int dia ){
+		Calendar calendario = Calendar.getInstance();
+		calendario.set(ano, mes, dia);
+		return calendario.getTimeInMillis();
+	}
 	
 }
