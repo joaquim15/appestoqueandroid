@@ -1,6 +1,9 @@
 package br.com.appestoque.ui;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -67,14 +70,12 @@ public class PedidoActivity extends BaseListaAtividade{
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
 			final TextView data = (TextView) view.findViewById(R.id.data);
-            final TextView cliente = (TextView) view.findViewById(R.id.cliente);            
-            data.setText(cursor.getString(2));
+            final TextView cliente = (TextView) view.findViewById(R.id.cliente);
+            data.setText(Util.millisegundosDate(cursor.getLong(2)));
             ClienteDAO clienteDAO = new ClienteDAO(getApplicationContext());
             cliente.setText(clienteDAO.pesquisar(cursor.getLong(4)).getNome());
-            
             final View iconView = view.findViewById(android.R.id.icon1);
             LayerDrawable iconDrawable = (LayerDrawable) iconView.getBackground();
-            
             iconDrawable.getDrawable(0).setColorFilter(cursor.getLong(5)==0?Constantes.COR_VERMELHO_1:Constantes.COR_AZUL_1, PorterDuff.Mode.SRC_ATOP);
 		}
 
