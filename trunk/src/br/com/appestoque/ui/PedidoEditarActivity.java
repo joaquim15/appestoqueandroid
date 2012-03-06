@@ -1,8 +1,7 @@
 package br.com.appestoque.ui;
 
-import java.util.Calendar;
-
 import br.com.appestoque.R;
+import br.com.appestoque.Util;
 import br.com.appestoque.dao.cadastro.ClienteDAO;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dominio.cadastro.Cliente;
@@ -36,17 +35,10 @@ public class PedidoEditarActivity extends Activity {
 		final EditText numero = (EditText) findViewById(R.id.edtNumero);
 		final DatePicker data = (DatePicker) findViewById(R.id.dtpData);
 		final EditText obs = (EditText) findViewById(R.id.edtObs);
-		
-		Calendar calendario = Calendar.getInstance();
-		calendario.set(data.getYear(), data.getMonth()+1, data.getDayOfMonth());
-		
 		pedidoDAO = new PedidoDAO(this);
-		
-		pedidoDAO.criar(numero.getText().toString(), calendario.getTime(), obs.getText().toString(), new Long(id.getText().toString()) );
-		
+		pedidoDAO.criar(numero.getText().toString(), Util.dateMillisegundos(data.getYear(),data.getMonth(),data.getDayOfMonth()), obs.getText().toString(), new Long(id.getText().toString()) );
 		setResult(RESULT_OK);
 		this.finish();
-		
 	}
 	
 	public void onCancelarClick(View v) {
