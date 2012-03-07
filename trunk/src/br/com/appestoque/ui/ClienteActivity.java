@@ -104,7 +104,7 @@ public class ClienteActivity extends BaseListaAtividade{
 						os = "9774d56d682e549c";
 						//os = "6d682e549c";
 						try {
-							JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.RESTFULL_CLIENTE + "?os=" + os,ClienteActivity.this);
+							JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.RESTFUL_CLIENTE + "?os=" + os,ClienteActivity.this);
 							if (objetos != null) {
 								clienteDAO.limpar();
 								Long id = null;

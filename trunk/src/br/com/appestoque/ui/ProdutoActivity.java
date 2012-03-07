@@ -103,7 +103,7 @@ public class ProdutoActivity extends BaseListaAtividade{
 						os = "9774d56d682e549c";
 						//os = "6d682e549c";
 						try {
-							JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.RESTFULL_PRODUTO + "?os=" + os,ProdutoActivity.this);
+							JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.RESTFUL_PRODUTO + "?os=" + os,ProdutoActivity.this);
 							if (objetos != null) {
 								produtoDAO.limpar();
 								Long id;
