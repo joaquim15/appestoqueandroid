@@ -116,7 +116,7 @@ public class PedidoActivity extends BaseListaAtividade{
 				} catch (JSONException e) {
 					Log.e(Constantes.TAG, e.getMessage());
 				}	
-				JSONObject jsonObjRecv = HttpCliente.SendHttpPost("http://10.0.2.2:8888/pedidoRestFull",pedidoJSON);
+				JSONObject jsonObjRecv = HttpCliente.SendHttpPost(Constantes.RESTFUL_PEDIDO,pedidoJSON);
 				return true;
 			case R.id.item_menu_visualizar:
 				Toast.makeText(getApplicationContext(), "Visualizar", Toast.LENGTH_SHORT).show();
