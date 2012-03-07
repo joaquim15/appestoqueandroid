@@ -7,8 +7,8 @@ public class Constantes {
 	
 	public static final String TAG = "Appestoque";
 	
-	public static final String RESTFULL_PRODUTO = "http://10.0.2.2:8888/produtoRestFull";
-	public static final String RESTFULL_CLIENTE = "http://10.0.2.2:8888/clienteRestFull";
+	public static final String RESTFUL_PRODUTO = "http://10.0.2.2:8888/produtoRestFul";
+	public static final String RESTFUL_CLIENTE = "http://10.0.2.2:8888/clienteRestFul";
 	
 	public static final int COR_AZUL_1 = -14002535;
 	public static final int COR_AZUL_2 = -15750145;
