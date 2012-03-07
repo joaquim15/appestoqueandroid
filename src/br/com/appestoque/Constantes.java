@@ -3,12 +3,15 @@ package br.com.appestoque;
 public class Constantes {
 
 	//private static final String URL = "http://appestoque.appspot.com/rest/produtoRest";
-	public static final String URL = "http://10.0.2.2:8888/rest/produtoRest";
+	//public static final String URL = "http://10.0.2.2:8888/rest/produtoRest";
 	
 	public static final String TAG = "Appestoque";
 	
-	public static final String RESTFUL_PRODUTO = "http://10.0.2.2:8888/produtoRestFul";
-	public static final String RESTFUL_CLIENTE = "http://10.0.2.2:8888/clienteRestFul";
+	public static final String SERVIDOR = "http://10.0.2.2:8888";
+	
+	public static final String RESTFUL_PRODUTO = SERVIDOR + "/produtoRestFul";
+	public static final String RESTFUL_CLIENTE = SERVIDOR + "/clienteRestFul";
+	public static final String RESTFUL_PEDIDO  = SERVIDOR + "/pedidoRestFul";
 	
 	public static final int COR_AZUL_1 = -14002535;
 	public static final int COR_AZUL_2 = -15750145;

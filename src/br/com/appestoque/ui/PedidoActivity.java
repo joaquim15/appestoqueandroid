@@ -102,8 +102,9 @@ public class PedidoActivity extends BaseListaAtividade{
 				Pedido pedido = pedidoDAO.pesquisar(info.id);
 				JSONObject pedidoJSON = new JSONObject();
 				try {
+					
 					pedidoJSON.put("numero",pedido.getNumero());
-					pedidoJSON.put("data",pedido.getData());
+					pedidoJSON.put("data",pedido.getData().getTime());
 					pedidoJSON.put("idCliente",pedido.getIdCliente());
 					pedidoJSON.put("obs",pedido.getObs());
 					
