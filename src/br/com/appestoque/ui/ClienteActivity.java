@@ -12,7 +12,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -97,14 +96,14 @@ public class ClienteActivity extends BaseListaAtividade{
 				
 				progressDialog = ProgressDialog.show(this, "", getString(R.string.mensagem_1) , true);
 				
-				new Thread() {
+				this.runOnUiThread(new Runnable() {
 					public void run() {
-						Looper.prepare();
-						String os = Util.serial(ClienteActivity.this);
-						os = "9774d56d682e549c";
-						//os = "6d682e549c";
+						//String os = Util.serial(ClienteActivity.this);
 						try {
-							JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.SERVIDOR + Constantes.RESTFUL_CLIENTE + "?os=" + os,ClienteActivity.this);
+							JSONArray objetos = HttpCliente
+									.ReceiveHttpPost(Constantes.SERVIDOR
+											+ Constantes.RESTFUL_CLIENTE
+											+ "?os=" + Constantes.DISPOSITIVO, ClienteActivity.this);
 							if (objetos != null) {
 								clienteDAO.limpar();
 								Long id = null;
@@ -128,12 +127,54 @@ public class ClienteActivity extends BaseListaAtividade{
 									cidade = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_CIDADE);
 									clienteDAO.criar(id, nome, cnpj, endereco, numero, cep, complemento, bairro, cidade);
 								}
+							}else{
+								Util.dialogo(ClienteActivity.this,getString(R.string.mensagem_6));
 							}						
 						} catch (Exception e) {
+							Util.dialogo(ClienteActivity.this,e.getMessage());
 						}
 						handler.sendEmptyMessage(0);
 					}
-				}.start();
+				});	
+					
+				
+//				new Thread() {
+//					public void run() {
+//						Looper.prepare();
+//						String os = Util.serial(ClienteActivity.this);
+//						os = "9774d56d682e549c";
+//						//os = "6d682e549c";
+//						try {
+//							JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.SERVIDOR + Constantes.RESTFUL_CLIENTE + "?os=" + os,ClienteActivity.this);
+//							if (objetos != null) {
+//								clienteDAO.limpar();
+//								Long id = null;
+//								String nome = null;
+//								String cnpj = null;
+//								String endereco = null;
+//								Long numero = null;
+//								String cep = null;
+//								String complemento = null;
+//								String bairro = null;
+//								String cidade = null;
+//								for (int i = 0; i <= objetos.length() - 1; ++i) {
+//									id = objetos.getJSONObject(i).getLong(ClienteDAO.CLIENTE_CHAVE_ID);
+//									nome = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_NOME);
+//									cnpj = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_CNPJ);
+//									endereco = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_ENDERECO);
+//									numero = objetos.getJSONObject(i).getLong(ClienteDAO.CLIENTE_CHAVE_NUMERO);
+//									cep = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_CEP);
+//									complemento = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_COMPLEMENTO);
+//									bairro = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_BAIRRO);
+//									cidade = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_CIDADE);
+//									clienteDAO.criar(id, nome, cnpj, endereco, numero, cep, complemento, bairro, cidade);
+//								}
+//							}						
+//						} catch (Exception e) {
+//						}
+//						handler.sendEmptyMessage(0);
+//					}
+//				}.start();
 				
 			} else {
 				Util.dialogo(ClienteActivity.this,getString(R.string.mensagem_2));

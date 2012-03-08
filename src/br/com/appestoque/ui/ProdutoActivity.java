@@ -16,7 +16,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,14 +95,14 @@ public class ProdutoActivity extends BaseListaAtividade{
 				
 				progressDialog = ProgressDialog.show(this, "", getString(R.string.mensagem_1) , true);
 				
-				new Thread() {
+				this.runOnUiThread(new Runnable() {
 					public void run() {
-						Looper.prepare();
-						String os = Util.serial(ProdutoActivity.this);
-						os = "9774d56d682e549c";
-						//os = "6d682e549c";
+						//String os = Util.serial(ProdutoActivity.this);
 						try {
-							JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.SERVIDOR + Constantes.RESTFUL_PRODUTO + "?os=" + os,ProdutoActivity.this);
+							JSONArray objetos = HttpCliente
+									.ReceiveHttpPost(Constantes.SERVIDOR
+											+ Constantes.RESTFUL_PRODUTO
+											+ "?os=" + Constantes.DISPOSITIVO, ProdutoActivity.this);
 							if (objetos != null) {
 								produtoDAO.limpar();
 								Long id;
@@ -117,12 +116,15 @@ public class ProdutoActivity extends BaseListaAtividade{
 									preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
 									produtoDAO.criar(id, nome, numero, preco);
 								}
-							}						
+							}else{
+								Util.dialogo(ProdutoActivity.this,getString(R.string.mensagem_5));
+							}
 						} catch (Exception e) {
+							Util.dialogo(ProdutoActivity.this,e.getMessage());
 						}
 						handler.sendEmptyMessage(0);
 					}
-				}.start();
+				});
 				
 			} else {
 				Util.dialogo(ProdutoActivity.this,getString(R.string.mensagem_2));
@@ -179,3 +181,35 @@ public class ProdutoActivity extends BaseListaAtividade{
 //		return super.onContextItemSelected(item);
 //	}
 //}
+
+
+
+
+
+//new Thread() {
+//public void run() {
+//	Looper.prepare();
+//	String os = Util.serial(ProdutoActivity.this);
+//	os = "9774d56d682e549c";
+//	//os = "6d682e549c";
+//	try {
+//		JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.SERVIDOR + Constantes.RESTFUL_PRODUTO + "?os=" + os,ProdutoActivity.this);
+//		if (objetos != null) {
+//			produtoDAO.limpar();
+//			Long id;
+//			String nome = null;
+//			String numero = null;
+//			Double preco = null;
+//			for (int i = 0; i <= objetos.length() - 1; ++i) {
+//				id = objetos.getJSONObject(i).getLong(ProdutoDAO.PRODUTO_CHAVE_ID);
+//				nome = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NOME);
+//				numero = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NUMERO);
+//				preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
+//				produtoDAO.criar(id, nome, numero, preco);
+//			}
+//		}						
+//	} catch (Exception e) {
+//	}
+//	handler.sendEmptyMessage(0);
+//}
+//}.start();

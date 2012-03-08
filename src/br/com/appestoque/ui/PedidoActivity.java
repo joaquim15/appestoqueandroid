@@ -108,10 +108,8 @@ public class PedidoActivity extends BaseListaAtividade{
 					pedidoJSON.put("obs",pedido.getObs());
 					
 					JSONObject parametroJSON = new JSONObject();
-					String os = Util.serial(PedidoActivity.this);
-					os = "9774d56d682e549c";
-					//os = "6d682e549c";
-					parametroJSON.put("os", os);
+					//String os = Util.serial(PedidoActivity.this);
+					parametroJSON.put("os",Constantes.DISPOSITIVO);
 					pedidoJSON.put("parametro",parametroJSON);
 				} catch (JSONException e) {
 					Log.e(Constantes.TAG, e.getMessage());
