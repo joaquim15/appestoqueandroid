@@ -102,7 +102,6 @@ public class PedidoActivity extends BaseListaAtividade{
 				Pedido pedido = pedidoDAO.pesquisar(info.id);
 				JSONObject pedidoJSON = new JSONObject();
 				try {
-					
 					pedidoJSON.put("numero",pedido.getNumero());
 					pedidoJSON.put("data",pedido.getData().getTime());
 					pedidoJSON.put("idCliente",pedido.getIdCliente());
@@ -118,6 +117,7 @@ public class PedidoActivity extends BaseListaAtividade{
 					Log.e(Constantes.TAG, e.getMessage());
 				}	
 				JSONObject jsonObjRecv = HttpCliente.SendHttpPost(Constantes.RESTFUL_PEDIDO,pedidoJSON);
+				long retorno = pedidoDAO.atualizar(pedido);
 				return true;
 			case R.id.item_menu_visualizar:
 				Toast.makeText(getApplicationContext(), "Visualizar", Toast.LENGTH_SHORT).show();
