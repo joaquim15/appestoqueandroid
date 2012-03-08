@@ -22,6 +22,8 @@
 	<string name="mensagem_3">Conectividade inexistente</string>
 	<string name="mensagem_4">Erro ao atualizar produto</string>
 	<string name="mensagem_5">Nenhuma informação foi encontrada no sincronismo.</string>
+	<string name="mensagem_6">Nenhuma produto foi retornado</string>
+	<string name="mensagem_7">Nenhuma cliente foi retornado</string>
 	
 	
 	<string name="empty_sessions">No sessions found</string>
