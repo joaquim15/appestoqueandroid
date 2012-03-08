@@ -43,10 +43,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 		db.execSQL(" create table "+ PedidoDAO.TABELA 		+ " ( "
 					+ PedidoDAO.PEDIDO_CHAVE_ID  			+ " integer primary key AUTOINCREMENT,	"
 			        + PedidoDAO.PEDIDO_CHAVE_NUMERO     	+ " text not null, 	 					" 
-			        + PedidoDAO.PEDIDO_CHAVE_DATA     		+ " integer not null, 	 					"
+			        + PedidoDAO.PEDIDO_CHAVE_DATA     		+ " integer not null, 	 				"
 			        + PedidoDAO.PEDIDO_CHAVE_OBS     		+ " text not null, 	 					"
 			        + PedidoDAO.PEDIDO_CHAVE_CLIENTE     	+ " integer not null, 					"
-			        + PedidoDAO.PEDIDO_CHAVE_SINCRONISMO   	+ " integer DEFAULT 0 					"
+			        + PedidoDAO.PEDIDO_CHAVE_SINCRONIZADO  	+ " integer DEFAULT 0 					"
 			        + "  ); ");
 		
 	}

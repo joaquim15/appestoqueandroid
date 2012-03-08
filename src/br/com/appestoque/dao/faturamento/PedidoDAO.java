@@ -17,7 +17,7 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
 	public static final String PEDIDO_CHAVE_DATA = "data";
 	public static final String PEDIDO_CHAVE_OBS = "obs";
 	public static final String PEDIDO_CHAVE_CLIENTE = "idCliente";
-	public static final String PEDIDO_CHAVE_SINCRONISMO = "sincronismo";
+	public static final String PEDIDO_CHAVE_SINCRONIZADO = "sincronizado";
 	
 	public static final String TABELA = "pedidos";
 	
@@ -35,7 +35,7 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
 														PEDIDO_CHAVE_DATA,
 														PEDIDO_CHAVE_OBS,
 														PEDIDO_CHAVE_CLIENTE,
-														PEDIDO_CHAVE_SINCRONISMO}, 
+														PEDIDO_CHAVE_SINCRONIZADO}, 
 														null, null, null, null, null);
     	return cursor;
 	}
@@ -60,7 +60,7 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
 														PEDIDO_CHAVE_DATA,
 														PEDIDO_CHAVE_OBS,
 														PEDIDO_CHAVE_CLIENTE,
-														PEDIDO_CHAVE_SINCRONISMO
+														PEDIDO_CHAVE_SINCRONIZADO
 														}, PEDIDO_CHAVE_ID + " = " + id , 
     							null, null, null, null);    	
     	if(cursor.getCount()>0){
@@ -75,6 +75,17 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
     	}else{
     		return null;
     	}
+	}
+	
+	public long atualizar(Pedido pedido){
+		SQLiteDatabase db = databaseHelper.getWritableDatabase();
+		ContentValues initialValues = new ContentValues();
+		initialValues.put(PEDIDO_CHAVE_NUMERO,pedido.getNumero());
+        initialValues.put(PEDIDO_CHAVE_DATA,pedido.getData().getTime());
+        initialValues.put(PEDIDO_CHAVE_OBS,pedido.getObs());
+        initialValues.put(PEDIDO_CHAVE_CLIENTE,pedido.getIdCliente());
+        initialValues.put(PEDIDO_CHAVE_SINCRONIZADO,pedido.getSincronizado());
+		return db.update(TABELA, initialValues, PEDIDO_CHAVE_ID + " = " + pedido.getId() , null);
 	}
 	
 	@Override
