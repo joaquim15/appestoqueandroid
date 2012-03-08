@@ -117,6 +117,7 @@ public class PedidoActivity extends BaseListaAtividade{
 					Log.e(Constantes.TAG, e.getMessage());
 				}	
 				JSONObject jsonObjRecv = HttpCliente.SendHttpPost(Constantes.SERVIDOR + Constantes.RESTFUL_PEDIDO,pedidoJSON);
+				pedido.setSincronizado(new Short("1"));
 				long retorno = pedidoDAO.atualizar(pedido);
 				return true;
 			case R.id.item_menu_visualizar:
