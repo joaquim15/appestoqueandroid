@@ -12,6 +12,7 @@ public class Pedido {
 	private String obs;
 	private Long idCliente;
 	private Cliente cliente;
+	private Short sincronizado;
 	
 	public Pedido() {
 		super();
@@ -76,6 +77,14 @@ public class Pedido {
 	
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public Short getSincronizado() {
+		return sincronizado;
+	}
+
+	public void setSincronizado(Short sincronizado) {
+		this.sincronizado = sincronizado;
 	}
 	
 }
