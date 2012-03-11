@@ -20,11 +20,10 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.content.Context;
-import android.util.Log;
 
 public class HttpCliente {
 
-	private static final String TAG = "HttpClient";
+	//private static final String TAG = "HttpClient";
 
 	public static JSONObject SendHttpPost(String URL, JSONObject jsonObjSend) {
 		try {
@@ -37,7 +36,7 @@ public class HttpCliente {
 			httpPostRequest.setHeader("Content-type", "application/json");
 			httpPostRequest.setHeader("Accept-Encoding", "gzip"); // only set this parameter if you would like to use gzip compression
 
-			long t = System.currentTimeMillis();
+			//long t = System.currentTimeMillis();
 			HttpResponse response = (HttpResponse) httpclient.execute(httpPostRequest);
 
 			HttpEntity entity = response.getEntity();
