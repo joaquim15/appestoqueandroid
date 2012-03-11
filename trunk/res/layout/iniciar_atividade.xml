@@ -20,26 +20,26 @@
             android:onClick="onAtualizarClick" />
     </LinearLayout>
     
-    <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <Button android:id="@+id/btn_produto"
-                style="@style/botao"
-                android:onClick="onProdutoClick"
-                android:text="@string/btn_produto"
-                android:drawableTop="@drawable/home_btn_produto"/>
-            <Button android:id="@+id/btn_cliente"
-                style="@style/botao"
-                android:text="@string/btn_cliente"
-                android:onClick="onClienteClick"
-                android:drawableTop="@drawable/home_btn_cliente"/>    
-            <Button android:id="@+id/btn_pedido"
-                style="@style/botao"
-                android:text="@string/btn_pedido"
-                android:onClick="onPedidoClick"
-                android:drawableTop="@drawable/home_btn_pedido"/>    
-     </LinearLayout>
+    <LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_weight="1">
+		<Button android:id="@+id/btn_produto" style="@style/botao"
+			android:onClick="onProdutoClick" android:text="@string/btn_produto"
+			android:drawableTop="@drawable/home_btn_produto" />
+		<Button android:id="@+id/btn_cliente" style="@style/botao"
+			android:text="@string/btn_cliente" android:onClick="onClienteClick"
+			android:drawableTop="@drawable/home_btn_cliente" />
+	</LinearLayout>
+
+	<LinearLayout android:orientation="horizontal"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:layout_weight="1">
+		<Button android:id="@+id/btn_pedido" style="@style/botao"
+			android:text="@string/btn_pedido" android:onClick="onPedidoClick"
+			android:drawableTop="@drawable/home_btn_pedido" />
+		<Button android:id="@+id/btn_preferencia" style="@style/botao"
+			android:text="@string/btn_preferencia" android:onClick="onPreferenciaClick"
+			android:drawableTop="@drawable/home_btn_preferencia" />
+	</LinearLayout>
     
 </LinearLayout>
