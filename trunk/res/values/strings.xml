@@ -45,6 +45,13 @@
 		<string name="titulo_cliente">Cliente</string>
 		<string name="titulo_pedido">Pedido</string>
 		
+		<string name="titulo_preferencia">Preferência</string>
+		<string name="edt_uuid">UUID</string>
+		
+		<!--				
+		
+		-->
+		
 		
 		<string name="titulo_menu">Menu</string>	
 		<string name="texto_busca">Pesquisar por Código</string>
