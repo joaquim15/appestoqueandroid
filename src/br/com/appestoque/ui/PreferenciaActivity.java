@@ -20,6 +20,9 @@ public class PreferenciaActivity extends Activity{
 		setContentView(R.layout.preferencia_editar_activity);
 		SharedPreferences preferencias = getSharedPreferences(PREFERENCIAS, 0);
 		String uuid = preferencias.getString("UUID", UUID.randomUUID().toString());
+		if(uuid.equals("")){
+			uuid = UUID.randomUUID().toString();
+		}
 		((TextView) findViewById(R.id.edtUUID)).setText(uuid);
 	}
 	
@@ -29,6 +32,8 @@ public class PreferenciaActivity extends Activity{
 		SharedPreferences.Editor editor = preferencias.edit();
 		editor.putString("UUID", uuid.getText().toString());
 		editor.commit();		
+		setResult(RESULT_OK);
+		this.finish();
 	}
 	
 	public void onCancelarClick(View v) {
