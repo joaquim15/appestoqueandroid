@@ -14,7 +14,7 @@
 					  android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent"
 					  style="@style/SessionTitle"/>
-			<TextView android:id="@+id/edtNome" 
+			<TextView android:id="@+id/edtUUID" 
 					  style="@style/SessionSubtitle"
 					  android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent"/>
