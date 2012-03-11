@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -14,6 +15,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
@@ -108,8 +110,11 @@ public class PedidoActivity extends BaseListaAtividade{
 					pedidoJSON.put("obs",pedido.getObs());
 					
 					JSONObject parametroJSON = new JSONObject();
-					//String os = Util.serial(PedidoActivity.this);
-					parametroJSON.put("os",Constantes.DISPOSITIVO);
+					
+					SharedPreferences preferencias = getSharedPreferences(Constantes.PREFERENCIAS, 0);
+					String uuid = preferencias.getString("UUID", UUID.randomUUID().toString());
+					
+					parametroJSON.put("uuid",uuid);
 					pedidoJSON.put("parametro",parametroJSON);
 				} catch (JSONException e) {
 					Log.e(Constantes.TAG, e.getMessage());

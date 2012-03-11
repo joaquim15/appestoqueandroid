@@ -1,5 +1,7 @@
 package br.com.appestoque.ui;
 
+import java.util.UUID;
+
 import org.json.JSONArray;
 import br.com.appestoque.Constantes;
 import br.com.appestoque.HttpCliente;
@@ -11,6 +13,7 @@ import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -97,12 +100,15 @@ public class ProdutoActivity extends BaseListaAtividade{
 				
 				this.runOnUiThread(new Runnable() {
 					public void run() {
-						//String os = Util.serial(ProdutoActivity.this);
+						
+						SharedPreferences preferencias = getSharedPreferences(Constantes.PREFERENCIAS, 0);
+						String uuid = preferencias.getString("UUID", UUID.randomUUID().toString());
+						
 						try {
 							JSONArray objetos = HttpCliente
 									.ReceiveHttpPost(Constantes.SERVIDOR
 											+ Constantes.RESTFUL_PRODUTO
-											+ "?os=" + Constantes.DISPOSITIVO, ProdutoActivity.this);
+											+ "?uuid=" + uuid, ProdutoActivity.this);
 							if (objetos != null) {
 								produtoDAO.limpar();
 								Long id;

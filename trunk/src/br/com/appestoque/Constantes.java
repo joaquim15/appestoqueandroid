@@ -27,5 +27,7 @@ public class Constantes {
 	
 	public static final int COR_VERDE_1 = -16745921;
 	public static final int COR_VERDE_2 = -16737991;
+	
+	public static final String PREFERENCIAS = "MinhasPreferencias";
 		
 }
