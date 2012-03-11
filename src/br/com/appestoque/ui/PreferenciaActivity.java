@@ -7,6 +7,7 @@ import br.com.appestoque.R;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -22,14 +23,17 @@ public class PreferenciaActivity extends Activity{
 		((TextView) findViewById(R.id.edtUUID)).setText(uuid);
 	}
 	
-	@Override
-    protected void onStop(){
-		super.onStop();
-		final EditText editUUID = (EditText) findViewById(R.id.edtUUID);
+	public void onSalvarClick(View view) {
+		final EditText uuid = (EditText) findViewById(R.id.edtUUID);
 		SharedPreferences preferencias = getSharedPreferences(PREFERENCIAS, 0);
 		SharedPreferences.Editor editor = preferencias.edit();
-		editor.putString("UUID", editUUID.getText().toString());
-		editor.commit();
-    }
+		editor.putString("UUID", uuid.getText().toString());
+		editor.commit();		
+	}
+	
+	public void onCancelarClick(View v) {
+		setResult(RESULT_CANCELED);
+		this.finish();
+	}
 	
 }
