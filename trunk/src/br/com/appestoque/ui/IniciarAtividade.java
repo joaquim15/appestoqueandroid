@@ -26,6 +26,10 @@ public class IniciarAtividade extends BaseAtividade {
 		startActivity(new Intent(this, PedidoActivity.class));
 	}
 	
+	public void onPreferenciaClick(View v) {
+		startActivity(new Intent(this, PreferenciaActivity.class));
+	}
+	
 	public void onExportarClick(View v) {
 		CharSequence chamada =  "Notificação";
 		CharSequence titulo = "Serial";
