@@ -6,6 +6,7 @@
 	<string name="btn_estoque">Estoque</string>
 	<string name="btn_pedido">Pedido</string>   
 	<string name="btn_cliente">Cliente</string>
+	<string name="btn_preferencia">Preferência</string>
 	<string name="description_home">Home</string> 	
 	<string name="description_search">Search</string>
 	
