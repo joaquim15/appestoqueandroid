@@ -107,19 +107,16 @@ public class PedidoActivity extends BaseListaAtividade{
 					pedidoJSON.put("numero",pedido.getNumero());
 					pedidoJSON.put("data",pedido.getData().getTime());
 					pedidoJSON.put("idCliente",pedido.getIdCliente());
-					pedidoJSON.put("obs",pedido.getObs());
-					
-					JSONObject parametroJSON = new JSONObject();
-					
-					SharedPreferences preferencias = getSharedPreferences(Constantes.PREFERENCIAS, 0);
-					String uuid = preferencias.getString("UUID", UUID.randomUUID().toString());
-					
-					parametroJSON.put("uuid",uuid);
-					pedidoJSON.put("parametro",parametroJSON);
+					pedidoJSON.put("obs",pedido.getObs());					
+					//JSONObject parametroJSON = new JSONObject();					
+					//parametroJSON.put("uuid",uuid);
+					//pedidoJSON.put("parametro",parametroJSON);
 				} catch (JSONException e) {
 					Log.e(Constantes.TAG, e.getMessage());
-				}	
-				JSONObject jsonObjRecv = HttpCliente.SendHttpPost(Constantes.SERVIDOR + Constantes.RESTFUL_PEDIDO,pedidoJSON);
+				}
+				SharedPreferences preferencias = getSharedPreferences(Constantes.PREFERENCIAS, 0);
+				String uuid = preferencias.getString("UUID", UUID.randomUUID().toString());
+				JSONObject jsonObjRecv = HttpCliente.SendHttpPost(Constantes.SERVIDOR + Constantes.RESTFUL_PEDIDO + "?uuid=" + uuid,pedidoJSON);
 				pedido.setSincronizado(new Short("1"));
 				long retorno = pedidoDAO.atualizar(pedido);
 				return true;
