@@ -34,9 +34,8 @@ public class HttpCliente {
 			
 			httpPostRequest.setHeader("Accept", "application/json");
 			httpPostRequest.setHeader("Content-type", "application/json");
-			httpPostRequest.setHeader("Accept-Encoding", "gzip"); // only set this parameter if you would like to use gzip compression
+			httpPostRequest.setHeader("Accept-Encoding", "gzip");
 
-			//long t = System.currentTimeMillis();
 			HttpResponse response = (HttpResponse) httpclient.execute(httpPostRequest);
 
 			HttpEntity entity = response.getEntity();
