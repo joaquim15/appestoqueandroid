@@ -6,6 +6,7 @@ import br.com.appestoque.dao.cadastro.ClienteDAO;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dominio.cadastro.Cliente;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
@@ -20,7 +21,7 @@ public class PedidoIncluirActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.pedido_editar_activity);
+		setContentView(R.layout.pedido_incluir_activity);
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
 	    	clienteDAO = new ClienteDAO(this);
@@ -36,14 +37,19 @@ public class PedidoIncluirActivity extends Activity {
 		final DatePicker data = (DatePicker) findViewById(R.id.dtpData);
 		final EditText obs = (EditText) findViewById(R.id.edtObs);
 		pedidoDAO = new PedidoDAO(this);
-		pedidoDAO.criar(numero.getText().toString(), Util.dateMillisegundos(data.getYear(),data.getMonth(),data.getDayOfMonth()), obs.getText().toString(), new Long(id.getText().toString()) );
+		long chave = pedidoDAO.criar(numero.getText().toString(), Util.dateMillisegundos(data.getYear(),data.getMonth(),data.getDayOfMonth()), obs.getText().toString(), new Long(id.getText().toString()) );
 		setResult(RESULT_OK);
-		this.finish();
+		Intent intent = new Intent(this, PedidoEditarActivity.class);
+		intent.putExtra(PedidoDAO.PEDIDO_CHAVE_ID, chave);
+    	startActivity(intent);
+		//this.finish();
 	}
 	
 	public void onCancelarClick(View v) {
-		setResult(RESULT_CANCELED);
-		this.finish();
+//		setResult(RESULT_CANCELED);
+//		this.finish();
+		Intent intent = new Intent(this, PedidoEditarActivity.class);
+    	startActivity(intent);
 	}
 	
 }
