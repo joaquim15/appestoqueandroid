@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" 
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" 
+	android:background="@color/fundo_branco">
+	
+	<LinearLayout style="@style/Titulo_Barra">
+		<TextView style="@style/TitleBarText" android:text="@string/titulo_pedido" />
+	</LinearLayout>
+	
+	<EditText android:layout_width="fill_parent" 
+			  android:id="@+id/edtId"
+			  android:layout_height="wrap_content" 
+			  android:inputType="number"
+			  android:visibility="gone" />
+			  
+	<ScrollView android:layout_height="wrap_content" 
+	            android:id="@+id/scrollView1" 
+	            android:layout_width="fill_parent" 
+	            android:layout_weight="3">
+		<LinearLayout android:id="@+id/linearLayout1" android:orientation="vertical" 
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" 
+			android:background="@color/fundo_branco">
+	
+			<TextView android:id="@+id/txtCliente" 
+	          android:text="@string/pedido_cliente"
+		      android:textColor="#000000" 
+		      android:layout_height="wrap_content"
+			  android:layout_width="fill_parent" 
+			  style="@style/SessionTitle" />
+	<EditText android:layout_width="fill_parent" 
+	          android:id="@+id/edtCliente"
+			  android:layout_height="wrap_content" 
+			  android:enabled="false" />
+	
+			<TextView android:id="@+id/txtNumero" 
+	          android:text="@string/pedido_numero"
+			  android:textColor="#000000" 
+			  android:layout_height="wrap_content"
+			  android:layout_width="fill_parent" 
+			  style="@style/SessionTitle" />
+	<EditText android:id="@+id/edtNumero" 
+	          android:layout_height="wrap_content"
+			  android:layout_width="100dip"/>
+			
+			<TextView android:id="@+id/txtData" 
+			  android:text="Data"
+			  android:textColor="#000000" 
+			  android:layout_height="wrap_content"
+			  android:layout_width="fill_parent" 
+			  style="@style/SessionTitle" />
+		    <DatePicker android:id="@+id/dtpData" 
+	            		android:layout_width="fill_parent"
+						android:layout_height="wrap_content"/>
+			
+			<TextView android:id="@+id/txtObs"
+	          android:text="@string/pedido_obs"
+		      android:textColor="#000000" 
+		      android:layout_height="wrap_content"
+			  android:layout_width="fill_parent" 
+			  style="@style/SessionTitle" />
+			<EditText android:id="@+id/edtObs"
+        			  android:layout_height="fill_parent" 
+			  		  android:layout_width="fill_parent"/>	
+		</LinearLayout>
+	</ScrollView>
+
+	<LinearLayout android:orientation="horizontal"
+				  android:layout_width="fill_parent" 
+				  android:layout_height="wrap_content"
+			      style="@android:style/ButtonBar">
+		<Button android:layout_width="0dip" android:layout_height="wrap_content"
+			android:layout_weight="1" android:onClick="onSalvarClick"
+			android:text="@string/botao_salvar" />
+		<Button android:layout_width="0dip" android:layout_height="wrap_content"
+			android:layout_weight="1" android:onClick="onCancelarClick"
+			android:text="@string/botao_cancelar" />
+	</LinearLayout>
+    	
+</LinearLayout>
