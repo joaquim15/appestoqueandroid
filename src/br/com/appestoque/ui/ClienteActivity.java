@@ -220,7 +220,7 @@ public class ClienteActivity extends BaseListaAtividade{
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		switch (item.getItemId()) {
 			case R.id.item_menu_criar_pedido:
-				Intent intent = new Intent(this, PedidoEditarActivity.class);
+				Intent intent = new Intent(this, PedidoIncluirActivity.class);
 				intent.putExtra(ClienteDAO.CLIENTE_CHAVE_ID, info.id);
 		    	startActivity(intent);
 				return true;
