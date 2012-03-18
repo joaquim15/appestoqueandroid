@@ -25,7 +25,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 					+ ProdutoDAO.PRODUTO_CHAVE_ID       	+ " integer primary key,  				"
 			        + ProdutoDAO.PRODUTO_CHAVE_NOME     	+ " text not null, 	 					" 
 			        + ProdutoDAO.PRODUTO_CHAVE_NUMERO   	+ " text not null,	 	 				"
-			        + ProdutoDAO.PRODUTO_CHAVE_PRECO    	+ " real not null	 	 				"
+			        + ProdutoDAO.PRODUTO_CHAVE_VALOR    	+ " real not null	 	 				"
 			        + "  ); ");
 		
 		db.execSQL(" create table "+ ClienteDAO.TABELA 		+ " ( "

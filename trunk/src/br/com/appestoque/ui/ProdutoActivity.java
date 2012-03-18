@@ -119,7 +119,7 @@ public class ProdutoActivity extends BaseListaAtividade{
 									id = objetos.getJSONObject(i).getLong(ProdutoDAO.PRODUTO_CHAVE_ID);
 									nome = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NOME);
 									numero = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NUMERO);
-									preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
+									preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_VALOR);
 									produtoDAO.criar(id, nome, numero, preco);
 								}
 							}else{
