@@ -5,10 +5,6 @@
 	android:layout_height="fill_parent" 
 	android:background="@color/fundo_branco">
 	
-	<LinearLayout style="@style/Titulo_Barra">
-		<TextView style="@style/TitleBarText" android:text="@string/titulo_pedido" />
-	</LinearLayout>
-
 	<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
 	    android:id="@android:id/tabhost"
 	    android:layout_width="fill_parent"
@@ -21,7 +17,8 @@
 	        <TabWidget
 	            android:id="@android:id/tabs"
 	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content" />
+	            android:layout_height="wrap_content"		            
+	    		android:background="@color/fundo_branco"/>
 	        <FrameLayout
 	            android:id="@android:id/tabcontent"
 	            android:layout_width="fill_parent"
