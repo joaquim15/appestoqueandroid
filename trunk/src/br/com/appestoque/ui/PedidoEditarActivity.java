@@ -1,57 +1,35 @@
 package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
-import android.app.TabActivity;
-import android.content.Intent;
-import android.content.res.Resources;
+import br.com.appestoque.dao.cadastro.ClienteDAO;
+import br.com.appestoque.dao.faturamento.PedidoDAO;
+import br.com.appestoque.dominio.cadastro.Cliente;
+import br.com.appestoque.dominio.faturamento.Pedido;
+import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TabHost;
+import android.widget.TextView;
 
-public class PedidoEditarActivity extends TabActivity {
-
-//	private ClienteDAO clienteDAO;
-//	private PedidoDAO pedidoDAO;
+public class PedidoEditarActivity extends Activity  {
 	
+	private PedidoDAO pedidoDAO;
+	private ClienteDAO clienteDAO;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		Resources res = getResources(); 
-	    TabHost tabHost = getTabHost(); 
-	    TabHost.TabSpec spec;
-	    Intent intent;
-
-	    intent = new Intent().setClass(this,ProdutoActivity.class);
-	    spec = tabHost.newTabSpec(getString(R.string.titulo_pedido))
-	    		.setIndicator("Pedido",res.getDrawable(R.drawable.ic_pedido))
-                .setContent(intent);
-	    tabHost.addTab(spec);
-
-	    intent = new Intent().setClass(this, ClienteActivity.class);
-	    spec = tabHost.newTabSpec(getString(R.string.titulo_item))
-	    		.setIndicator("Item",res.getDrawable(R.drawable.ic_item))
-	    		.setContent(intent);
-	    tabHost.addTab(spec);
-
-	    tabHost.setCurrentTab(2);
-	    
-	}
-
-	public void onSalvarClick(View view) {
-//		final EditText id = (EditText) findViewById(R.id.edtId);
-//		final EditText numero = (EditText) findViewById(R.id.edtNumero);
-//		final DatePicker data = (DatePicker) findViewById(R.id.dtpData);
-//		final EditText obs = (EditText) findViewById(R.id.edtObs);
-//		pedidoDAO = new PedidoDAO(this);
-//		pedidoDAO.criar(numero.getText().toString(), Util.dateMillisegundos(data.getYear(),data.getMonth(),data.getDayOfMonth()), obs.getText().toString(), new Long(id.getText().toString()) );
-//		setResult(RESULT_OK);
-//		this.finish();
-	}
-	
-	public void onCancelarClick(View v) {
-//		setResult(RESULT_CANCELED);
-//		this.finish();
+		setContentView(R.layout.pedido_editar_activity);
+		Bundle extras = getIntent().getExtras();
+		if(extras!=null){
+			pedidoDAO = new PedidoDAO(this);
+			Pedido pedido = pedidoDAO.pesquisar(extras.getLong(PedidoDAO.PEDIDO_CHAVE_ID));
+			clienteDAO = new ClienteDAO(this);
+			Cliente cliente = clienteDAO.pesquisar(pedido.getIdCliente());
+			pedido.setCliente(cliente);
+			((TextView) findViewById(R.id.edtNumero)).setText(pedido.getNumero().toString());
+			((TextView) findViewById(R.id.edtData)).setText(pedido.getData().toString());
+			((TextView) findViewById(R.id.edtCliente)).setText(pedido.getCliente().getNome());
+			((TextView) findViewById(R.id.edtObs)).setText(pedido.getObs());
+		}
 	}
 	
 }

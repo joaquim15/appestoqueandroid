@@ -13,12 +13,14 @@ public class PedidoItemEditarActivity extends TabActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		setContentView(R.layout.pedido_item_editar_activity);
+		
 		Resources res = getResources(); 
 	    TabHost tabHost = getTabHost(); 
 	    TabHost.TabSpec spec;
 	    Intent intent;
 
-	    intent = new Intent().setClass(this,ProdutoActivity.class);
+	    intent = new Intent().setClass(this,PedidoEditarActivity.class);
 	    spec = tabHost.newTabSpec(getString(R.string.titulo_pedido))
 	    		.setIndicator("Pedido",res.getDrawable(R.drawable.ic_pedido))
                 .setContent(intent);
