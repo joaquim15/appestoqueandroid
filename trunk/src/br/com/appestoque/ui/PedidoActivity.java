@@ -110,9 +110,6 @@ public class PedidoActivity extends BaseListaAtividade{
 					pedidoJSON.put("data",pedido.getData().getTime());
 					pedidoJSON.put("idCliente",pedido.getIdCliente());
 					pedidoJSON.put("obs",pedido.getObs());					
-					//JSONObject parametroJSON = new JSONObject();					
-					//parametroJSON.put("uuid",uuid);
-					//pedidoJSON.put("parametro",parametroJSON);
 				} catch (JSONException e) {
 					Log.e(Constantes.TAG, e.getMessage());
 				}
@@ -132,9 +129,6 @@ public class PedidoActivity extends BaseListaAtividade{
 		}
 	}
 	
-//    public void onListItemClick(ListView l , View v, int posicao, long id){
-//    }
-
     @Override
     protected void onDestroy(){
     	super.onDestroy();
