@@ -28,6 +28,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.CursorAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
@@ -37,6 +38,7 @@ import br.com.appestoque.R;
 import br.com.appestoque.Util;
 import br.com.appestoque.dao.cadastro.ClienteDAO;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
+import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import br.com.appestoque.dominio.faturamento.Pedido;
 
 @SuppressWarnings("unused")
@@ -121,12 +123,17 @@ public class PedidoActivity extends BaseListaAtividade{
 				long retorno = pedidoDAO.atualizar(pedido);
 				return true;
 			case R.id.item_menu_visualizar:
-				Toast.makeText(getApplicationContext(), "Visualizar", Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(this, PedidoItemEditarActivity.class);
+		    	intent.putExtra(PedidoDAO.PEDIDO_CHAVE_ID, info.id);
+		    	startActivity(intent);
 				return true;
 			default:
 				return super.onContextItemSelected(item);
 		}
 	}
+	
+//    public void onListItemClick(ListView l , View v, int posicao, long id){
+//    }
 
     @Override
     protected void onDestroy(){
