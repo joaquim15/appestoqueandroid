@@ -38,6 +38,7 @@
 		</activity>
 		
 		<!-- FATURAMENTO -->
+		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.PedidoItemEditarActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.PedidoEditarActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.PedidoIncluirActivity"/>
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.PedidoActivity">
