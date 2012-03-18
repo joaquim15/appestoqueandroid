@@ -2,6 +2,8 @@ package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
 import br.com.appestoque.dao.faturamento.ItemDAO;
+import br.com.appestoque.dao.suprimento.ProdutoDAO;
+import br.com.appestoque.dominio.suprimento.Produto;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 public class ItemActivity extends BaseListaAtividade{
 	
 	private ItemDAO itemDAO;
+	private ProdutoDAO produtoDAO;
 	
 	private class ItensAdapter extends CursorAdapter {
 
@@ -22,15 +25,18 @@ public class ItemActivity extends BaseListaAtividade{
 
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
-			final TextView numero = (TextView) view.findViewById(R.id.numero);
-            final TextView nome = (TextView) view.findViewById(R.id.nome);
-            numero.setText(cursor.getString(2));
-            nome.setText(cursor.getString(1));
+			final TextView produto = (TextView) view.findViewById(R.id.produto);
+            final TextView quantidade = (TextView) view.findViewById(R.id.quantidade);
+            final TextView valor = (TextView) view.findViewById(R.id.valor);
+            quantidade.setText(cursor.getString(1));
+            valor.setText(cursor.getString(2));
+            Produto prd = produtoDAO.pesquisar(cursor.getLong(3));
+            produto.setText(prd.getNome());
 		}
 
 		@Override
 		public View newView(Context context, Cursor cursor, ViewGroup parent) {
-			return getLayoutInflater().inflate(R.layout.produto_activity_lista, parent, false);
+			return getLayoutInflater().inflate(R.layout.item_activity_lista, parent, false);
 		}
 		
 	}
@@ -40,6 +46,7 @@ public class ItemActivity extends BaseListaAtividade{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.item_activity);
 		itemDAO = new ItemDAO(this);
+		produtoDAO = new ProdutoDAO(this);
 		Cursor cursor = null;
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
