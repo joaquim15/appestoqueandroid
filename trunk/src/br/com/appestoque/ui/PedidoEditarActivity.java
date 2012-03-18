@@ -24,7 +24,7 @@ public class PedidoEditarActivity extends Activity  {
 			pedidoDAO = new PedidoDAO(this);
 			Pedido pedido = pedidoDAO.pesquisar(extras.getLong(PedidoDAO.PEDIDO_CHAVE_ID));
 			clienteDAO = new ClienteDAO(this);
-			Cliente cliente = clienteDAO.pesquisar(pedido.getIdCliente());
+			Cliente cliente = clienteDAO.pesquisar(pedido.getCliente().getId());
 			pedido.setCliente(cliente);
 			((TextView) findViewById(R.id.edtNumero)).setText(pedido.getNumero().toString());
 			((TextView) findViewById(R.id.edtData)).setText(Util.dateToStr( getString(R.string.formato_padrao_data),pedido.getData()));
