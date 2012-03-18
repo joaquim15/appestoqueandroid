@@ -41,6 +41,18 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
     	return cursor;
 	}
 	
+	public Cursor listar(long id) {
+		SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
+		Cursor cursor = db.query(TABELA, new String[] {	PEDIDO_CHAVE_ID,
+														PEDIDO_CHAVE_NUMERO,
+														PEDIDO_CHAVE_DATA,
+														PEDIDO_CHAVE_OBS,
+														PEDIDO_CHAVE_CLIENTE,
+														PEDIDO_CHAVE_SINCRONIZADO}, 
+														PEDIDO_CHAVE_ID + " = " + id, null, null, null, null);
+    	return cursor;
+	}
+	
 	public long criar(String numero, long data, String obs, Long idCliente) {
     	SQLiteDatabase db = databaseHelper.getWritableDatabase();
         ContentValues initialValues = new ContentValues();
