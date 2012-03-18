@@ -8,8 +8,18 @@
 	
 	<LinearLayout style="@style/Titulo_Barra">
 		<TextView style="@style/TitleBarText" 
-				  android:text="@string/titulo_produto" />
+				  android:text="@string/titulo_cliente" />
 	</LinearLayout>
+	
+	<ScrollView android:layout_height="wrap_content" 
+				android:id="@+id/scrollViewCliente"
+				android:layout_width="fill_parent">
+				
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+						android:orientation="vertical" 
+						android:layout_width="fill_parent"
+						android:layout_height="fill_parent" 
+						android:background="@color/fundo_branco">		
 	
 			<TextView android:id="@+id/txtCnpj" 
 					  android:text="@string/cliente_cnpj"
@@ -91,5 +101,8 @@
 					  style="@style/SessionSubtitle"
 					  android:layout_height="wrap_content" 
 				 	  android:layout_width="fill_parent"/>
+				 	  
+		</LinearLayout>
+	</ScrollView>				 	  
 				 	  
 </LinearLayout>
