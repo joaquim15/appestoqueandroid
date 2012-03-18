@@ -10,7 +10,6 @@ public class Pedido {
 	private String numero;
 	private Date data;
 	private String obs;
-	//private Long idCliente;
 	private Cliente cliente;
 	private Short sincronizado;
 	
@@ -28,7 +27,6 @@ public class Pedido {
 		this.numero = numero;
 		this.data = data;
 		this.obs = obs; 
-		//this.idCliente = idCliente;
 	}
 	
 	public Long getId() {
