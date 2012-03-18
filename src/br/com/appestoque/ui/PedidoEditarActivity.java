@@ -1,6 +1,7 @@
 package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
+import br.com.appestoque.Util;
 import br.com.appestoque.dao.cadastro.ClienteDAO;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dominio.cadastro.Cliente;
@@ -26,7 +27,7 @@ public class PedidoEditarActivity extends Activity  {
 			Cliente cliente = clienteDAO.pesquisar(pedido.getIdCliente());
 			pedido.setCliente(cliente);
 			((TextView) findViewById(R.id.edtNumero)).setText(pedido.getNumero().toString());
-			((TextView) findViewById(R.id.edtData)).setText(pedido.getData().toString());
+			((TextView) findViewById(R.id.edtData)).setText(Util.dateToStr( getString(R.string.formato_padrao_data),pedido.getData()));
 			((TextView) findViewById(R.id.edtCliente)).setText(pedido.getCliente().getNome());
 			((TextView) findViewById(R.id.edtObs)).setText(pedido.getObs());
 		}
