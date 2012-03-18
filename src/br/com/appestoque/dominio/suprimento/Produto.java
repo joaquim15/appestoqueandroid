@@ -5,7 +5,7 @@ public class Produto {
 	private Long id;
 	private String nome;
 	private String numero;
-	private Double preco;
+	private Double valor;
 	
 	public Produto() {
 	}
@@ -28,11 +28,11 @@ public class Produto {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	public Double getPreco() {
-		return preco;
+	public Double getValor() {
+		return valor;
 	}
-	public void setPreco(Double preco) {
-		this.preco = preco;
+	public void setValor(Double valor) {
+		this.valor = valor;
 	}
 
 }

@@ -21,7 +21,7 @@ public class ProdutoEditarActivity extends Activity {
 			Produto produto = produtoDAO.pesquisar(extras.getLong(ProdutoDAO.PRODUTO_CHAVE_ID));
 			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());
 			((TextView) findViewById(R.id.edtNumero)).setText(produto.getNumero());
-			((TextView) findViewById(R.id.edtPreco)).setText(produto.getPreco().toString());
+			((TextView) findViewById(R.id.edtPreco)).setText(produto.getValor().toString());
 		}
 	}
 	
