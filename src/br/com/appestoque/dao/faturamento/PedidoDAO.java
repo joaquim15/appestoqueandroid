@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import br.com.appestoque.dao.DatabaseHelper;
 import br.com.appestoque.dao.IDAO;
+import br.com.appestoque.dominio.cadastro.Cliente;
 import br.com.appestoque.dominio.faturamento.Pedido;
 
 public class PedidoDAO implements IDAO<Pedido,Long>{
@@ -54,7 +55,7 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
 	
 	@Override
 	public Pedido pesquisar(long id) {
-    	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
+    	SQLiteDatabase db = databaseHelper.getReadableDatabase();
     	Cursor cursor =  db.query(TABELA, new String[] {PEDIDO_CHAVE_ID,
 														PEDIDO_CHAVE_NUMERO,
 														PEDIDO_CHAVE_DATA,
@@ -66,11 +67,12 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
     	if(cursor.getCount()>0){
     		cursor.moveToFirst();
     		Pedido pedido = new Pedido();
+    		pedido.setCliente(new Cliente());
     		pedido.setId(cursor.getLong(0));
     		pedido.setNumero(cursor.getString(1));
     		pedido.setData(new Date(cursor.getLong(2)));
     		pedido.setObs(cursor.getString(3));
-    		pedido.setIdCliente(cursor.getLong(4));
+    		pedido.getCliente().setId(cursor.getLong(4));
     		return pedido;
     	}else{
     		return null;
@@ -83,7 +85,7 @@ public class PedidoDAO implements IDAO<Pedido,Long>{
 		initialValues.put(PEDIDO_CHAVE_NUMERO,pedido.getNumero());
         initialValues.put(PEDIDO_CHAVE_DATA,pedido.getData().getTime());
         initialValues.put(PEDIDO_CHAVE_OBS,pedido.getObs());
-        initialValues.put(PEDIDO_CHAVE_CLIENTE,pedido.getIdCliente());
+        initialValues.put(PEDIDO_CHAVE_CLIENTE,pedido.getCliente().getId());
         initialValues.put(PEDIDO_CHAVE_SINCRONIZADO,pedido.getSincronizado());
 		return db.update(TABELA, initialValues, PEDIDO_CHAVE_ID + " = " + pedido.getId() , null);
 	}
