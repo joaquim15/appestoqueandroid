@@ -39,17 +39,15 @@ public class PedidoIncluirActivity extends Activity {
 		pedidoDAO = new PedidoDAO(this);
 		long chave = pedidoDAO.criar(numero.getText().toString(), Util.dateMillisegundos(data.getYear(),data.getMonth(),data.getDayOfMonth()), obs.getText().toString(), new Long(id.getText().toString()) );
 		setResult(RESULT_OK);
-		Intent intent = new Intent(this, PedidoEditarActivity.class);
+		Intent intent = new Intent(this, PedidoItemEditarActivity.class);
 		intent.putExtra(PedidoDAO.PEDIDO_CHAVE_ID, chave);
     	startActivity(intent);
-		//this.finish();
+		this.finish();
 	}
 	
 	public void onCancelarClick(View v) {
-//		setResult(RESULT_CANCELED);
-//		this.finish();
-		Intent intent = new Intent(this, PedidoEditarActivity.class);
-    	startActivity(intent);
+		setResult(RESULT_CANCELED);
+		this.finish();
 	}
 	
 }
