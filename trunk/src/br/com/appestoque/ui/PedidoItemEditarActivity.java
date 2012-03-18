@@ -30,7 +30,7 @@ public class PedidoItemEditarActivity extends TabActivity {
                 .setContent(intent);
 	    tabHost.addTab(spec);
 
-	    intent = new Intent().setClass(this, ClienteActivity.class);
+	    intent = new Intent().setClass(this, ItemActivity.class);
 	    intent.putExtra(PedidoDAO.PEDIDO_CHAVE_ID, extras.getLong(PedidoDAO.PEDIDO_CHAVE_ID));
 	    spec = tabHost.newTabSpec(getString(R.string.titulo_item))
 	    		.setIndicator("Item",res.getDrawable(R.drawable.ic_item))
