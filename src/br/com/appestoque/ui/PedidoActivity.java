@@ -108,7 +108,7 @@ public class PedidoActivity extends BaseListaAtividade{
 				try {
 					pedidoJSON.put("numero",pedido.getNumero());
 					pedidoJSON.put("data",pedido.getData().getTime());
-					pedidoJSON.put("idCliente",pedido.getIdCliente());
+					pedidoJSON.put("idCliente",pedido.getCliente().getId());
 					pedidoJSON.put("obs",pedido.getObs());					
 				} catch (JSONException e) {
 					Log.e(Constantes.TAG, e.getMessage());
