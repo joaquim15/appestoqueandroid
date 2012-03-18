@@ -79,5 +79,6 @@
 		<string name="menu_visualizar">Visualizar</string>
 		<string name="menu_criar_pedido">Criar pedido</string>
 		<string name="menu_sincronizar">Sincronizar</string>
+		<string name="formato_padrao_data">dd/MM/yyyy</string>
 	
 </resources>
