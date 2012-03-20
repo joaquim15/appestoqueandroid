@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:background="@color/fundo_branco">
+	
+	<LinearLayout style="@style/Titulo_Barra">
+		<TextView style="@style/TitleBarText" android:text="@string/titulo_produto" />
+	</LinearLayout>
+
+	<TextView android:id="@+id/txtQtd" android:text="@string/pedido_cliente"
+		android:textColor="#000000" android:layout_height="wrap_content"
+		android:layout_width="fill_parent" style="@style/SessionTitle" />
+	<EditText android:layout_width="fill_parent" android:id="@+id/edtQtd"
+		android:layout_height="wrap_content" android:enabled="false" />
+
+</LinearLayout>
