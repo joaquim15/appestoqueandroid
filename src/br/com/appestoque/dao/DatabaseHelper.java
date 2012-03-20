@@ -1,6 +1,7 @@
 package br.com.appestoque.dao;
 
 import br.com.appestoque.dao.cadastro.ClienteDAO;
+import br.com.appestoque.dao.faturamento.ItemDAO;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import android.content.Context;
@@ -47,6 +48,14 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 			        + PedidoDAO.PEDIDO_CHAVE_OBS     		+ " text not null, 	 					"
 			        + PedidoDAO.PEDIDO_CHAVE_CLIENTE     	+ " integer not null, 					"
 			        + PedidoDAO.PEDIDO_CHAVE_SINCRONIZADO  	+ " integer DEFAULT 0 					"
+			        + "  ); ");
+		
+		db.execSQL(" create table "+ ItemDAO.TABELA 		+ " ( "
+					+ ItemDAO.ITEM_CHAVE_ID  				+ " integer primary key AUTOINCREMENT,	"
+			        + ItemDAO.ITEM_CHAVE_QUANTIDADE     	+ " real not null, 	 					" 
+			        + ItemDAO.ITEM_CHAVE_VALOR     			+ " real not null, 	 					"
+			        + ItemDAO.ITEM_CHAVE_PRODUTO     		+ " integer not null, 	 				"
+			        + ItemDAO.ITEM_CHAVE_PEDIDO     		+ " integer not null 					"
 			        + "  ); ");
 		
 	}
