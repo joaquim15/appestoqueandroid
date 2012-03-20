@@ -2,6 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/item_menu_criar_pedido"
           android:title="@string/menu_criar_pedido"/>
-    <item android:id="@+id/item_menu_visualizar"
+    <item android:id="@+id/item_menu_sincronizar"
           android:title="@string/menu_sincronizar"/>
+    <item android:id="@+id/item_menu_visualizar"
+          android:title="@string/menu_visualizar"/>         
 </menu>

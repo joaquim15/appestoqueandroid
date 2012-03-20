@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/item_menu_texto"
-          android:title="Texto"/>
-    <item android:id="@+id/item_menu_imagem"
-          android:title="Imagem"/>  
+    <item android:id="@+id/item_menu_sincronizar"
+          android:title="@string/menu_sincronizar"/>
+    <item android:id="@+id/item_menu_visualizar"
+          android:title="@string/menu_visualizar"/>  
 </menu>
