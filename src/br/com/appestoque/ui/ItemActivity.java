@@ -5,6 +5,7 @@ import br.com.appestoque.dao.faturamento.ItemDAO;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import br.com.appestoque.dominio.suprimento.Produto;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -55,6 +56,12 @@ public class ItemActivity extends BaseListaAtividade{
 	    startManagingCursor(cursor);	    
 		setListAdapter(new ItensAdapter(this,cursor));
 		registerForContextMenu(getListView());
+	}
+	
+	public void onAdicionarClick(Context context) {
+		final Intent intent = new Intent(context, IniciarAtividade.class);
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		context.startActivity(intent);
 	}
     
     @Override
