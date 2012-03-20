@@ -6,9 +6,7 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TabHost;
-import android.widget.TextView;
 
 public class PedidoItemEditarActivity extends TabActivity {
 
