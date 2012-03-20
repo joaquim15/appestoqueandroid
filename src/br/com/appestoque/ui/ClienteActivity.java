@@ -24,7 +24,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.CursorAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import br.com.appestoque.Constantes;
@@ -191,11 +190,11 @@ public class ClienteActivity extends BaseListaAtividade{
     	
     }
 
-    public void onListItemClick(ListView l , View v, int posicao, long id){
-    	Intent intent = new Intent(this, ClienteEditarActivity.class);
-    	intent.putExtra(ClienteDAO.CLIENTE_CHAVE_ID, id);
-    	startActivity(intent);
-    }
+//    public void onListItemClick(ListView l , View v, int posicao, long id){
+//    	Intent intent = new Intent(this, ClienteEditarActivity.class);
+//    	intent.putExtra(ClienteDAO.CLIENTE_CHAVE_ID, id);
+//    	startActivity(intent);
+//    }
     
 	public void onIniciarClick(Context context) {
 		final Intent intent = new Intent(context, IniciarAtividade.class);
@@ -218,14 +217,20 @@ public class ClienteActivity extends BaseListaAtividade{
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+		Intent intent = null;
 		switch (item.getItemId()) {
 			case R.id.item_menu_criar_pedido:
-				Intent intent = new Intent(this, PedidoIncluirActivity.class);
+				intent = new Intent(this, PedidoIncluirActivity.class);
 				intent.putExtra(ClienteDAO.CLIENTE_CHAVE_ID, info.id);
 		    	startActivity(intent);
 				return true;
+			case R.id.item_menu_sincronizar:
+				Toast.makeText(getApplicationContext(), "Sincronizar", Toast.LENGTH_SHORT).show();
+				return true;
 			case R.id.item_menu_visualizar:
-				Toast.makeText(getApplicationContext(), "Visualizar", Toast.LENGTH_SHORT).show();
+				intent = new Intent(this, ClienteEditarActivity.class);
+		    	intent.putExtra(ClienteDAO.CLIENTE_CHAVE_ID, info.id);
+		    	startActivity(intent);				
 				return true;
 			default:
 				return super.onContextItemSelected(item);

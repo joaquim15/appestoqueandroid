@@ -20,11 +20,16 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.CursorAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 
 public class ProdutoActivity extends BaseListaAtividade{
 	
@@ -79,11 +84,11 @@ public class ProdutoActivity extends BaseListaAtividade{
 		registerForContextMenu(getListView());
 	}
 	
-    public void onListItemClick(ListView l , View v, int posicao, long id){
-    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
-    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
-    	startActivity(intent);
-    }
+//    public void onListItemClick(ListView l , View v, int posicao, long id){
+//    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
+//    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
+//    	startActivity(intent);
+//    }
     
     public void onAtualizarClick(View v) {
     	
@@ -150,6 +155,33 @@ public class ProdutoActivity extends BaseListaAtividade{
     public void onBuscarClick(Activity activity) {
         activity.startSearch(null, false, Bundle.EMPTY, false);
     }
+    
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v,
+			ContextMenuInfo menuInfo) {
+		super.onCreateContextMenu(menu, v, menuInfo);
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.produto_menu, menu);
+	}
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
+		Intent intent = null;
+		switch (item.getItemId()) {
+			case R.id.item_menu_sincronizar:
+				Toast.makeText(getApplicationContext(), "Sincronizar", Toast.LENGTH_SHORT).show();
+				return true;
+			case R.id.item_menu_visualizar:
+				intent = new Intent(this, ProdutoEditarActivity.class);
+		    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, info.id);
+		    	startActivity(intent);				
+				return true;
+			default:
+				return super.onContextItemSelected(item);
+		}
+	}
+
     
     @Override
     protected void onDestroy(){
