@@ -8,11 +8,9 @@ import br.com.appestoque.dominio.suprimento.Produto;
 import br.com.appestoque.dao.faturamento.ItemDAO;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.CursorAdapter;
 
 public class ItemEditarActivity extends Activity {
 
