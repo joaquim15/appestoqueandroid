@@ -8,10 +8,35 @@
 		<TextView style="@style/TitleBarText" android:text="@string/titulo_produto" />
 	</LinearLayout>
 
-	<TextView android:id="@+id/txtQtd" android:text="@string/pedido_cliente"
-		android:textColor="#000000" android:layout_height="wrap_content"
-		android:layout_width="fill_parent" style="@style/SessionTitle" />
-	<EditText android:layout_width="fill_parent" android:id="@+id/edtQtd"
-		android:layout_height="wrap_content" android:enabled="false" />
+	<TextView android:id="@+id/txtProduto" 
+	          android:text="@string/item_produto"
+			  android:textColor="#000000" 
+			  android:layout_height="wrap_content"
+			  android:layout_width="fill_parent" 
+			  style="@style/SessionTitle" />
+	<AutoCompleteTextView android:id="@+id/edtProduto"
+        				  android:layout_width="fill_parent"
+        				  android:layout_height="wrap_content"
+        				  android:layout_marginLeft="5dp"/>
+	<TextView android:id="@+id/txtQtd" 
+	          android:text="@string/item_quantidade"
+			  android:textColor="#000000" 
+			  android:layout_height="wrap_content"
+			  android:layout_width="fill_parent" 
+			  style="@style/SessionTitle" />
+	<EditText android:layout_width="fill_parent" 
+	          android:id="@+id/edtQtd"
+			  android:layout_height="wrap_content" 
+			  android:enabled="false" />
+	<TextView android:id="@+id/txtValor" 
+	          android:text="@string/item_valor"
+			  android:textColor="#000000" 
+			  android:layout_height="wrap_content"
+			  android:layout_width="fill_parent" 
+			  style="@style/SessionTitle" />
+	<EditText android:layout_width="fill_parent" 
+	          android:id="@+id/edtValor"
+			  android:layout_height="wrap_content" 
+			  android:enabled="false" />		  
 
 </LinearLayout>
