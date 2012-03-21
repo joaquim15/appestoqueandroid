@@ -50,6 +50,7 @@
 		</activity>
 		
 		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ItemActivity"/>
+		<activity android:theme="@style/Tema.APPESTOQUE" android:name=".ui.ItemEditarActivity"/>
 		
 	</application>
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
