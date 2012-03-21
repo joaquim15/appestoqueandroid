@@ -58,11 +58,15 @@ public class ItemActivity extends BaseListaAtividade{
 		registerForContextMenu(getListView());
 	}
 	
-	public void onAdicionarClick(Context context) {
-		final Intent intent = new Intent(context, IniciarAtividade.class);
-		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		context.startActivity(intent);
-	}
+//	public void onAdicionarClick(Context context) {
+//		final Intent intent = new Intent(context, IniciarAtividade.class);
+//		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//		context.startActivity(intent);
+//	}
+	
+	public void onAdicionarClick(View v) {
+    	startActivity(new Intent(this, ItemEditarActivity.class));
+    }
     
     @Override
     protected void onDestroy(){
