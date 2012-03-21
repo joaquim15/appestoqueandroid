@@ -1,30 +1,48 @@
 package br.com.appestoque.ui;
 
+import java.util.List;
+
 import br.com.appestoque.R;
 import br.com.appestoque.dominio.faturamento.Item;
 import br.com.appestoque.dominio.suprimento.Produto;
 import br.com.appestoque.dao.faturamento.ItemDAO;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.CursorAdapter;
 
 public class ItemEditarActivity extends Activity {
 
 	private ItemDAO itemDAO;
+	private ProdutoDAO produtoDAO;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.item_editar_activity);
 		Bundle extras = getIntent().getExtras();
-		if(extras!=null){
-	    	itemDAO = new ItemDAO(this);
-			Item item = itemDAO.pesquisar(extras.getLong(ItemDAO.ITEM_CHAVE_ID));
-//			((TextView) findViewById(R.id.edtNome)).setText(produto.getNome());
-//			((TextView) findViewById(R.id.edtNumero)).setText(produto.getNumero());
-//			((TextView) findViewById(R.id.edtPreco)).setText(produto.getValor().toString());
+		itemDAO = new ItemDAO(this);
+		produtoDAO = new ProdutoDAO(this);
+		
+		List<Produto> lista = produtoDAO.produtos();
+		String[] produtos = new String[lista.size()];
+		
+		for(int i = 0; i<lista.size();++i){
+			produtos[i] = lista.get(i).getNumero();
 		}
+		
+		AutoCompleteTextView txtProduto = (AutoCompleteTextView) findViewById(R.id.edtProduto);
+	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.produto_listar, produtos);
+	    txtProduto.setAdapter(adapter);
+		
+		if(extras!=null){	    	
+			Item item = itemDAO.pesquisar(extras.getLong(ItemDAO.ITEM_CHAVE_ID));
+		}
+		
 	}
 	
     @Override

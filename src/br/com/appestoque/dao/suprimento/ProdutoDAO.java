@@ -1,5 +1,8 @@
 package br.com.appestoque.dao.suprimento;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -31,6 +34,31 @@ public class ProdutoDAO implements IDAO<Produto,Long> {
     													PRODUTO_CHAVE_VALOR}, 
     													null, null, null, null, null);
     	return cursor;
+    }
+	
+	public List<Produto> produtos() {		
+		SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
+		Cursor cursor = db.query(TABELA, new String[] {	PRODUTO_CHAVE_ID, 
+    													PRODUTO_CHAVE_NOME, 
+    													PRODUTO_CHAVE_NUMERO, 
+    													PRODUTO_CHAVE_VALOR}, 
+    													null, null, null, null, null);
+		
+		List<Produto> produtos = new ArrayList<Produto>();
+		
+		if(cursor.getCount()>0){
+    		cursor.moveToFirst();
+    		while(cursor.moveToNext()){
+    			Produto produto = new Produto();
+    			produto.setId(cursor.getLong(cursor.getColumnIndex(ProdutoDAO.PRODUTO_CHAVE_ID)));
+    			produto.setNome(cursor.getString(cursor.getColumnIndex(ProdutoDAO.PRODUTO_CHAVE_NOME)));
+    			produto.setNumero(cursor.getString(cursor.getColumnIndex(ProdutoDAO.PRODUTO_CHAVE_NUMERO)));
+    			produto.setValor(cursor.getDouble(cursor.getColumnIndex(ProdutoDAO.PRODUTO_CHAVE_VALOR)));
+    			produtos.add(produto);
+    		}
+		}	
+    	
+		return produtos;
     }
 	
     public long criar(Long id, String nome, String numero, double valor) {
