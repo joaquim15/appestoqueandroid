@@ -2,6 +2,7 @@ package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
 import br.com.appestoque.dao.faturamento.ItemDAO;
+import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import br.com.appestoque.dominio.suprimento.Produto;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class ItemActivity extends BaseListaAtividade{
@@ -51,7 +53,8 @@ public class ItemActivity extends BaseListaAtividade{
 		Cursor cursor = null;
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
-	        cursor = itemDAO.listar(extras.getLong(ItemDAO.ITEM_CHAVE_ID));
+	        cursor = itemDAO.listar(extras.getLong(PedidoDAO.PEDIDO_CHAVE_ID));
+	        ((TextView) findViewById(R.id.edtId)).setText(extras.getString(PedidoDAO.PEDIDO_CHAVE_ID));
 	    }
 	    startManagingCursor(cursor);	    
 		setListAdapter(new ItensAdapter(this,cursor));
@@ -65,7 +68,9 @@ public class ItemActivity extends BaseListaAtividade{
 //	}
 	
 	public void onAdicionarClick(View v) {
-    	startActivity(new Intent(this, ItemEditarActivity.class));
+		Intent intent = new Intent(this, ItemEditarActivity.class);
+		intent.putExtras(getIntent().getExtras());
+    	startActivity(intent);
     }
     
     @Override
