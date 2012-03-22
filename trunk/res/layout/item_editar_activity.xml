@@ -30,8 +30,8 @@
 					  android:layout_height="wrap_content"
 					  android:layout_width="fill_parent" 
 					  style="@style/SessionTitle" />
-			<EditText android:layout_width="fill_parent" 
-			          android:id="@+id/edtQtd"
+			<EditText android:id="@+id/edtQtd"
+			          android:layout_width="fill_parent"
 					  android:layout_height="wrap_content"/>
 			<TextView android:id="@+id/txtValor" 
 			          android:text="@string/item_valor"
@@ -39,8 +39,8 @@
 					  android:layout_height="wrap_content"
 					  android:layout_width="fill_parent" 
 					  style="@style/SessionTitle" />
-			<EditText android:layout_width="fill_parent" 
-			          android:id="@+id/edtValor"
+			<EditText android:id="@+id/edtValor"
+			          android:layout_width="fill_parent" 
 					  android:layout_height="wrap_content"/>
 			  
 		</LinearLayout>
