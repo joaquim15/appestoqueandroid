@@ -55,11 +55,11 @@ public class ProdutoImagemActivity extends BaseAtividade {
 	}
 	
     @Override
-    protected void onPause(){
-    	super.onPause();
-    	setResult(RESULT_CANCELED);
-    	produtoDAO.fechar();
-    	finish();
+    protected void onDestroy(){
+    	super.onDestroy();
+    	if(produtoDAO!=null){
+    		produtoDAO.fechar();
+    	}
     }
 	
     private class Adaptador extends BaseAdapter{

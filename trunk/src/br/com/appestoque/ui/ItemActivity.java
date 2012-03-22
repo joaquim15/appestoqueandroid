@@ -53,7 +53,6 @@ public class ItemActivity extends BaseListaAtividade{
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
 	        cursor = itemDAO.listar(extras.getLong(PedidoDAO.PEDIDO_CHAVE_ID));
-	        ((TextView) findViewById(R.id.edtId)).setText(extras.getString(PedidoDAO.PEDIDO_CHAVE_ID));
 	    }
 	    startManagingCursor(cursor);	    
 		setListAdapter(new ItensAdapter(this,cursor));
