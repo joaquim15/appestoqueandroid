@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CursorAdapter;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class ItemActivity extends BaseListaAtividade{
