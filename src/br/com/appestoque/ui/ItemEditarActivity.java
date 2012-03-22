@@ -45,6 +45,7 @@ public class ItemEditarActivity extends Activity {
 	
 	public void onSalvarClick(View view) {
 		setResult(RESULT_OK);
+		finish();
 	}
 	
 	public void onCancelarClick(View view) {

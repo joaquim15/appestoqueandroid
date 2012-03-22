@@ -50,4 +50,15 @@ public class PedidoIncluirActivity extends Activity {
 		this.finish();
 	}
 	
+    @Override
+    protected void onDestroy(){
+    	super.onDestroy();
+    	if(pedidoDAO!=null){
+    		pedidoDAO.fechar();
+    	}
+    	if(clienteDAO!=null){
+    		clienteDAO.fechar();
+    	}
+    }
+
 }
