@@ -3,12 +3,12 @@ package br.com.appestoque.ui;
 import java.util.List;
 
 import br.com.appestoque.R;
-import br.com.appestoque.dominio.faturamento.Item;
 import br.com.appestoque.dominio.suprimento.Produto;
 import br.com.appestoque.dao.faturamento.ItemDAO;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -37,18 +37,30 @@ public class ItemEditarActivity extends Activity {
 	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.produto_listar, produtos);
 	    txtProduto.setAdapter(adapter);
 		
-		if(extras!=null){	    	
-			Item item = itemDAO.pesquisar(extras.getLong(ItemDAO.ITEM_CHAVE_ID));
+		if(extras!=null){
+			//Item item = itemDAO.pesquisar(extras.getLong(ItemDAO.ITEM_CHAVE_ID));
 		}
 		
 	}
 	
+	public void onSalvarClick(View view) {
+		setResult(RESULT_OK);
+	}
+	
+	public void onCancelarClick(View view) {
+		setResult(RESULT_CANCELED);
+		finish();    	
+	}
+	
     @Override
-    protected void onPause(){
-    	super.onPause();
-    	setResult(RESULT_CANCELED);
-    	itemDAO.fechar();
-    	finish();
+    protected void onDestroy(){
+    	super.onDestroy();
+    	if(itemDAO!=null){
+    		itemDAO.fechar();
+    	}
+    	if(produtoDAO!=null){
+    		produtoDAO.fechar();
+    	}
     }
     
 }
