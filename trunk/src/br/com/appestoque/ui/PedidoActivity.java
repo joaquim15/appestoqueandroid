@@ -49,10 +49,11 @@ public class PedidoActivity extends BaseListaAtividade{
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		Intent intent = getIntent();		
 		setContentView(R.layout.pedido_activity);
-		pedidoDAO = new PedidoDAO(this);
+		if(pedidoDAO==null){
+			pedidoDAO = new PedidoDAO(this);
+		}
 		Cursor cursor = null;
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	        //String query = intent.getStringExtra(SearchManager.QUERY);
@@ -81,6 +82,7 @@ public class PedidoActivity extends BaseListaAtividade{
             final View iconView = view.findViewById(android.R.id.icon1);
             LayerDrawable iconDrawable = (LayerDrawable) iconView.getBackground();
             iconDrawable.getDrawable(0).setColorFilter(cursor.getLong(5)==0?Constantes.COR_VERMELHO_1:Constantes.COR_AZUL_1, PorterDuff.Mode.SRC_ATOP);
+            clienteDAO.fechar();
 		}
 
 		@Override
@@ -102,7 +104,9 @@ public class PedidoActivity extends BaseListaAtividade{
 		AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
 		switch (item.getItemId()) {
 			case R.id.item_menu_sincronizar:
-				pedidoDAO = new PedidoDAO(this);
+				if(pedidoDAO==null){
+					pedidoDAO = new PedidoDAO(this);
+				}
 				Pedido pedido = pedidoDAO.pesquisar(info.id);
 				JSONObject pedidoJSON = new JSONObject();
 				try {
@@ -132,9 +136,7 @@ public class PedidoActivity extends BaseListaAtividade{
     @Override
     protected void onDestroy(){
     	super.onDestroy();
-    	if(pedidoDAO!=null){
-    		pedidoDAO.fechar();
-    	}
+    	pedidoDAO.fechar();
     }
 	
 }
