@@ -8,7 +8,6 @@ import br.com.appestoque.HttpCliente;
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
@@ -140,14 +139,6 @@ public class ProdutoActivity extends BaseListaAtividade{
 			Util.dialogo(ProdutoActivity.this, getString(R.string.mensagem_3));
 		}	
     	
-    }
-    
-    public void onIniciarClick(Context context) {
-        finish();
-    }
-
-    public void onBuscarClick(Activity activity) {
-        activity.startSearch(null, false, Bundle.EMPTY, false);
     }
     
 	@Override
