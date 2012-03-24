@@ -151,7 +151,7 @@ public class ClienteActivity extends BaseListaAtividade{
     	
     }
     
-	public void onIniciarClick(Context context) {
+	public void onIniciarClick() {
 		finish();
 	}
 

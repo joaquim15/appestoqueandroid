@@ -5,7 +5,6 @@ import br.com.appestoque.dominio.cadastro.Cliente;
 import br.com.appestoque.dao.cadastro.ClienteDAO;
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
 public class ClienteEditarActivity extends Activity {
@@ -33,7 +32,7 @@ public class ClienteEditarActivity extends Activity {
 		}
 	}
 	
-	public void onRetornarClick(View v) {
+	public void onRetornarClick() {
 		finish();
 	}
 	
