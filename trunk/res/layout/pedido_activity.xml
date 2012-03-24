@@ -8,7 +8,6 @@
 
 	<LinearLayout style="@style/Titulo_Barra">
 		<ImageButton style="@style/Titulo_Barra_Acao"
-			android:contentDescription="@string/description_home" 
 			android:src="@drawable/ic_title_home"
 			android:onClick="onIniciarClick" />
 		<ImageView style="@style/Titulo_Barra_Separador" />
@@ -16,7 +15,6 @@
 				  android:text="@string/titulo_pedido" />
 		<ImageView style="@style/TitleBarSeparator" />
 		<ImageButton style="@style/Titulo_Barra_Acao"
-			android:contentDescription="@string/description_search" 
 			android:src="@drawable/ic_title_search"
 			android:onClick="onBuscarClick" />
 		<ImageView style="@style/Titulo_Barra_Separador" />
