@@ -8,14 +8,14 @@
 
 	<LinearLayout style="@style/Titulo_Barra">
 		<ImageButton style="@style/Titulo_Barra_Acao"
-			android:src="@drawable/ic_title_home"
+			android:src="@drawable/btn_iniciar"
 			android:onClick="onIniciarClick" />
 		<ImageView style="@style/Titulo_Barra_Separador" />
 		<TextView style="@style/TitleBarText" 
 				  android:text="@string/titulo_pedido" />
 		<ImageView style="@style/TitleBarSeparator" />
 		<ImageButton style="@style/Titulo_Barra_Acao"
-			android:src="@drawable/ic_title_search"
+			android:src="@drawable/btn_buscar"
 			android:onClick="onBuscarClick" />
 		<ImageView style="@style/Titulo_Barra_Separador" />
         <ImageButton style="@style/Titulo_Barra_Acao"
