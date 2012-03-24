@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_nome">Estoque</string>	
-	<string name="description_refresh">Refresh</string>
+	
 	<string name="btn_produto">Produto</string>
 	<string name="btn_estoque">Estoque</string>
 	<string name="btn_pedido">Pedido</string>   
 	<string name="btn_cliente">Cliente</string>
 	<string name="btn_preferencia">Preferência</string>
+	
+	<!--
+	<string name="description_refresh">Refresh</string>  
 	<string name="description_home">Home</string> 	
 	<string name="description_search">Search</string>
+	-->
 	
 	
 	<string name="mensagem_clientProtocolException">Desculpe, mas ocorreu uma exceção referente ao protocolo cliente.</string>
