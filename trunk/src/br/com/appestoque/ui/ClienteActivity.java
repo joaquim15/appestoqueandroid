@@ -71,7 +71,9 @@ public class ClienteActivity extends BaseListaAtividade{
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();		
 		setContentView(R.layout.cliente_activity);
-		clienteDAO = new ClienteDAO(this);
+		if(clienteDAO==null){
+			clienteDAO = new ClienteDAO(this);
+		}
 		Cursor cursor = null;
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	        String query = intent.getStringExtra(SearchManager.QUERY);

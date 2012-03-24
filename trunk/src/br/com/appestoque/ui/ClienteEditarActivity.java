@@ -17,7 +17,9 @@ public class ClienteEditarActivity extends Activity {
 		setContentView(R.layout.cliente_editar_activity);
 		Bundle extras = getIntent().getExtras();
 		if(extras!=null){
-	    	clienteDAO = new ClienteDAO(this);
+			if(clienteDAO==null){
+				clienteDAO = new ClienteDAO(this);
+			}
 			Cliente cliente = clienteDAO.pesquisar(extras.getLong(ClienteDAO.CLIENTE_CHAVE_ID));
 			((TextView) findViewById(R.id.edtCnpj)).setText(cliente.getCnpj());
 			((TextView) findViewById(R.id.edtNome)).setText(cliente.getNome());
@@ -31,11 +33,9 @@ public class ClienteEditarActivity extends Activity {
 	}
 	
     @Override
-    protected void onPause(){
+    protected void onDestroy(){
     	super.onPause();
-    	setResult(RESULT_CANCELED);
     	clienteDAO.fechar();
-    	finish();
     }
     
 }
