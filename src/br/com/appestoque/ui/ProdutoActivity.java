@@ -83,12 +83,6 @@ public class ProdutoActivity extends BaseListaAtividade{
 		setListAdapter(new ProdutosAdapter(this,cursor));
 		registerForContextMenu(getListView());
 	}
-	
-//    public void onListItemClick(ListView l , View v, int posicao, long id){
-//    	Intent intent = new Intent(this, ProdutoEditarActivity.class);
-//    	intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, id);
-//    	startActivity(intent);
-//    }
     
     public void onAtualizarClick(View v) {
     	
@@ -147,9 +141,7 @@ public class ProdutoActivity extends BaseListaAtividade{
     }
     
     public void onIniciarClick(Context context) {
-        final Intent intent = new Intent(context,IniciarAtividade.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        context.startActivity(intent);
+        finish();
     }
 
     public void onBuscarClick(Activity activity) {
