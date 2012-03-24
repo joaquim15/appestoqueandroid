@@ -71,7 +71,9 @@ public class ProdutoActivity extends BaseListaAtividade{
 		
 		Intent intent = getIntent();		
 		setContentView(R.layout.produto_activity);
-		produtoDAO = new ProdutoDAO(this);
+		if(produtoDAO==null){
+			produtoDAO = new ProdutoDAO(this);
+		}
 		Cursor cursor = null;
 	    if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
 	        String query = intent.getStringExtra(SearchManager.QUERY);
@@ -173,7 +175,6 @@ public class ProdutoActivity extends BaseListaAtividade{
 				return super.onContextItemSelected(item);
 		}
 	}
-
     
     @Override
     protected void onDestroy(){
@@ -182,64 +183,3 @@ public class ProdutoActivity extends BaseListaAtividade{
     }
 	
 }
-
-//@Override
-//public void onCreateContextMenu(ContextMenu menu, View v,
-//		ContextMenuInfo menuInfo) {
-//	super.onCreateContextMenu(menu, v, menuInfo);
-//	MenuInflater inflater = getMenuInflater();
-//	inflater.inflate(R.menu.produto_menu, menu);
-//}
-
-//@Override
-//public boolean onContextItemSelected(MenuItem item) {
-//	AdapterContextMenuInfo info = (AdapterContextMenuInfo) item
-//			.getMenuInfo();
-//	Intent intent = null;
-//	switch (item.getItemId()) {
-//	case R.id.item_menu_texto:
-//		intent = new Intent(this, ProdutoEditarActivity.class);
-//		intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, info.id);
-//		startActivity(intent);
-//		return true;
-//	case R.id.item_menu_imagem:
-//		intent = new Intent(this, ProdutoImagemActivity.class);
-//		intent.putExtra(ProdutoDAO.PRODUTO_CHAVE_ID, info.id);
-//		startActivity(intent);
-//		return true;
-//	default:
-//		return super.onContextItemSelected(item);
-//	}
-//}
-
-
-
-
-
-//new Thread() {
-//public void run() {
-//	Looper.prepare();
-//	String os = Util.serial(ProdutoActivity.this);
-//	os = "9774d56d682e549c";
-//	//os = "6d682e549c";
-//	try {
-//		JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.SERVIDOR + Constantes.RESTFUL_PRODUTO + "?os=" + os,ProdutoActivity.this);
-//		if (objetos != null) {
-//			produtoDAO.limpar();
-//			Long id;
-//			String nome = null;
-//			String numero = null;
-//			Double preco = null;
-//			for (int i = 0; i <= objetos.length() - 1; ++i) {
-//				id = objetos.getJSONObject(i).getLong(ProdutoDAO.PRODUTO_CHAVE_ID);
-//				nome = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NOME);
-//				numero = objetos.getJSONObject(i).getString(ProdutoDAO.PRODUTO_CHAVE_NUMERO);
-//				preco = objetos.getJSONObject(i).getDouble(ProdutoDAO.PRODUTO_CHAVE_PRECO);
-//				produtoDAO.criar(id, nome, numero, preco);
-//			}
-//		}						
-//	} catch (Exception e) {
-//	}
-//	handler.sendEmptyMessage(0);
-//}
-//}.start();
