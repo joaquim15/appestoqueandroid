@@ -6,6 +6,10 @@
 	android:layout_height="fill_parent" 
 	android:background="@color/fundo_branco">
 	<LinearLayout style="@style/Titulo_Barra">
+		<ImageButton style="@style/Titulo_Barra_Acao"
+			android:src="@drawable/btn_retornar"
+			android:onClick="onRetornarClick" />
+		<ImageView style="@style/Titulo_Barra_Separador" />
 		<TextView style="@style/TitleBarText" 
 				  android:text="@string/titulo_produto" />
 	</LinearLayout>
