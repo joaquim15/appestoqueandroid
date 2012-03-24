@@ -8,21 +8,19 @@
 
 	<LinearLayout style="@style/Titulo_Barra">
 		<ImageButton style="@style/Titulo_Barra_Acao"
-			android:contentDescription="@string/description_home" 
-			android:src="@drawable/ic_title_home"
+			android:src="@drawable/btn_iniciar"
 			android:onClick="onIniciarClick" />
 		<ImageView style="@style/Titulo_Barra_Separador" />
 		<TextView style="@style/TitleBarText" 
 				  android:text="@string/titulo_produto" />
 		<ImageView style="@style/TitleBarSeparator" />
 		<ImageButton style="@style/Titulo_Barra_Acao"
-			android:contentDescription="@string/description_search" 
-			android:src="@drawable/ic_title_search"
+			android:src="@drawable/btn_buscar"
 			android:onClick="onBuscarClick" />
 		<ImageView style="@style/Titulo_Barra_Separador" />
         <ImageButton style="@style/Titulo_Barra_Acao"
             android:id="@+id/btn_atualizar"
-            android:src="@drawable/ic_title_refresh"
+            android:src="@drawable/btn_atualizar"
             android:onClick="onAtualizarClick" />	
 	</LinearLayout>
 
