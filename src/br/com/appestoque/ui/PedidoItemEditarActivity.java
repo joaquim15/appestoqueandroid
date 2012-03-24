@@ -2,13 +2,12 @@ package br.com.appestoque.ui;
 
 import br.com.appestoque.R;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
-import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 
-public class PedidoItemEditarActivity extends TabActivity {
+public class PedidoItemEditarActivity extends BaseTabAtividade {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
