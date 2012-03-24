@@ -3,11 +3,10 @@ package br.com.appestoque.ui;
 import br.com.appestoque.R;
 import br.com.appestoque.dominio.cadastro.Cliente;
 import br.com.appestoque.dao.cadastro.ClienteDAO;
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class ClienteEditarActivity extends Activity {
+public class ClienteEditarActivity extends BaseAtividade {
 
 	private ClienteDAO clienteDAO;
 	
@@ -30,10 +29,6 @@ public class ClienteEditarActivity extends Activity {
 			((TextView) findViewById(R.id.edtBairro)).setText(cliente.getBairro());
 			((TextView) findViewById(R.id.edtCidade)).setText(cliente.getCidade());
 		}
-	}
-	
-	public void onRetornarClick() {
-		finish();
 	}
 	
     @Override

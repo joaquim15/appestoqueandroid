@@ -4,7 +4,6 @@ import java.util.UUID;
 
 import org.json.JSONArray;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
@@ -149,14 +148,6 @@ public class ClienteActivity extends BaseListaAtividade{
 			Util.dialogo(ClienteActivity.this, getString(R.string.mensagem_3));
 		}	
     	
-    }
-    
-	public void onIniciarClick() {
-		finish();
-	}
-
-    public void onBuscarClick(Activity activity) {
-        activity.startSearch(null, false, Bundle.EMPTY, false);
     }
     
 	@Override
