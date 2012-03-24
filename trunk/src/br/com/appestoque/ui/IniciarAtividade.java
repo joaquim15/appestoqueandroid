@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import br.com.appestoque.R;
-import br.com.appestoque.Util;
 
 public class IniciarAtividade extends BaseAtividade {
 	
@@ -29,15 +28,8 @@ public class IniciarAtividade extends BaseAtividade {
 	public void onPreferenciaClick(View v) {
 		startActivity(new Intent(this, PreferenciaActivity.class));
 	}
-	
-	public void onExportarClick(View v) {
-		CharSequence chamada =  "Notificação";
-		CharSequence titulo = "Serial";
-		CharSequence mensagem = Util.serial(this);
-		Util.notificar(this, chamada, titulo, mensagem, IniciarAtividade.class);
-	}
-	
-    @Override
+
+	@Override
     protected void onDestroy(){
     	super.onDestroy();
     }
