@@ -69,7 +69,6 @@ public class ClienteActivity extends BaseListaAtividade{
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		Intent intent = getIntent();		
 		setContentView(R.layout.cliente_activity);
 		clienteDAO = new ClienteDAO(this);
@@ -141,46 +140,6 @@ public class ClienteActivity extends BaseListaAtividade{
 						handler.sendEmptyMessage(0);
 					}
 				});	
-					
-				
-//				new Thread() {
-//					public void run() {
-//						Looper.prepare();
-//						String os = Util.serial(ClienteActivity.this);
-//						os = "9774d56d682e549c";
-//						//os = "6d682e549c";
-//						try {
-//							JSONArray objetos = HttpCliente.ReceiveHttpPost(Constantes.SERVIDOR + Constantes.RESTFUL_CLIENTE + "?os=" + os,ClienteActivity.this);
-//							if (objetos != null) {
-//								clienteDAO.limpar();
-//								Long id = null;
-//								String nome = null;
-//								String cnpj = null;
-//								String endereco = null;
-//								Long numero = null;
-//								String cep = null;
-//								String complemento = null;
-//								String bairro = null;
-//								String cidade = null;
-//								for (int i = 0; i <= objetos.length() - 1; ++i) {
-//									id = objetos.getJSONObject(i).getLong(ClienteDAO.CLIENTE_CHAVE_ID);
-//									nome = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_NOME);
-//									cnpj = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_CNPJ);
-//									endereco = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_ENDERECO);
-//									numero = objetos.getJSONObject(i).getLong(ClienteDAO.CLIENTE_CHAVE_NUMERO);
-//									cep = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_CEP);
-//									complemento = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_COMPLEMENTO);
-//									bairro = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_BAIRRO);
-//									cidade = objetos.getJSONObject(i).getString(ClienteDAO.CLIENTE_CHAVE_CIDADE);
-//									clienteDAO.criar(id, nome, cnpj, endereco, numero, cep, complemento, bairro, cidade);
-//								}
-//							}						
-//						} catch (Exception e) {
-//						}
-//						handler.sendEmptyMessage(0);
-//					}
-//				}.start();
-				
 			} else {
 				Util.dialogo(ClienteActivity.this,getString(R.string.mensagem_2));
 			}
@@ -189,12 +148,6 @@ public class ClienteActivity extends BaseListaAtividade{
 		}	
     	
     }
-
-//    public void onListItemClick(ListView l , View v, int posicao, long id){
-//    	Intent intent = new Intent(this, ClienteEditarActivity.class);
-//    	intent.putExtra(ClienteDAO.CLIENTE_CHAVE_ID, id);
-//    	startActivity(intent);
-//    }
     
 	public void onIniciarClick(Context context) {
 		final Intent intent = new Intent(context, IniciarAtividade.class);
@@ -242,20 +195,5 @@ public class ClienteActivity extends BaseListaAtividade{
     	super.onDestroy();
     	clienteDAO.fechar();
     }
-	
 
 }
-
-//final CharSequence[] items = {getString(R.string.menu_criar_pedido),
-//		getString(R.string.menu_sincronizar),
-//		getString(R.string.menu_visualizar)};
-//AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//clienteDAO = new ClienteDAO(this);
-//builder.setTitle(clienteDAO.pesquisar(id).getNome());
-//builder.setItems(items, new DialogInterface.OnClickListener() {
-//    public void onClick(DialogInterface dialog, int item) {
-//        Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
-//    }
-//});
-//AlertDialog alert = builder.create();
-//alert.show();
