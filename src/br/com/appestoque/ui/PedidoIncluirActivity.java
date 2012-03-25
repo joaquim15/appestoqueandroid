@@ -5,7 +5,6 @@ import br.com.appestoque.Util;
 import br.com.appestoque.dao.cadastro.ClienteDAO;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dominio.cadastro.Cliente;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class PedidoIncluirActivity extends Activity {
+public class PedidoIncluirActivity extends BaseAtividade {
 
 	private ClienteDAO clienteDAO;
 	private PedidoDAO pedidoDAO;

@@ -6,11 +6,10 @@ import br.com.appestoque.dao.cadastro.ClienteDAO;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dominio.cadastro.Cliente;
 import br.com.appestoque.dominio.faturamento.Pedido;
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class PedidoEditarActivity extends Activity {
+public class PedidoEditarActivity extends BaseAtividade{
 
 	private PedidoDAO pedidoDAO;
 	private ClienteDAO clienteDAO;

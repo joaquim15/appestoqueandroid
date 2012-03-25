@@ -29,7 +29,8 @@ public class PreferenciaActivity extends BaseAtividade{
 		SharedPreferences preferencias = getSharedPreferences(Constantes.PREFERENCIAS, 0);
 		SharedPreferences.Editor editor = preferencias.edit();
 		editor.putString("UUID", uuid.getText().toString());
-		editor.commit();		
+		editor.commit();
+		this.finish();
 	}
 	
 	public void onCancelarClick(View v) {
