@@ -6,13 +6,12 @@ import br.com.appestoque.R;
 import br.com.appestoque.dominio.suprimento.Produto;
 import br.com.appestoque.dao.faturamento.ItemDAO;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
-public class ItemEditarActivity extends Activity {
+public class ItemEditarActivity extends BaseAtividade {
 
 	private ItemDAO itemDAO;
 	private ProdutoDAO produtoDAO;
@@ -23,8 +22,12 @@ public class ItemEditarActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.item_editar_activity);
 		Bundle extras = getIntent().getExtras();
-		itemDAO = new ItemDAO(this);
-		produtoDAO = new ProdutoDAO(this);
+		if(itemDAO==null){
+			itemDAO = new ItemDAO(this);
+		}
+		if(produtoDAO==null){
+			produtoDAO = new ProdutoDAO(this);
+		}
 		
 		List<Produto> lista = produtoDAO.produtos();
 		String[] produtos = new String[lista.size()];
