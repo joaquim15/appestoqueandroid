@@ -7,11 +7,15 @@
 	android:background="@color/fundo_branco">
 	<LinearLayout style="@style/Titulo_Barra">
 		<ImageButton style="@style/Titulo_Barra_Acao"
-			android:src="@drawable/btn_retornar"
-			android:onClick="onRetornarClick" />
+			android:src="@drawable/btn_iniciar"
+			android:onClick="onIniciarClick" />		
 		<ImageView style="@style/Titulo_Barra_Separador" />
 		<TextView style="@style/TitleBarText" 
 				  android:text="@string/titulo_produto" />
+		<ImageView style="@style/Titulo_Barra_Separador" />		  
+		<ImageButton style="@style/Titulo_Barra_Acao"
+			android:src="@drawable/btn_retornar"
+			android:onClick="onRetornarClick" />		  
 	</LinearLayout>
 			<TextView android:id="@+id/txtNome" 
 					  android:text="Nome"
