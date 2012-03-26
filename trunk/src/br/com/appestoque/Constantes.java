@@ -30,5 +30,8 @@ public class Constantes {
 	public static final int COR_VERDE_2 = -16737991;
 	
 	public static final String PREFERENCIAS = "MinhasPreferencias";
+	
+	public static final String MASCARA_VALOR_DUAS_CASAS_DECIMAIS = "#,###.00";
+	public static final String MASCARA_VALOR_TRES_CASAS_DECIMAIS = "#,###.000";
 		
 }

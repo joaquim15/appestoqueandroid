@@ -1,6 +1,8 @@
 package br.com.appestoque.ui;
 
+import br.com.appestoque.Constantes;
 import br.com.appestoque.R;
+import br.com.appestoque.Util;
 import br.com.appestoque.dao.faturamento.ItemDAO;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
@@ -30,8 +32,10 @@ public class ItemActivity extends BaseListaAtividade{
 			final TextView produto = (TextView) view.findViewById(R.id.produto);
             final TextView quantidade = (TextView) view.findViewById(R.id.quantidade);
             final TextView valor = (TextView) view.findViewById(R.id.valor);
-            quantidade.setText(cursor.getString(1));
-            valor.setText(cursor.getString(2));
+            final TextView valorTotal = (TextView) view.findViewById(R.id.valorTotal);
+            quantidade.setText(Util.doubleToString(cursor.getDouble(1),Constantes.MASCARA_VALOR_TRES_CASAS_DECIMAIS));
+            valor.setText(Util.doubleToString(cursor.getDouble(2),Constantes.MASCARA_VALOR_TRES_CASAS_DECIMAIS));
+            valorTotal.setText(Util.doubleToString(cursor.getDouble(1)*cursor.getDouble(2),Constantes.MASCARA_VALOR_TRES_CASAS_DECIMAIS));
             Produto prd = produtoDAO.pesquisar(cursor.getLong(3));
             produto.setText(prd.getNome());
 		}
