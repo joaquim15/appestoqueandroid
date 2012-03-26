@@ -47,7 +47,6 @@ public class ProdutoDAO implements IDAO<Produto,Long> {
 		List<Produto> produtos = new ArrayList<Produto>();
 		
 		if(cursor.getCount()>0){
-    		//cursor.moveToFirst();
     		while(cursor.moveToNext()){
     			Produto produto = new Produto();
     			produto.setId(cursor.getLong(cursor.getColumnIndex(ProdutoDAO.PRODUTO_CHAVE_ID)));
