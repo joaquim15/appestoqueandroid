@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -99,6 +100,9 @@ public class Util {
 		return simpleDateFormat.format(data);
 	}
 	
-	
+	public static String doubleToString( double valor, String mask){
+		DecimalFormat decimalFormat = new DecimalFormat(mask);
+		return decimalFormat.format(valor);   
+	}
 	
 }

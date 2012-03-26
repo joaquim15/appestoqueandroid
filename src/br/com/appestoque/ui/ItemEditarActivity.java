@@ -3,28 +3,34 @@ package br.com.appestoque.ui;
 import java.util.List;
 
 import br.com.appestoque.R;
+import br.com.appestoque.Util;
+import br.com.appestoque.dominio.faturamento.Item;
+import br.com.appestoque.dominio.faturamento.Pedido;
 import br.com.appestoque.dominio.suprimento.Produto;
 import br.com.appestoque.dao.faturamento.ItemDAO;
+import br.com.appestoque.dao.faturamento.PedidoDAO;
 import br.com.appestoque.dao.suprimento.ProdutoDAO;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 
 public class ItemEditarActivity extends BaseAtividade {
 
 	private ItemDAO itemDAO;
 	private ProdutoDAO produtoDAO;
+	private PedidoDAO pedidoDAO;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.item_editar_activity);
-		Bundle extras = getIntent().getExtras();
+		setContentView(R.layout.item_editar_activity);		
 		if(itemDAO==null){
 			itemDAO = new ItemDAO(this);
 		}
+		
 		if(produtoDAO==null){
 			produtoDAO = new ProdutoDAO(this);
 		}
@@ -40,30 +46,48 @@ public class ItemEditarActivity extends BaseAtividade {
 	    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.produto_listar, produtos);
 	    txtProduto.setAdapter(adapter);
 		
-		if(extras!=null){
-			//Item item = itemDAO.pesquisar(extras.getLong(ItemDAO.ITEM_CHAVE_ID));
-		}
-		
 	}
 	
 	public void onSalvarClick(View view) {
-		setResult(RESULT_OK);
-		finish();
+		Bundle extras = getIntent().getExtras();
+		final AutoCompleteTextView numero = (AutoCompleteTextView) findViewById(R.id.edtProduto);
+		final EditText qtd = (EditText) findViewById(R.id.edtQtd);
+		final EditText valor = (EditText) findViewById(R.id.edtValor);
+		Produto produto = produtoDAO.consultar(numero.getText().toString());
+		if(produto!=null){
+			Item item = new Item();
+			item.setQuantidade(new Double(qtd.getText().toString()));
+			item.setValor(new Double(valor.getText().toString()));
+			item.setProduto(produto);
+			PedidoDAO pedidoDAO = new PedidoDAO(this);
+			Pedido pedido = pedidoDAO.pesquisar(extras.getLong(PedidoDAO.PEDIDO_CHAVE_ID));
+			item.setPedido(pedido);
+			itemDAO.adicionar(item);
+			finish();
+		}else{
+			Util.dialogo(this,getString(R.string.mensagem_8));
+		}
 	}
 	
 	public void onCancelarClick(View view) {
-		setResult(RESULT_CANCELED);
+		//setResult(RESULT_CANCELED);
 		finish();    	
 	}
 	
     @Override
     protected void onDestroy(){
     	super.onDestroy();
+    	
     	if(itemDAO!=null){
     		itemDAO.fechar();
     	}
+    	
     	if(produtoDAO!=null){
     		produtoDAO.fechar();
+    	}
+    	
+    	if(pedidoDAO!=null){
+    		pedidoDAO.fechar();
     	}
     }
     

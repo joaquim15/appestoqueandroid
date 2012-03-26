@@ -50,7 +50,6 @@ public class ItemDAO implements IDAO<Item,Long>{
 	}
 	
 	public long adicionar(Item item) {
-		//String numero, long data, String obs, Long idCliente
     	SQLiteDatabase db = databaseHelper.getWritableDatabase();
         ContentValues initialValues = new ContentValues();
         
