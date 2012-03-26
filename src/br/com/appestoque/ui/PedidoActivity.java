@@ -1,15 +1,9 @@
 package br.com.appestoque.ui;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.HttpParams;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -20,25 +14,23 @@ import android.database.Cursor;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.widget.CursorAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.CursorAdapter;
+import android.widget.TextView;
 import br.com.appestoque.Constantes;
 import br.com.appestoque.HttpCliente;
 import br.com.appestoque.R;
 import br.com.appestoque.Util;
 import br.com.appestoque.dao.cadastro.ClienteDAO;
+import br.com.appestoque.dao.faturamento.ItemDAO;
 import br.com.appestoque.dao.faturamento.PedidoDAO;
-import br.com.appestoque.dao.suprimento.ProdutoDAO;
+import br.com.appestoque.dominio.faturamento.Item;
 import br.com.appestoque.dominio.faturamento.Pedido;
 
 @SuppressWarnings("unused")
@@ -108,14 +100,25 @@ public class PedidoActivity extends BaseListaAtividade{
 					pedidoDAO = new PedidoDAO(this);
 				}
 				Pedido pedido = pedidoDAO.pesquisar(info.id);
+				ItemDAO itemDAO = new ItemDAO(this);
+				List<Item> itens = itemDAO.listar(pedido);
 				JSONObject pedidoJSON = new JSONObject();
+				JSONArray itms = new JSONArray();
 				try {
 					pedidoJSON.put("numero",pedido.getNumero());
 					pedidoJSON.put("data",pedido.getData().getTime());
 					pedidoJSON.put("idCliente",pedido.getCliente().getId());
-					pedidoJSON.put("obs",pedido.getObs());					
-				} catch (JSONException e) {
-					Log.e(Constantes.TAG, e.getMessage());
+					pedidoJSON.put("obs",pedido.getObs());
+					for(Item itm :itens){
+						JSONObject itemJSON = new JSONObject();
+						itemJSON.put("idProduto", itm.getProduto().getId());
+						itemJSON.put("quantidade", itm.getQuantidade());
+						itemJSON.put("valor", itm.getValor());
+						itms.put(itemJSON);
+					}
+					pedidoJSON.put("itens", itms);
+				}catch(JSONException e){
+					Util.dialogo(this, e.getMessage());
 				}
 				SharedPreferences preferencias = getSharedPreferences(Constantes.PREFERENCIAS, 0);
 				String uuid = preferencias.getString("UUID", UUID.randomUUID().toString());
@@ -136,7 +139,9 @@ public class PedidoActivity extends BaseListaAtividade{
     @Override
     protected void onDestroy(){
     	super.onDestroy();
-    	pedidoDAO.fechar();
+    	if(pedidoDAO!=null){
+    		pedidoDAO.fechar();
+    	}
     }
 	
 }
