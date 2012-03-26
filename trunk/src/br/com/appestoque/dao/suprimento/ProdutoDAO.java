@@ -47,7 +47,7 @@ public class ProdutoDAO implements IDAO<Produto,Long> {
 		List<Produto> produtos = new ArrayList<Produto>();
 		
 		if(cursor.getCount()>0){
-    		cursor.moveToFirst();
+    		//cursor.moveToFirst();
     		while(cursor.moveToNext()){
     			Produto produto = new Produto();
     			produto.setId(cursor.getLong(cursor.getColumnIndex(ProdutoDAO.PRODUTO_CHAVE_ID)));
@@ -105,7 +105,7 @@ public class ProdutoDAO implements IDAO<Produto,Long> {
     public Produto consultar(String numero){
     	SQLiteDatabase db = databaseHelper.getReadableDatabase(); 
     	Cursor cursor =  db.query(TABELA, new String[] {PRODUTO_CHAVE_ID, 
-    							PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_VALOR}, PRODUTO_CHAVE_NUMERO + " = " + numero , 
+    							PRODUTO_CHAVE_NOME, PRODUTO_CHAVE_NUMERO, PRODUTO_CHAVE_VALOR}, PRODUTO_CHAVE_NUMERO + " = '" + numero + "'" , 
     							null, null, null, null);    	
     	if(cursor.getCount()>0){
     		cursor.moveToFirst();
