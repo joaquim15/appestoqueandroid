@@ -1,6 +1,5 @@
 package br.com.appestoque.ui;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +13,8 @@ public class BaseListaAtividade extends ListActivity{
 		this.startActivity(intent);
 	}
 
-    public void onBuscarClick(Activity activity) {
-        activity.startSearch(null, false, Bundle.EMPTY, false);
+    public void onBuscarClick(View view) {
+        this.startSearch(null, false, Bundle.EMPTY, false);
     }
 	
 }
