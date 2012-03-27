@@ -31,7 +31,8 @@
 					  style="@style/SessionTitle" />
 			<AutoCompleteTextView android:id="@+id/edtProduto"
 		        	  android:layout_width="fill_parent"
-		        	  android:layout_height="wrap_content"/>
+		        	  android:layout_height="wrap_content"
+		        	  android:textColor="@color/texto"/>
 			<TextView android:id="@+id/txtQtd"
 			          android:text="@string/item_quantidade"
 					  android:textColor="#000000" 
