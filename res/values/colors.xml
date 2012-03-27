@@ -6,5 +6,11 @@
     <color name="fundo_branco">#ffffffff</color>
     <color name="foreground1">#ff355689</color>
     <color name="fundo">#ffffffff</color>
+    
+    <color name="background1">#ffffffff</color>
+    <color name="background2">#ffd5ddeb</color>
     <color name="background3">#ffe3e8f1</color>
+    
+    <color name="texto">#000</color>
+        
 </resources>
